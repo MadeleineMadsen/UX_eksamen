@@ -1,0 +1,16 @@
+{
+  "name": "ux_eksamen",
+  "version": "1.0.0",
+  "description": "UX eksamen",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Madeleine Madsen",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.25.1",
+    "eslint": "^9.25.1",
+    "globals": "^16.0.0"
+  }
+}
