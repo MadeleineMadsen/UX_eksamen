@@ -7,6 +7,9 @@
     --colorSecondary: #2B2B2B;
     --colorAccent1: #90CAF9;
     --colorAccent2: #A5D6A7;
+
+    --colorBg1: rgb(144, 202, 249, 0.6);
+    --colorBg2: rgb(165, 214, 167, 0.6);
     
     /* Tekst farve */
     --colorText: #2B2B2B;
@@ -14,6 +17,9 @@
     /* Fonte */
     --fontTitles: 'Libre+Baskerville', Arial, Helvetica, sans-serif;
     --fontText: 'Poppins', Arial, Helvetica, sans-serif;
+
+    --fontSizeMobile: 15px;
+    --fontSizeDesktop: 16px;
 
     /* Margin */
     --marginDesktop: 1rem;
