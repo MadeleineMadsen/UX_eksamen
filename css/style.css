@@ -1,0 +1,73 @@
+@import url(./variables.css);
+
+/* Removing default values */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main */
+main {
+    background: var(--colorPrimary);
+}
+
+/* Navigation mobile*/
+nav#main {
+    background: linear-gradient(100deg, var(--colorAccent1), var(--colorAccent2));
+    padding: 1.2rem 0;
+    z-index: 10;
+    font-family: var(--fontTitles);
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 3.2rem;
+        li {
+            list-style-type: none;
+            a {
+                display: inline-block;
+                text-decoration: none;
+                color: var(--colorText);
+                font-size: 1rem;
+            }
+            button {
+                border: none;
+                background-color: transparent;
+                color: var(--colorText);
+                cursor: pointer;
+                font-size: 1rem;
+                font-family: var(--fontTitles);
+            }
+        }
+        div {
+            display: flex;
+            gap: 2rem;
+        }
+        .hidden {
+            display: none;
+        }
+    }
+}
+
+/* Navigation desktop */
+@media (min-width: 768px) {
+    nav#main {
+        padding: 1.6rem 2rem;
+        ul {
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            li {
+                a, button {
+                    font-size: 1.1rem;
+                }
+                a:hover, button:hover {
+                    text-decoration: underline;
+                    transform: scale(1.1);
+                    transform-origin: center;
+                }
+            }
+        }
+    }
+}
