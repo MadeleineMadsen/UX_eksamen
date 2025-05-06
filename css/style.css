@@ -29,18 +29,14 @@ nav#main {
         li {
             list-style-type: none;
             padding: 0 0.5rem;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
             a {
                 display: flex;
                 align-items: center;
                 text-decoration: none;
                 color: var(--colorText);
-            }
-            button {
-                border: none;
-                background-color: transparent;
-                color: var(--colorText);
-                cursor: pointer;
-                font-family: var(--fontText);
             }
         }
         #main_nav {
@@ -87,7 +83,7 @@ footer {
             font-size: var(--fontSizeDesktop);
             li {
                 padding: 0 1rem;
-                a:hover, button:hover {
+                a:hover {
                     text-decoration: underline;
                     transform: scale(1.1);
                 }
