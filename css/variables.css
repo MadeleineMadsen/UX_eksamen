@@ -19,7 +19,7 @@
     --marginDesktop: 1rem;
     --marginMobile: 0.5rem;
 
-/* Cards */
---cardWidth: 250px;
---imgThumbnailDimension: 150px;
+    /* Cards */
+    --cardWidth: 250px;
+    --imgThumbnailDimension: 150px;
 }

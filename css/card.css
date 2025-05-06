@@ -1,5 +1,6 @@
-@import url(./style.css);
-@import url(./variables.css);
+/* Cards til authors og til popop (forskellige størrelse måske? */
+
+@import 'style.css';
 
 
 #recipe-list {
