@@ -1,0 +1,313 @@
+/*──────────────────────────────────────────────
+  1) Variabler
+──────────────────────────────────────────────*/
+@import 'variables.css';
+
+/* ──────────────────────────────────────────────
+  2) INDEX-SIDE BOG-KORT (mobil-first)
+───────────────────────────────────────────────*/
+/* 1) (Valgfrit) Definer i variables.css: */
+:root {
+  --bookCardMin: 150px;   /* mindste kort-bredde */
+  --gap: 1rem;            /* afstand mellem kort */
+}
+
+
+#book-list {
+  display: grid;
+  grid-template-columns: 1fr;        /* én kolonne */
+  gap: var(--marginDesktop);
+  padding-inline: 2rem;
+  margin: var(--marginDesktop) auto;
+}
+
+/* — Tablet og op: så mange 180px-kolonner som der kan være, ellers færre — */
+@media (min-width: 560px) {
+  #book-list {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    /* auto-fit prøver at få så mange 180px-kolonner ind som muligt,
+       og skalerer dem op til 1fr hvis der er ekstra plads */
+    gap: var(--marginDesktop);
+    padding-inline: 4rem;
+  }
+}
+
+/* Selve kortets max-bredde beholder du nedefra */
+#book-list .book-card {
+  width: 100%;
+  max-width: 180px;
+  margin: 0 auto;
+}
+
+
+
+/* Sørg for at .book-card IKKE fylder 100% bredde
+   men flexer sig til sin grid-celle */
+.book-card {
+  width: auto;
+  max-width: var(--cardWidth);
+}
+
+/* Hvis du vil have lidt vertikal afstand før/searchen: */
+main {
+  padding-top: 2rem;
+}
+
+#book-list .book-card {
+  background: var(--colorPrimary);
+  border: thin solid var(--colorSecondary);
+  border-radius: var(--marginMobile);
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Billed-wrapper med fast forhold */
+.book-card .book-image {
+  width: 100%;
+  aspect-ratio: 2/3;
+  overflow: hidden;
+  border-radius: var(--marginMobile);
+  margin-top: var(--marginMobile);
+}
+.book-card .book-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* Titel, forfatter og knap */
+.book-card .book-title {
+  margin: var(--marginMobile) var(--marginDesktop) 0;
+  font-family: var(--fontTitles);
+  font-size: 1.2rem;
+  text-align: center;
+}
+.book-card .book-author {
+  margin: 0 var(--marginDesktop) var(--marginMobile);
+  font-size: 0.9rem;
+  text-align: center;
+  color: var(--colorText);
+  flex-grow: 1; /* skubber knappen ned */
+}
+.book-card .btn--book-info {
+  margin: 0 var(--marginDesktop) var(--marginDesktop);
+  padding: 0.5rem;
+  background: var(--colorAccent1);
+  color: var(--colorSecondary);
+  border: none;
+  border-radius: var(--marginMobile);
+  box-shadow: 4px 4px 8px rgba(0,0,0,0.1), -4px -4px 8px rgba(255,255,255,0.7);
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+.book-card .btn--book-info:hover {
+  transform: translateY(-2px);
+}
+
+/* Tablet+ ( ≥560px ) */
+@media (min-width: 560px) {
+  #book-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--marginDesktop);
+    max-width: calc((var(--cardWidth) * 3) + (var(--marginDesktop) * 2));
+    margin: 0 auto;
+  }
+  #book-list .book-card {
+    flex: 0 1 var(--cardWidth);
+    max-width: var(--cardWidth);
+  }
+}
+
+
+/* ──────────────────────────────────────────────
+  3) POPUP-DIALOG
+───────────────────────────────────────────────*/
+dialog.book-popup {
+  width: 95%;
+  max-width: 360px;
+  margin: 2rem auto;
+  border: none;
+  border-radius: var(--marginDesktop);
+  background: var(--colorPrimary);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-family: var(--fontText);
+  color: var(--colorText);
+  overflow: hidden;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--marginMobile);
+  font-family: var(--fontTitles);
+  color: var(--colorSecondary);
+}
+.popup-header h2 { margin: 0; font-size: 1.25rem; }
+.popup-header .close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--colorSecondary);
+  cursor: pointer;
+}
+
+.popup-body {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--marginMobile);
+  padding: var(--marginMobile);
+  align-items: start;
+}
+.popup-image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--marginDesktop);
+}
+
+.popup-info h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+}
+.popup-info p { margin: 0 0 var(--marginMobile); }
+
+.popup-footer {
+  padding: var(--marginMobile);
+  text-align: center;
+}
+.popup-footer .btn--loan {
+  padding: 0.5rem 1rem;
+  background: var(--colorAccent1);
+  color: var(--colorText);
+  border: none;
+  border-radius: var(--marginMobile);
+  cursor: pointer;
+}
+
+
+/* ──────────────────────────────────────────────
+  4) SIGN UP / LOG IN (wide-form)
+───────────────────────────────────────────────*/
+.wide-form {
+  background: var(--colorPrimary);
+  border-radius: var(--marginDesktop);
+  width: 90%;
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  box-shadow: 8px 8px 16px rgba(0,0,0,0.1), -8px -8px 16px rgba(255,255,255,0.7);
+  overflow: hidden;
+}
+.wide-form > header {
+  text-align: center;
+  padding: 3rem 1rem 1rem;
+}
+.icon-wrapper {
+  width: 6rem; height: 6rem;
+  margin: 0 auto var(--marginMobile);
+  background: var(--colorPrimary);
+  border-radius: 50%;
+  box-shadow: 4px 4px 8px rgba(0,0,0,0.1), -4px -4px 8px rgba(255,255,255,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-login { width: 4rem; }
+
+.wide-form > header h2 {
+  margin: 0;
+  font-family: var(--fontTitles);
+  font-size: 1.75rem;
+  color: var(--colorSecondary);
+}
+.wide-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0 1.5rem 2rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.form-group label {
+  font-size: 0.9rem;
+  color: var(--colorSecondary);
+}
+.wide-form input {
+  font-size: 1rem;
+  padding: 1rem;
+  border: none;
+  border-radius: var(--marginDesktop);
+  background: var(--colorPrimary);
+  box-shadow: inset 6px 6px 8px rgba(0,0,0,0.1), inset -4px -4px 8px rgba(255,255,255,0.7);
+  transition: box-shadow 0.2s ease;
+}
+.wide-form input:focus {
+  outline: none;
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2), inset -2px -2px 4px rgba(255,255,255,0.9);
+}
+.btn-submit {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--colorPrimary);
+  color: var(--colorSecondary);
+  border: none;
+  border-radius: var(--marginDesktop);
+  box-shadow: 8px 8px 16px rgba(0,0,0,0.1), -8px -8px 16px rgba(255,255,255,0.7);
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+.btn-submit:hover { transform: translateY(-2px); }
+.btn-submit:active { transform: translateY(0); }
+
+
+/* ──────────────────────────────────────────────
+  5) SEARCH & SUGGESTIONS
+───────────────────────────────────────────────*/
+.search-section {
+  position: relative;
+  width: 90%;
+  max-width: 360px;
+  margin: 1rem auto 0.5rem;
+}
+.search-section input[type="search"] {
+  width: 100%;
+  padding: var(--marginMobile);
+  border: none;
+  border-radius: var(--marginMobile);
+  font-family: var(--fontText);
+  font-size: 1rem;
+  box-shadow: inset 4px 4px 8px rgba(0,0,0,0.1), inset -4px -4px 8px rgba(255,255,255,0.7);
+  transition: box-shadow 0.2s ease;
+}
+.search-section input[type="search"]:focus {
+  outline: none;
+  box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2), inset -2px -2px 4px rgba(255,255,255,0.9);
+}
+.suggestions-list {
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  margin: 0; padding: 0;
+  list-style: none;
+  background: var(--colorPrimary);
+  border-radius: 0 0 var(--marginMobile) var(--marginMobile);
+  box-shadow: 4px 4px 8px rgba(0,0,0,0.1), -4px -4px 8px rgba(255,255,255,0.7);
+  max-height: 15rem;
+  overflow-y: auto;
+  z-index: 10;
+}
+.suggestions-list li {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+.suggestions-list li:hover,
+.suggestions-list li.selected {
+  background: var(--colorAccent1);
+  color: var(--colorSecondary);
+}

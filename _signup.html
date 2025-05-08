@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Sign up | Books</title>
+  <link rel="stylesheet" href="css/dialog.css" />
+  <script src="js/env.js"     type="module"></script>
+  <script src="js/common.js"  type="module"></script>
+  <script src="js/nav.js"     type="module"></script>
+  <script src="js/signup.js"  type="module"></script>
+</head>
+<body>
+  <header>
+    <h1><a href="index.html">Books</a></h1>
+    <!-- evt. hamburger/menu her -->
+  </header>
+
+  <main>
+    <section class="wide-form">
+      <header>
+        <div class="icon-wrapper">
+          <img src="img/signupIcon.png" alt="Sign up icon" class="icon-login">
+        </div>
+        <h2>Sign up</h2>
+      </header>
+  
+      <form id="frmSignup">
+        <div class="form-group">
+          <label for="txtFirstname">Full name</label>
+          <input type="text" id="txtFirstname" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="txtEmail">E-mail</label>
+          <input type="email" id="txtEmail" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="txtPassword">Password</label>
+          <input type="password" id="txtPassword"  required>
+        </div>
+        <div class="form-group">
+          <label for="txtRepeatPassword">Confirm password</label>
+          <input type="password" id="txtRepeatPassword" required>
+        </div>
+  
+        <button type="submit" class="btn-submit">Sign up</button>
+  
+        <p class="login-link">
+          Already have an account?
+          <a href="login.html">Log in here</a>
+        </p>
+      </form>
+    </section>
+  </main>
+  
+
+  <footer>
+    <p>&copy; 2024–2025 BogSite</p>
+  </footer>
+
+  <dialog id="msgPasswordError">
+    <header>
+      <h2>Warning</h2>
+      <button class="close" aria-label="Luk">&times;</button>
+    </header>
+    <p>Passwords must match</p>
+  </dialog>
+</body>
+</html>

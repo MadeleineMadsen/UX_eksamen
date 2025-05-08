@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Log in – Books</title>
+    <link rel="stylesheet" href="css/dialog.css" />
+    <script src="js/env.js"    type="module"></script>
+    <script src="js/common.js" type="module"></script>
+    <script src="js/nav.js"    type="module"></script>
+    <script src="js/login.js"  type="module"></script>
+</head>
+<body>
+<header>
+    <h1><a href="index.html">Books</a></h1>
+</header>
+
+<main>
+    <section class="wide-form">
+    <header>
+        <div class="icon-wrapper">
+        <img src="img/loginIcon.png" alt="User icon" class="icon-login">
+        </div>
+        <h2>Log in</h2>
+    </header>
+
+    <form id="frmLogin">
+        <div class="form-group">
+        <label for="txtEmail">E-mail</label>
+        <input type="email" id="txtEmail" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+        <label for="txtPassword">Password</label>
+        <input type="password" id="txtPassword"  required>
+        </div>
+
+        <button type="submit" class="btn-submit">Log in</button>
+
+        <p class="login-link">
+        Don’t have an account?
+        <a href="signup.html">Sign up here</a>
+        </p>
+    </form>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024–2025 BogSite</p>
+</footer>
+</body>
+</html>
