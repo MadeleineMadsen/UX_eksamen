@@ -24,6 +24,8 @@
     --marginMobile: 0.5rem;
 
     /* Cards */
-    --cardWidth: 250px;
+    --cardWidth: 250px; /* bruger vi den her? */
     --imgThumbnailDimension: 150px;
+    --bookCardMin: 150px;   /* mindste kort-bredde */
+    --gap: 1rem;            /* afstand mellem kort - bruger vi den her?*/
 }

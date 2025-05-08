@@ -47,7 +47,7 @@ async function loadBooks(params, container) {
  *  ──────────────────────────────────────── */
 
 function renderBooks(books, container) {
-  const DEFAULT_COVER = 'img/den-lille-prins.png';
+  const DEFAULT_COVER = 'images/placeholder.svg';
   container.innerHTML = '';
   books.forEach(b => {
     const { book_id, title, author, cover } = b;
@@ -97,7 +97,7 @@ document.body.addEventListener('click', async e => {
  *  ──────────────────────────────────────── */
 function showPopup({ title, author, cover, publishing_year, publishing_company }) {
   const dialog = document.createElement('dialog');
-  const DEFAULT_COVER = 'img/den-lille-prins.png';
+  const DEFAULT_COVER = 'image/placeholder.svg';
   dialog.className = 'book-popup';
   const imgSrc = cover || DEFAULT_COVER;
 
@@ -136,38 +136,38 @@ function showPopup({ title, author, cover, publishing_year, publishing_company }
 /** ────────────────────────────────────────
  *  6) Live‐search: vis suggestions under input
  *  ──────────────────────────────────────── */
-searchInput.addEventListener('input', () => {
-  const q = searchInput.value.trim();
-  // cancel tidligere
-  if (abortController) abortController.abort();
-  if (!q) {
-    suggContainer.hidden = true;
-    return;
-  }
-  abortController = new AbortController();
-  fetch(`${baseBookApiUrl}/books?s=${encodeURIComponent(q)}`, {
-    signal: abortController.signal
-  })
-    .then(handleAPIError)
-    .then(books => {
-      suggContainer.innerHTML = books
-        .map(b => `<li data-title="${b.title}">${b.title}</li>`)
-        .join('');
-      suggContainer.hidden = books.length === 0;
-    })
-    .catch(err => {
-      if (err.name !== 'AbortError') console.error(err);
-    });
-});
+// searchInput.addEventListener('input', () => {
+//   const q = searchInput.value.trim();
+//   // cancel tidligere
+//   if (abortController) abortController.abort();
+//   if (!q) {
+//     suggContainer.hidden = true;
+//     return;
+//   }
+//   abortController = new AbortController();
+//   fetch(`${baseBookApiUrl}/books?s=${encodeURIComponent(q)}`, {
+//     signal: abortController.signal
+//   })
+//     .then(handleAPIError)
+//     .then(books => {
+//       suggContainer.innerHTML = books
+//         .map(b => `<li data-title="${b.title}">${b.title}</li>`)
+//         .join('');
+//       suggContainer.hidden = books.length === 0;
+//     })
+//     .catch(err => {
+//       if (err.name !== 'AbortError') console.error(err);
+//     });
+// });
 
-// Klik på et suggestion‐item
-suggContainer.addEventListener('click', e => {
-  if (!e.target.matches('li')) return;
-  const title = e.target.dataset.title;
-  searchInput.value = title;
-  suggContainer.hidden = true;
-  // evt. trig loadBooks med { s: title } hvis du vil vise resultater et andet sted
-});
+// // Klik på et suggestion‐item
+// suggContainer.addEventListener('click', e => {
+//   if (!e.target.matches('li')) return;
+//   const title = e.target.dataset.title;
+//   searchInput.value = title;
+//   suggContainer.hidden = true;
+//   // evt. trig loadBooks med { s: title } hvis du vil vise resultater et andet sted
+// });
 
 /** ────────────────────────────────────────
  *  7) Initialiser – hent 15 bøger

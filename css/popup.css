@@ -2,3 +2,71 @@
 
 @import 'style.css'; 
 @import 'card.css';
+
+dialog.book-popup {
+    width: 95%;
+    max-width: 360px;
+    margin: 2rem auto;
+    border: none;
+    border-radius: var(--marginDesktop);
+    background: var(--colorPrimary);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-family: var(--fontText);
+    color: var(--colorText);
+    overflow: hidden;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--marginMobile);
+    font-family: var(--fontTitles);
+    color: var(--colorSecondary);
+}
+
+.popup-header h2 { margin: 0; font-size: 1.25rem; }
+.popup-header .close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--colorSecondary);
+    cursor: pointer;
+}
+
+.popup-body {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: var(--marginMobile);
+    padding: var(--marginMobile);
+    align-items: start;
+}
+
+.popup-image img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--marginDesktop);
+}
+
+.popup-info h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1rem;
+}
+
+.popup-info p { 
+    margin: 0 0 var(--marginMobile);
+}
+
+.popup-footer {
+    padding: var(--marginMobile);
+    text-align: center;
+}
+
+.popup-footer .btn--loan {
+    padding: 0.5rem 1rem;
+    background: var(--colorAccent1);
+    color: var(--colorText);
+    border: none;
+    border-radius: var(--marginMobile);
+    cursor: pointer;
+}

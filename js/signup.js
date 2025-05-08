@@ -1,4 +1,4 @@
-import { baseUserUrl } from './env.js';
+import { baseUserUrl } from './info.js';
 import { handleAPIError, handleFetchCatchError } from './common.js';
 import { handleCloseDialogButton } from './common.js';
 

@@ -1,3 +1,92 @@
 /* Login og sign up form */
 
 @import 'style.css';
+
+.wide-form {
+    background: var(--colorPrimary);
+    border-radius: var(--marginDesktop);
+    width: 90%;
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    box-shadow: 8px 8px 16px rgba(0,0,0,0.1), -8px -8px 16px rgba(255,255,255,0.7);
+    overflow: hidden;
+}
+
+.wide-form > header {
+    text-align: center;
+    padding: 3rem 1rem 1rem;
+}
+
+.icon-wrapper {
+    width: 6rem; height: 6rem;
+    margin: 0 auto var(--marginMobile);
+    background: var(--colorPrimary);
+    border-radius: 50%;
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.1), -4px -4px 8px rgba(255,255,255,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-login { 
+    width: 4rem; 
+}
+
+.wide-form > header h2 {
+    margin: 0;
+    font-family: var(--fontTitles);
+    font-size: 1.75rem;
+    color: var(--colorSecondary);
+}
+
+.wide-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 1.5rem 2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    color: var(--colorSecondary);
+}
+
+.wide-form input {
+    font-size: 1rem;
+    padding: 1rem;
+    border: none;
+    border-radius: var(--marginDesktop);
+    background: var(--colorPrimary);
+    box-shadow: inset 6px 6px 8px rgba(0,0,0,0.1), inset -4px -4px 8px rgba(255,255,255,0.7);
+    transition: box-shadow 0.2s ease;
+}
+
+.wide-form input:focus {
+    outline: none;
+    box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2), inset -2px -2px 4px rgba(255,255,255,0.9);
+}
+
+.btn-submit {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--colorPrimary);
+    color: var(--colorSecondary);
+    border: none;
+    border-radius: var(--marginDesktop);
+    box-shadow: 8px 8px 16px rgba(0,0,0,0.1), -8px -8px 16px rgba(255,255,255,0.7);
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
+    &:hover {
+        transform: translateY(-2px);
+    }
+    &:active {
+        transform: translateY(0);
+    }
+}

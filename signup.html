@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/form.css">
     <title>Signup | RentABook</title>
 </head>
+<body>
 
 <header>
     <!-- Navigation -->
@@ -47,12 +48,42 @@
 
 
 <main>
-
+    <section class="wide-form">
+        <header>
+        <div class="icon-wrapper">
+            <img src="images/signupIcon.png" alt="Sign up icon" class="icon-login">
+        </div>
+        <h2>Sign up</h2>
+        </header>
+    
+        <form id="frmSignup">
+        <div class="form-group">
+            <label for="txtFirstname">Full name</label>
+            <input type="text" id="txtFirstname" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+            <label for="txtEmail">E-mail</label>
+            <input type="email" id="txtEmail" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+            <label for="txtPassword">Password</label>
+            <input type="password" id="txtPassword"  required>
+        </div>
+        <div class="form-group">
+            <label for="txtRepeatPassword">Confirm password</label>
+            <input type="password" id="txtRepeatPassword" required>
+        </div>
+    
+        <button type="submit" class="btn-submit">Sign up</button>
+    
+        <p class="login-link">
+            Already have an account?
+            <a href="login.html">Log in here</a>
+        </p>
+        </form>
+    </section>
 
 </main>
-
-
-
 
 
 
