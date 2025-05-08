@@ -11,7 +11,7 @@
 body {
     width: 100%;
     height: 100vh;
-    background: linear-gradient(to left top, var(--colorPrimary), var(--colorBg2) 30%, var(--colorBg1) 70%, var(--colorPrimary));
+    background: var(--colorBackground);
 }
 
 /* Navigation mobile */

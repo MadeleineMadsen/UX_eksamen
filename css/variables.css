@@ -7,9 +7,7 @@
     --colorSecondary: #2B2B2B;
     --colorAccent1: #90CAF9;
     --colorAccent2: #A5D6A7;
-
-    --colorBg1: rgb(144, 202, 249, 0.6);
-    --colorBg2: rgb(165, 214, 167, 0.6);
+    --colorBackground: linear-gradient(to left top, #FAF9F6, rgb(165, 214, 167, 0.6) 30%, rgb(144, 202, 249, 0.6) 70%, #FAF9F6);
     
     /* Tekst farve */
     --colorText: #2B2B2B;
