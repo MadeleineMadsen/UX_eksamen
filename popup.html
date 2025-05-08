@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/dialog.css" />
+    <!-- Scripts -->
+    <script src="js/env.js"     type="module"></script>
+    <script src="js/common.js"  type="module"></script>
+    <script src="js/books.js"   type="module"></script>
+</head>
+<body>
+    <!-- bog opstilling -->
+
+
+<!-- søger i dommen -->
+<section class="search-section" style="position: relative;">
+    <input
+        type="search"
+        id="txtSearch"
+        placeholder="Søg efter bogtitel…"
+        aria-label="Søg bøger"
+        autocomplete="off"
+    />
+    <!-- Denne container skal ligge lige under input, absolut positioneret -->
+    <ul id="suggestions" class="suggestions-list" hidden></ul>
+</section>
+
+
+
+<section id="book-list">
+    <!-- her kommer dine <article class="book-card" …> … </article> -->
+</section>
+
+
+
+</body>
+
+</html>
