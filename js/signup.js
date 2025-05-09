@@ -1,42 +1,57 @@
-import { baseUserUrl } from './info.js';
-import { handleAPIError, handleFetchCatchError } from './common.js';
-import { handleCloseDialogButton } from './common.js';
+import { BASE_URL } from './info.js';
+import { handleError } from './api.js';
 
-document.querySelector('#frmSignup').addEventListener('submit', e => {
-e.preventDefault();
+document.querySelector('#frmSignup').addEventListener('submit', async e => {
+  e.preventDefault();
+  console.log('Signup forsøgt');
 
-    const pwd  = e.target.txtPassword.value.trim();
-    const rpt  = e.target.txtRepeatPassword.value.trim();
-    if (pwd !== rpt) {
-    document.querySelector('#msgPasswordError').showModal();
+  // Indhent værdier
+  const firstName = e.target.txtFirstname.value.trim();
+  const lastName = e.target.txtLastname.value.trim();
+  const email = e.target.txtEmail.value.trim();
+  const address = e.target.txtAddress.value.trim();
+  const phone = e.target.txtPhone.value.trim();
+  const birthDate = e.target.txtBirthdate.value;
+  const password = e.target.txtPassword.value;
+  const repeatPassword = e.target.txtRepeatPassword.value;
+
+  // Valider passwords matcher
+  if (password !== repeatPassword) {
+    handleError('Passwords do not match.');
     return;
-}
+  }
 
-    const firstName = e.target.txtFirstname.value.trim();
-    const lastName  = e.target.txtLastname.value.trim();
-    const email     = e.target.txtEmail.value.trim();
+  // Valider at fødselsdato ikke er i fremtiden
+  if (new Date(birthDate) > new Date()) {
+    handleError('Birth date cannot be in the future.');
+    return;
+  }
 
-    const params = new URLSearchParams();
-    params.append('email',       email);
-    params.append('first_name',  firstName);
-    params.append('last_name',   lastName);
-    params.append('password',    pwd);
+  const params = new URLSearchParams();
+  params.append('first_name', firstName);
+  params.append('last_name', lastName);
+  params.append('email', email);
+  params.append('password', password);
+  params.append('address', address);
+  params.append('phone_number', phone);
+  params.append('birth_date', birthDate);
 
-    fetch(`${baseUserUrl}/users`, {
-    method: 'POST',
-    body: params
-})
-    .then(handleAPIError)
-    .then(data => {
-        if (data.user_id) {
-        window.location.href = 'login.html';
-        } else {
-        throw new Error(data.error || 'Unknown error');
-        }
-    })
-    .catch(handleFetchCatchError);
+  try {
+    const res = await fetch(`${BASE_URL}/users`, {
+      method: 'POST',
+      body: params
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+    if (!res.ok) throw new Error(data.error || 'Signup failed');
+
+    alert('Signup successful! You can now log in.');
+    window.location.href = 'login.html';
+  } catch (err) {
+    handleError(err);
+  }
 });
 
-// Luk-password-dialog
-document.querySelector('#msgPasswordError .close')
-        .addEventListener('click', handleCloseDialogButton);
+

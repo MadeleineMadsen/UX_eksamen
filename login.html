@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/form.css">
+    <script type="module" src="js/login.js"></script>
     <title>Login | RentABook</title>
 </head>
 <body>
-
 
 <header>
     <!-- Navigation -->
@@ -45,11 +45,12 @@
     </nav>
 </header>
 
-
-
-
-
 <main>
+
+    <div id="error" class="hidden" style="color: red; margin-bottom: 1em;">
+        <p id="errorText"></p>
+    </div>
+    
     <section class="wide-form">
         <header>
             <div class="icon-wrapper">
@@ -60,32 +61,29 @@
     
         <form id="frmLogin">
             <div class="form-group">
-            <label for="txtEmail">E-mail</label>
-            <input type="email" id="txtEmail" placeholder="you@example.com" required>
+                <label for="txtEmail">E-mail</label>
+                <input type="email" id="txtEmail" name="txtEmail" placeholder="you@example.com" required>
             </div>
+
             <div class="form-group">
-            <label for="txtPassword">Password</label>
-            <input type="password" id="txtPassword"  required>
+                <label for="txtPassword">Password</label>
+                <input type="password" id="txtPassword" name="txtPassword" required>
             </div>
-    
+
             <button type="submit" class="btn-submit">Log in</button>
-    
+
             <p class="login-link">
-            Don’t have an account?
-            <a href="signup.html">Sign up here</a>
+                Don’t have an account?
+                <a href="signup.html">Sign up here</a>
             </p>
         </form>
-        </section>
-
+    </section>
 </main>
-
 
 <!-- Footer -->
 <footer>
     <p>&copy; 2025 - UX exam - Kamilla, Madeleine & Naomi</p>
 </footer>
-
-
 
 </body>
 </html>

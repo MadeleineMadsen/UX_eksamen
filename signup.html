@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/form.css">
+    <script type="module" src="js/signup.js"></script>
     <title>Signup | RentABook</title>
 </head>
 <body>
@@ -44,9 +45,6 @@
     </nav>
 </header>
 
-
-
-
 <main>
     <section class="wide-form">
         <header>
@@ -57,42 +55,61 @@
         </header>
     
         <form id="frmSignup">
-        <div class="form-group">
-            <label for="txtFirstname">Full name</label>
-            <input type="text" id="txtFirstname" placeholder="Enter your full name" required>
-        </div>
-        <div class="form-group">
-            <label for="txtEmail">E-mail</label>
-            <input type="email" id="txtEmail" placeholder="you@example.com" required>
-        </div>
-        <div class="form-group">
-            <label for="txtPassword">Password</label>
-            <input type="password" id="txtPassword"  required>
-        </div>
-        <div class="form-group">
-            <label for="txtRepeatPassword">Confirm password</label>
-            <input type="password" id="txtRepeatPassword" required>
-        </div>
+            <div class="form-group">
+                <label for="txtFirstname">First name</label>
+                <input type="text" id="txtFirstname" name="txtFirstname" required placeholder="John">
+            </div>
+
+            <div class="form-group">
+                <label for="txtLastname">Last name</label>
+                <input type="text" id="txtLastname" name="txtLastname" required placeholder="Doe">
+            </div>
+
+            <div class="form-group">
+                <label for="txtEmail">E-mail</label>
+                <input type="email" id="txtEmail" name="txtEmail" required placeholder="you@example.com">
+            </div>
     
-        <button type="submit" class="btn-submit">Sign up</button>
+            <div class="form-group">
+                <label for="txtAddress">Address</label>
+                <input type="text" id="txtAddress" name="txtAddress" required placeholder="Example Street 12, 1000 City">
+            </div>
     
-        <p class="login-link">
-            Already have an account?
-            <a href="login.html">Log in here</a>
-        </p>
+            <div class="form-group">
+                <label for="txtPhone">Phone number</label>
+                <input type="tel" id="txtPhone" name="txtPhone" required placeholder="12345678">
+            </div>
+
+            <div class="form-group">
+                <label for="txtBirthdate">Birth date</label>
+                <input type="date" id="txtBirthdate" name="txtBirthdate" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="txtPassword">Password</label>
+                <input type="password" id="txtPassword" name="txtPassword" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="txtRepeatPassword">Confirm password</label>
+                <input type="password" id="txtRepeatPassword" name="txtRepeatPassword" required>
+            </div>
+
+            <button type="submit" class="btn-submit">Sign up</button>
+
+            <p class="login-link">
+                Already have an account?
+                <a href="login.html">Log in here</a>
+            </p>
         </form>
+        
     </section>
-
 </main>
-
-
 
 <!-- Footer -->
 <footer>
     <p>&copy; 2025 - UX exam - Kamilla, Madeleine & Naomi</p>
 </footer>
-
-
 
 </body>
 </html>
