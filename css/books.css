@@ -5,7 +5,7 @@
 
 #book-list {
     display: grid;
-    grid-template-columns: 1fr;        /* én kolonne */
+    grid-template-columns: 1fr;
     gap: var(--marginDesktop);
     padding-inline: 2rem;
     margin: var(--marginDesktop) auto;

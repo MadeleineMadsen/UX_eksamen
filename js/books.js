@@ -97,7 +97,7 @@ document.body.addEventListener('click', async e => {
  *  ──────────────────────────────────────── */
 function showPopup({ title, author, cover, publishing_year, publishing_company }) {
   const dialog = document.createElement('dialog');
-  const DEFAULT_COVER = 'image/placeholder.svg';
+  const DEFAULT_COVER = 'images/placeholder.svg';
   dialog.className = 'book-popup';
   const imgSrc = cover || DEFAULT_COVER;
 

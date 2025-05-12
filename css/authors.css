@@ -1,3 +1,279 @@
-/* Css til søgefunktion og forfatter side  */
 @import 'style.css';
 @import 'card.css';
+
+#letter-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: var(--marginMobile);
+    & > button {
+        background: none;
+        border: none;
+        font-family: var(--fontText);
+        font-size: var(--fontSizeMobile);
+        padding: 0 0.6rem;
+        cursor: pointer;
+        color: var(--colorText);
+        &.selected {
+            /* color: var(--colorPrimary); */
+            transform: scale(1.2);
+            border-bottom: 2px solid var(--colorText);
+        }
+    }
+}
+
+#author-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    font-family: var(--fontText);
+    padding: 0 var(--marginMobile) 4rem var(--marginMobile);
+    margin: 0 auto;
+    gap: var(--marginMobile);
+    .author-group {
+        background: transparent;
+        border: none;
+        padding: var(--marginMobile);
+        /* Overskrift */
+        h2 {
+            font-size: 1.2rem; /* rettes til samme variabel som h2 på andre sider */
+            margin-bottom: var(--marginMobile);
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            
+          /* 2 kolonner på mobil */
+            column-count: 2;
+            column-gap: var(--marginMobile);
+            li {
+                margin-bottom: 0.5rem;
+                font-size: 0.9rem;
+                line-height: 1.4;
+                color: var(--colorText);
+                break-inside: avoid; /* undgå at et navn deles mellem kolonner */
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    #letter-nav {
+        cursor: pointer;
+    }
+    #author-list {
+        margin-top: 2rem;
+        padding: 0 var(--marginDesktop);
+        gap: var(--marginDesktop);
+        justify-items: space-around;
+        width: 64%;
+        .author-group {
+            padding: 0;
+            h2 {
+                padding-left: var(--marginDesktop);
+                font-size: 1.4rem; /* rettes til samme variabel som h2 på andre sider */
+            }
+            ul {
+                column-count: 4;
+                column-gap: var(--marginDesktop);
+                li {
+                    padding: 0 var(--marginDesktop);
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* @import 'style.css';
+@import 'card.css'; */
+
+
+
+/* @import 'style.css';
+@import 'card.css'; */
+
+/* MOBILE-FIRST: 2 kolonner på skærme under 768px */
+/* #author-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--marginMobile);
+    padding-inline: var(--marginMobile);
+    margin: var(--marginMobile) auto;
+} */
+
+/* Hver “celle” med et bogstav og liste over forfattere */
+/* .author-group {
+    background: var(--colorPrimary);
+    border: thin solid var(--colorSecondary);
+    border-radius: var(--marginMobile);
+    padding: var(--marginMobile);
+}
+
+.author-group h2 {
+    font-family: var(--fontTitles);
+    font-size: 1.2rem;
+    margin: 0 0 var(--marginMobile) 0;
+}
+
+.author-group p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--colorText);
+}
+
+.author-names {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.author-names li {
+    margin-bottom: 0.25rem; /* luft mellem rækkerne */
+    /* font-size: 0.9rem;
+    color: var(--colorText);
+}
+
+/* DESKTOP: 5 kolonner fra 768px og op */
+/* @media (min-width: 768px) {
+    #author-list {
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--marginDesktop);
+    padding-inline: var(--marginDesktop);
+    max-width: calc((var(--cardWidth) * 5) + (var(--marginDesktop) * 4));
+    }
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #author-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--marginDesktop);
+    padding-inline: 2rem;
+    margin: var(--marginDesktop) auto;
+} */
+
+/* #author-list, .author-card {
+    width: 100%;
+    max-width: 180px;
+    margin: 0 auto;
+    background: var(--colorPrimary);
+    border: thin solid var(--colorSecondary);
+    border-radius: var(--marginMobile);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.author-card {
+    width: auto;
+    max-width: var(--cardWidth);
+} */
+
+/* .author-card {
+    width: 100%;
+    aspect-ratio: 2/3;
+    overflow: hidden;
+    border-radius: var(--marginMobile);
+    margin-top: var(--marginMobile);
+}
+.author-card {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.author-card {
+    margin: var(--marginMobile) var(--marginDesktop) 0;
+    font-family: var(--fontTitles);
+    font-size: 1.2rem;
+    text-align: center;
+}
+.author-card {
+    margin: 0 var(--marginDesktop) var(--marginMobile);
+    font-size: 0.9rem;
+    text-align: center;
+    color: var(--colorText);
+    flex-grow: 1;
+} */
+/* .btn--author-info {
+    margin: 0 var(--marginDesktop) var(--marginDesktop);
+    padding: 0.5rem;
+    background: var(--colorAccent1);
+    color: var(--colorSecondary);
+    border: none;
+    border-radius: var(--marginMobile);
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.1), -4px -4px 8px rgba(255,255,255,0.7);
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+@media (min-width: 768px) {
+    #author-list {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    padding-inline: 4rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--marginDesktop);
+    max-width: calc((var(--cardWidth) * 3) + (var(--marginDesktop) * 2));
+    margin: 0 auto;
+    }
+    #author-list .author-card {
+    flex: 0 1 var(--cardWidth);
+    max-width: var(--cardWidth);
+    }
+
+    .author-card .btn--author-info:hover {
+        transform: translateY(-2px);
+    }
+} */

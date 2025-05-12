@@ -23,6 +23,10 @@
     --marginDesktop: 1rem;
     --marginMobile: 0.5rem;
 
+    /* Højde nav / footer */
+    /* --heightNav: auto;
+    --heightFooter: auto; */
+
     /* Cards */
     --cardWidth: 250px; /* bruger vi den her? */
     --imgThumbnailDimension: 150px;
