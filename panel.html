@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/panel.css">
+    <script src="js/panel.js" defer></script>
     <title>Panel | eShelf</title>
 </head>
 <body>
@@ -49,8 +50,23 @@
 
 
 <main>
+    <nav id="admin_nav">
+        <h3>Profile</h3>
+        <ul id="dashboard">
+        <li><a id="add_books" href="#book_form">Add books</a></li>
+        <li><a id="personal_info" href="#panel">Personal information</a></li>
+        </ul>
+    </nav>
 
-
+    <section id="book_form">
+        <h1>Add books</h1>
+        <p>Her skal der være form med tilføjelse af bøger</p>
+    </section>
+    
+    <section id="panel" class="hidden">
+        <h1>Personal Information</h1>
+        <p>Her skal der være form til rettelse af profil</p>
+    </section>
 </main>
 
 

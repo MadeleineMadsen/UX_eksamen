@@ -16,16 +16,22 @@
     --fontTitles: 'Libre+Baskerville', Arial, Helvetica, sans-serif;
     --fontText: 'Poppins', Arial, Helvetica, sans-serif;
 
+    /* Font størrelse */
+    /* Paragraph */
     --fontSizeMobile: 15px;
     --fontSizeDesktop: 16px;
+    /* Header på sider */
+    --headerSizeMobile: 28px;
+    --headerSizeDesktop: 34px;
+
 
     /* Margin */
     --marginDesktop: 1rem;
     --marginMobile: 0.5rem;
 
     /* Højde nav / footer */
-    /* --heightNav: auto;
-    --heightFooter: auto; */
+    --heightNav: 4rem;
+    --heightFooter: 6rem;
 
     /* Cards */
     --cardWidth: 250px; /* bruger vi den her? */
