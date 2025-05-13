@@ -14,28 +14,27 @@ document.querySelector('#frmLogin').addEventListener('submit', async e => {
         body: params
     });
 
-    if (!response.ok) throw new Error('Login failed');
+    const data = await response.json(); // Parse JSON før du bruger det
+    console.log('Login response:', data); // Debug
 
-    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || 'Login failed');
 
-    if (data.auth_token) {
-        sessionStorage.setItem('book_app_user_id', data.user_id);
-        sessionStorage.setItem('book_app_user_token', data.auth_token);
-        sessionStorage.setItem('book_app_user_is_admin', data.is_admin);
+    // Fortolk is_admin korrekt uanset type
+    const isAdmin = data.is_admin === 1 || data.is_admin === '1' || data.is_admin === true || data.is_admin === 'true';
 
-      // Redirect afhængigt af admin-status
-        if (data.is_admin === true) {
-        window.location.href = 'panel.html';
-        } else {
-        window.location.href = 'profile.html';
-        }
+    // Gem i sessionStorage
+    sessionStorage.setItem('book_app_user_id', data.user_id);
+    sessionStorage.setItem('book_app_user_token', data.auth_token);
+    sessionStorage.setItem('book_app_user_is_admin', isAdmin ? 'true' : 'false');
 
+    // Redirect
+    if (isAdmin) {
+        window.location.href = 'admin.html';
     } else {
-        throw new Error(data.error || 'Login failed');
+        window.location.href = 'profile.html';
     }
 
     } catch (err) {
     handleError(err);
     }
 });
-

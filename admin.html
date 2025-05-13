@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/panel.css">
+    <script type="module" src="js/admin.js"></script>
     <title>Panel | RentABook</title>
 </head>
 <body>
@@ -38,32 +39,46 @@
             <!-- Admin -->
             <div id="utility_logged_admin">
             <li><a href="#" title="Panel"><img class="icon" src="images/panel.svg" alt="Panel"></a></li>
-            <li><img class="icon" src="images/logout.svg" alt="Logout"></button></li></div>
+            <button><img class="icon" src="images/logout.svg" alt="Logout"></button>
         </div>
         </ul>
     </nav>
 </header>
 
-
-
-
-
 <main>
+    <h1>Admin Dashboard</h1>
 
+    <section class="admin-section">
+        <h2>Add authors</h2>
+        <form id="addAuthorForm">
+            <input type="text" name="first_name" placeholder="First name" required>
+            <input type="text" name="last_name" placeholder="Last name" required>
+            <button type="submit">Add author</button>
+        </form>
+    </section>
 
+    <section class="admin-section">
+        <h2>Add books</h2>
+        <form id="addBookForm">
+            <input type="text" name="title" placeholder="Book title" required>
+            <button type="submit">Add book</button>
+        </form>
+    </section>
+
+    <section class="admin-section">
+        <h2>Add publishers</h2>
+        <form id="addPublisherForm">
+            <input type="text" name="name" placeholder="Publisher name" required>
+            <button type="submit">Add publisher</button>
+        </form>
+    </section>
 </main>
-
-
-
-
 
 
 <!-- Footer -->
 <footer>
     <p>&copy; 2025 - UX exam - Kamilla, Madeleine & Naomi</p>
 </footer>
-
-
 
 </body>
 </html>
