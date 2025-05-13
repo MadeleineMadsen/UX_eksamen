@@ -35,6 +35,20 @@
     }
 }
 
+#panel {
+    ul {
+        font-family: var(--fontText);
+        font-size: var(--fontSizeMobile);
+        list-style-type: none;
+        margin-top: var(--marginMobile);
+        li {
+            gap: var(--marginMobile);
+            padding: var(--marginMobile);
+        }
+    }
+}
+
+
 @media (min-width: 768px) {
     main {
         display: grid;
@@ -68,6 +82,17 @@
             text-align: left;
             margin: var(--marginDesktop);
             font-size: var(--headerSizeDesktop);
+        }
+    }
+
+    #panel {
+        ul {
+            font-size: var(--fontSizeDesktop);
+            margin: var(--marginDesktop) 0 0 var(--marginDesktop);
+            li {
+                gap: var(--marginDesktop);
+                padding: var(--marginDesktop);
+            }
         }
     }
 }

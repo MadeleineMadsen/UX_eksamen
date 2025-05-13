@@ -25,7 +25,9 @@ nav#main {
     top: 0;
     width: 100%;
     font-family: var(--fontText);
-    /* height: var(--heightNav); */
+    background: var(--colorBackground);
+    background-attachment: fixed;
+    z-index: 5;
     ul {
         display: flex;
         flex-wrap: wrap;
@@ -71,6 +73,7 @@ main {
     margin: 0 var(--marginMobile);
 }
 
+
 /* Footer mobile */
 footer {
     bottom: 0;
@@ -82,7 +85,9 @@ footer {
     text-align: center;
     font-size: var(--fontSizeMobile);
     font-family: var(--fontText);
-    /* height: var(--heightFooter); */
+    background: var(--colorBackground);
+    background-attachment: fixed;
+    z-index: 5;
 }
 
 
