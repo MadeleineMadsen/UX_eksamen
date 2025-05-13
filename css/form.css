@@ -93,12 +93,18 @@
 
 /*-------------- Sign up --------------*/
 
+main {
+    padding-top: var(--heightNav);
+    padding-bottom: var(--heightFooter);
+}
+
 .signup-form {
     background: var(--colorPrimary);
     border-radius: var(--marginDesktop);
     width: 90%;
     max-width: 600px;
-    margin: 4rem auto;
+    margin: 0 auto;
+    margin-bottom: 1rem;
     padding: 2rem;
     box-shadow: 8px 8px 16px rgba(0,0,0,0.1), -8px -8px 16px rgba(255,255,255,0.7);
     overflow: hidden;
