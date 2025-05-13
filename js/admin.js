@@ -99,17 +99,17 @@ publisherForm.addEventListener('submit', async (e) => {
 });
 
 // === LOG UD ===
-const logoutBtn = document.querySelector('#logoutBtn');
-if (logoutBtn) {
-    logoutBtn.addEventListener('click', () => {
+const logoutBtnUser = document.querySelector('#logoutBtnUser');
+const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
+
+[logoutBtnUser, logoutBtnAdmin].forEach(btn => {
+    btn?.addEventListener('click', () => {
     sessionStorage.removeItem('book_app_user_id');
     sessionStorage.removeItem('book_app_user_token');
     sessionStorage.removeItem('book_app_user_is_admin');
     window.location.href = 'login.html';
     });
 }
-
-
 
 // === HENT BRUGERDATA ===
 const userId = sessionStorage.getItem('book_app_user_id');
@@ -144,8 +144,6 @@ fetch(`http://127.0.0.1:5555/users/${userId}`, {
     console.error('Fejl ved indlæsning af brugerdata:', err);
     alert('Der opstod en fejl under hentning af din profilinformation.');
 });
-
-
 
 document.getElementById('add_books').onclick = () => {
     document.getElementById('book_form').classList.remove('hidden');

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/panel.css">
+    <link rel="stylesheet" href="css/admin.css">
     <script type="module" src="js/admin.js"></script>
     <title>Panel | RentABook</title>
 </head>
@@ -34,13 +34,14 @@
             <!-- User -->
             <div id="utility_logged_user" class="hidden">
             <li><a href="profile.html" title="Profile"><img class="icon" src="images/profile.svg" alt="Profile"></a></li>
-            <li><img class="icon" src="images/logout.svg" alt="Logout"></button></li></div>
+            <button id="logoutBtnUser"><img class="icon" src="images/logout.svg" alt="Logout"></button>
+            </div>
             
             <!-- Admin -->
             <div id="utility_logged_admin">
-            <li><a href="#" title="Panel"><img class="icon" src="images/panel.svg" alt="Panel"></a></li>
-            <button><img class="icon" src="images/logout.svg" alt="Logout"></button>
-        </div>
+            <li><a href="#" title="admin"><img class="icon" src="images/panel.svg" alt="Panel"></a></li>
+            <button id="logoutBtnAdmin"><img class="icon" src="images/logout.svg" alt="Logout"></button>
+            </div>
         </ul>
     </nav>
 </header>
@@ -106,7 +107,7 @@
         </section>
     </section>
     
-    <section id="panel" class="hidden">
+    <section id="admin" class="hidden">
         <h1>Personal Information</h1>
         
             <ul>

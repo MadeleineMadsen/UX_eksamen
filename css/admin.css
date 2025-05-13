@@ -25,7 +25,7 @@
     }
 }
 
-#book_form, #panel {
+#book_form, #admin {
     h1 {
         font-family: var(--fontTitles);
         text-align: center;
@@ -77,7 +77,7 @@
     }
     
     
-    #book_form, #panel {
+    #book_form, #admin {
         h1 {
             text-align: left;
             margin: var(--marginDesktop);
