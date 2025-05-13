@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/profile.css">
-    <title>Profile | RentABook</title>
+    <script src="js/profile.js" defer></script>
+    <title>Profile | eShelf</title>
 </head>
 <body>
 
@@ -49,8 +50,23 @@
 
 
 <main>
+    <nav id="user_nav">
+        <h3>Profile</h3>
+        <ul id="dashboard">
+        <li><a id="loaned_books" href="#my_books">Loaned books</a></li>
+        <li><a id="personal_info" href="#user_info">Personal information</a></li>
+        </ul>
+    </nav>
 
-
+    <section id="my_books">
+        <h1>Loaned books</h1>
+            <p>Her skal der være udlånte bøger</p>
+    </section>
+    
+    <section id="user_info" class="hidden">
+        <h1>Personal Information</h2>
+            <p>Her skal der være form med rettelse af user</p>
+    </section>
 </main>
 
 
