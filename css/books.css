@@ -3,30 +3,53 @@
 @import 'style.css';
 @import 'card.css';
 
+
+
+
 #book-list {
     display: grid;
-    grid-template-columns: 1fr;        /* én kolonne */
+    grid-template-columns: 1fr 1fr;
     gap: var(--marginDesktop);
     padding-inline: 2rem;
     margin: var(--marginDesktop) auto;
+    padding-top: 5rem;
+}
+  /* Sørger for centreret overskrift med god afstand */
+.books-header {
+    text-align: center;
+    margin: 5rem 0 1rem; 
 }
 
-#book-list, .book-card {
-    width: 100%;
-    max-width: 180px;
-    margin: 0 auto;
+.section-title {
+    font-family: var(--fontTitles);
+    font-size: 2rem;
+    color: var(--colorSecondary);
+}
+
+  /* Tablet+ (≥768px): 5 kolonner, hver mindst 180px */
+@media (min-width: 768px) {
+    #book-list {
+    grid-template-columns: repeat(5, minmax(180px, 1fr));
+    padding-inline: 4rem;
+      max-width: calc((180px * 5) + (var(--marginDesktop) * 4)); /* 5 kort + 4 mellemrum */
+    margin: var(--marginDesktop) auto;
+    }
+}
+  
+  /* Selve kortene render sig til cellestørrelsen */
+.book-card {
     background: var(--colorPrimary);
     border: thin solid var(--colorSecondary);
     border-radius: var(--marginMobile);
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: 180px; /* matcher min-width fra grid’en */
+    margin: 0 auto;
+    padding: 1rem;
 }
 
-.book-card {
-    width: auto;
-    max-width: var(--cardWidth);
-}
 
 .book-card .book-image {
     width: 100%;
@@ -40,6 +63,10 @@
     height: 100%;
     object-fit: cover;
     object-position: top;
+    
+    cursor: pointer;
+    
+    
 }
 
 .book-card .book-title {
@@ -47,6 +74,7 @@
     font-family: var(--fontTitles);
     font-size: 1.2rem;
     text-align: center;
+    min-height: 3rem;
 }
 .book-card .book-author {
     margin: 0 var(--marginDesktop) var(--marginMobile);
@@ -54,6 +82,7 @@
     text-align: center;
     color: var(--colorText);
     flex-grow: 1; /* skubber knappen ned */
+    min-height: 1.2rem;
 }
 .book-card .btn--book-info {
     margin: 0 var(--marginDesktop) var(--marginDesktop);
@@ -65,6 +94,7 @@
     box-shadow: 4px 4px 8px rgba(0,0,0,0.1), -4px -4px 8px rgba(255,255,255,0.7);
     cursor: pointer;
     transition: transform 0.1s ease;
+    margin-top: auto;
 }
 .book-card .btn--book-info:hover {
     transform: translateY(-2px);
@@ -73,6 +103,7 @@
 /* 768? */
 @media (min-width: 768px) {
     #book-list {
+    
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     /* auto-fit prøver at få så mange 180px-kolonner ind som muligt,
          og skalerer dem op til 1fr hvis der er ekstra plads */
@@ -80,7 +111,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: var(--marginDesktop);
-    max-width: calc((var(--cardWidth) * 3) + (var(--marginDesktop) * 2));
+    max-width: calc((var(--cardWidth) * 5) + (var(--marginDesktop) * 4));
     margin: 0 auto;
     }
     #book-list .book-card {

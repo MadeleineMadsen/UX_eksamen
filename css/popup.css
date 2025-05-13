@@ -14,6 +14,7 @@ dialog.book-popup {
     font-family: var(--fontText);
     color: var(--colorText);
     overflow: hidden;
+
 }
 
 .popup-header {
@@ -57,16 +58,13 @@ dialog.book-popup {
     margin: 0 0 var(--marginMobile);
 }
 
-.popup-footer {
-    padding: var(--marginMobile);
-    text-align: center;
-}
 
-.popup-footer .btn--loan {
-    padding: 0.5rem 1rem;
+.popup-info .btn--loan {
+    display: inline-block;    /* ellers er <a> kun inline */
+    padding: 0.2rem 1rem;
     background: var(--colorAccent1);
     color: var(--colorText);
-    border: none;
+    text-decoration: none;    /* fjern understregning */
     border-radius: var(--marginMobile);
     cursor: pointer;
 }

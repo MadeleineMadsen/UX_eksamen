@@ -15,7 +15,7 @@ let abortController = null;
  *  1) Hent og vis 15 tilfældige bøger
  *  ──────────────────────────────────────── */
 async function loadRandom() {
-  await loadBooks({ n: 15 }, listEl);
+  await loadBooks({ n: 12 }, listEl);
 }
 
 /** ────────────────────────────────────────
@@ -44,6 +44,8 @@ async function loadBooks(params, container) {
 
 /** ────────────────────────────────────────
  *  3) Render book-cards i container
+ * 
+ * <button class="btn--book-info">Læs om</button>
  *  ──────────────────────────────────────── */
 
 function renderBooks(books, container) {
@@ -68,8 +70,8 @@ function renderBooks(books, container) {
         />
       </div>
       <h3 class="book-title">${title}</h3>
-      <p class="book-author">${author}</p>
-      <button class="btn--book-info">Læs om</button>
+    
+      
     `;
     container.append(card);
   });
@@ -81,8 +83,12 @@ function renderBooks(books, container) {
  *  4) Popup ved klik på "Læs om"
  *  ──────────────────────────────────────── */
 document.body.addEventListener('click', async e => {
-  if (!e.target.matches('.btn--book-info')) return;
-  const id = e.target.closest('.book-card').dataset.bookId;
+  // hvis vi ikke ved et klik inde i selve .book-card, så gør vi ingenting
+  const card = e.target.closest('.book-card');
+  if (!card) return;
+
+  // find book_id og vis popup
+  const id = card.dataset.bookId;
   try {
     const res  = await fetch(`${baseBookApiUrl}/books/${id}`);
     const book = await handleAPIError(res);
@@ -92,16 +98,17 @@ document.body.addEventListener('click', async e => {
   }
 });
 
+
+
 /** ────────────────────────────────────────
  *  5) Byg og vis dialog
  *  ──────────────────────────────────────── */
 function showPopup({ title, author, cover, publishing_year, publishing_company }) {
   const dialog = document.createElement('dialog');
-  const DEFAULT_COVER = 'image/placeholder.svg';
   dialog.className = 'book-popup';
-  const imgSrc = cover || DEFAULT_COVER;
+  const DEFAULT_COVER = 'images/placeholder.svg';
+  const imgSrc        = cover || DEFAULT_COVER;
 
-  dialog.className = 'book-popup';
   dialog.innerHTML = `
     <header class="popup-header">
       <h2>${title}</h2>
@@ -110,28 +117,38 @@ function showPopup({ title, author, cover, publishing_year, publishing_company }
 
     <div class="popup-body">
       <div class="popup-image">
-        <img src="${imgSrc}"
-        alt="Forside af ${title}"
-        onerror="this.src='${DEFAULT_COVER}'">
+        <img
+          src="${imgSrc}"
+          alt="Forside af ${title}"
+          onerror="this.src='${DEFAULT_COVER}'"
+        />
       </div>
-
       <div class="popup-info">
         <h3>Forfatter</h3>
         <p>${author}</p>
         <p><strong>År:</strong> ${publishing_year}</p>
         <p><strong>Forlag:</strong> ${publishing_company}</p>
+        <a href="login.html" class="btn--loan">Lån bog</a>
       </div>
     </div>
 
-    <footer class="popup-footer">
-      <button class="btn--loan">Lån bog</button>
-    </footer>
+
   `;
-  dialog.querySelectorAll('.close, .btn--loan')
+
+  // bind luk-knapper
+  dialog.querySelectorAll('.close')
         .forEach(el => el.addEventListener('click', handleCloseDialogButton));
+   // Lån-bog redirect + luk
+  dialog.querySelector('.btn--loan').addEventListener('click', e => {
+    // Luk dialogen
+    handleCloseDialogButton.call(e.currentTarget);
+    // Navigate til login (tilpas stien hvis nødvendigt)
+    window.location.href = 'login.html';
+  });
   document.body.append(dialog);
   dialog.showModal();
 }
+export { showPopup };
 
 /** ────────────────────────────────────────
  *  6) Live‐search: vis suggestions under input
