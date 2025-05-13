@@ -46,7 +46,7 @@
 </header>
 
 <main>
-    <h1>Admin Dashboard</h1>
+    <!-- <h1>Admin Dashboard</h1>
 
     <section class="admin-section">
         <h2>Add authors</h2>
@@ -70,10 +70,47 @@
         <form id="addPublisherForm">
             <input type="text" name="name" placeholder="Publisher name" required>
             <button type="submit">Add publisher</button>
-        </form>
+        </form> -->
+    <nav id="admin_nav">
+        <h3>Profile</h3>
+        <ul id="dashboard">
+        <li><a id="add_books" href="#book_form">Add books</a></li>
+        <li><a id="personal_info" href="#panel">Personal information</a></li>
+        </ul>
+    </nav>
+
+    <section id="book_form">
+        <section class="admin-section">
+            <h2>Add authors</h2>
+            <form id="addAuthorForm">
+                <input type="text" name="first_name" placeholder="First name" required>
+                <input type="text" name="last_name" placeholder="Last name" required>
+                <button type="submit">Add author</button>
+            </form>
+        </section>
+
+        <section class="admin-section">
+            <h2>Add books</h2>
+            <form id="addBookForm">
+                <input type="text" name="title" placeholder="Book title" required>
+                <button type="submit">Add book</button>
+            </form>
+        </section>
+
+        <section class="admin-section">
+            <h2>Add publishers</h2>
+            <form id="addPublisherForm">
+                <input type="text" name="name" placeholder="Publisher name" required>
+                <button type="submit">Add publisher</button>
+            </form>
+        </section>
+    </section>
+    
+    <section id="panel" class="hidden">
+        <h1>Personal Information</h1>
+        <p>Her skal der være form til rettelse af profil</p>
     </section>
 </main>
-
 
 <!-- Footer -->
 <footer>

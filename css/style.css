@@ -1,3 +1,4 @@
+/* Kun ting der er på alle sider - main, header, footer, nav osv */
 @import 'variables.css';
 
 /* Remove default */
@@ -7,11 +8,12 @@
     box-sizing: border-box;
 }
 
-/* Body */
-body {
-    width: 100%;
-    height: 100vh;
+/* HTML */
+html {
     background: var(--colorBackground);
+    background-attachment: fixed;
+    background-size: cover;
+    margin-top: 5rem;
 }
 
 /* Navigation mobile */
@@ -19,7 +21,11 @@ nav#main {
     border-bottom: solid 0.5px var(--colorSecondary);
     padding: 0.6rem;
     z-index: 10;
+    position: fixed;
+    top: 0;
+    width: 100%;
     font-family: var(--fontText);
+    /* height: var(--heightNav); */
     ul {
         display: flex;
         flex-wrap: wrap;
@@ -60,23 +66,29 @@ nav#main {
         }
 }
 
+/* Main mobile */
+main {
+    margin: 0 var(--marginMobile);
+}
+
 /* Footer mobile */
 footer {
-    position: fixed;
     bottom: 0;
     width: 100%;
+    position: fixed;
     padding: 1rem 0;
     color: var(--colorText);
     border-top: solid 0.5px var(--colorSecondary);
     text-align: center;
     font-size: var(--fontSizeMobile);
     font-family: var(--fontText);
-
+    /* height: var(--heightFooter); */
 }
 
 
-/* Navigation og footer desktop */
 @media (min-width: 768px) {
+
+    /* Navigation og footer desktop */
     nav#main {
         padding: 0.5rem 1rem;
         ul {
@@ -102,10 +114,16 @@ footer {
             transform: scale(1.1);
         }
 
-
     footer {
         font-size: var(--fontSizeDesktop);
         padding: 1.2rem 0;
     }
     }
+
+
+
+    /* Main desktop */
+main {
+    margin: 0 var(--marginDesktop);
+}
 }

@@ -1,3 +1,77 @@
 /* Css til panel siden på admin */
 
 @import 'style.css';
+
+#admin_nav {
+    font-family: var(--fontText);
+    font-size: var(--fontSizeMobile);
+    margin: var(--marginMobile);
+    border-bottom: solid 0.5px var(--colorSecondary);
+    h3 {
+        margin: var(--marginMobile);
+    }
+    ul {
+        list-style-type: none;
+        margin-bottom: var(--marginMobile);
+        margin-left: var(--marginMobile);
+        li {
+            margin: var(--marginMobile) 0;
+            a {
+                display: inline-block;
+                text-decoration: none;
+                color: var(--colorText);
+            }
+        }
+    }
+}
+
+#book_form, #panel {
+    h1 {
+        font-family: var(--fontTitles);
+        text-align: center;
+        font-size: var(--headerSizeMobile);
+        margin: var(--marginMobile);
+        padding-top: var(--marginMobile);
+    }
+}
+
+@media (min-width: 768px) {
+    main {
+        display: grid;
+        grid-template-columns: 2fr 12fr;
+        #admin_nav {
+            font-size: var(--fontSizeDesktop);
+            grid-column: 1;
+            border-right: solid 0.5px var(--colorSecondary);
+            border-bottom: none;
+            min-height: calc(100vh - var(--heightNav) - var(--heightFooter));
+            h3 {
+                margin-top: var(--marginDesktop);
+                margin-left: 0;
+            }
+            ul {
+                margin-left: 0;
+            }
+            a:hover {
+                text-decoration: underline;
+                transform: scale(1.1);
+            }
+        }
+        section {
+            grid-column: 2;
+        }
+    }
+    
+    
+    #book_form, #panel {
+        h1 {
+            text-align: left;
+            margin: var(--marginDesktop);
+            font-size: var(--headerSizeDesktop);
+        }
+    }
+}
+
+.hidden {
+    display: none;
+}
