@@ -1,14 +1,3 @@
-// === LOGOUT ===
-const logoutBtn = document.querySelector('#logoutBtn');
-if (logoutBtn) {
-    logoutBtn.addEventListener('click', () => {
-    sessionStorage.removeItem('book_app_user_id');
-    sessionStorage.removeItem('book_app_user_token');
-    sessionStorage.removeItem('book_app_user_is_admin');
-    window.location.href = 'login.html';
-    });
-}
-
 // === HENT BRUGERDATA ===
 const userId = sessionStorage.getItem('book_app_user_id');
 const token = sessionStorage.getItem('book_app_user_token');
@@ -51,3 +40,16 @@ document.getElementById('personal_info').onclick = () => {
     document.getElementById('my_books').classList.add('hidden');
     document.getElementById('user_info').classList.remove('hidden');
 };
+
+// === LOGOUT ===
+const logoutBtnUser = document.querySelector('#logoutBtnUser');
+const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
+
+[logoutBtnUser, logoutBtnAdmin].forEach(btn => {
+    btn?.addEventListener('click', () => {
+    sessionStorage.removeItem('book_app_user_id');
+    sessionStorage.removeItem('book_app_user_token');
+    sessionStorage.removeItem('book_app_user_is_admin');
+    window.location.href = 'login.html';
+    });
+});

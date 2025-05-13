@@ -99,12 +99,15 @@ publisherForm.addEventListener('submit', async (e) => {
 });
 
 // === LOG UD ===
-const logoutBtn = document.querySelector('#logoutBtn');
-if (logoutBtn) {
-    logoutBtn.addEventListener('click', () => {
+const logoutBtnUser = document.querySelector('#logoutBtnUser');
+const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
+
+[logoutBtnUser, logoutBtnAdmin].forEach(btn => {
+    btn?.addEventListener('click', () => {
     sessionStorage.removeItem('book_app_user_id');
     sessionStorage.removeItem('book_app_user_token');
     sessionStorage.removeItem('book_app_user_is_admin');
     window.location.href = 'login.html';
     });
-}
+});
+

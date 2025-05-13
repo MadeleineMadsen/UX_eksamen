@@ -60,10 +60,16 @@ nav#main {
         height: 46px;
         margin-right: 0.6rem;
         }
+
     .icon {
         width: 50px;
         height: 50px;
         }
+
+    button {
+        background: transparent;
+        border: none;
+    }
 }
 
 /* Main mobile */

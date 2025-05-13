@@ -12,6 +12,43 @@ const suggContainer = document.getElementById('suggestions');
 let abortController = null;
 
 /** ────────────────────────────────────────
+ *  1) Navigation
+ *  ──────────────────────────────────────── */
+
+const userId = sessionStorage.getItem('book_app_user_id');
+const isAdmin = sessionStorage.getItem('book_app_user_is_admin') === 'true';
+
+console.log('User ID:', userId);
+console.log('Admin:', isAdmin);
+
+// Skjul alle først
+document.querySelector('#utility_not_logged')?.classList.add('hidden');
+document.querySelector('#utility_logged_user')?.classList.add('hidden');
+document.querySelector('#utility_logged_admin')?.classList.add('hidden');
+
+// Vis relevant sektion
+if (!userId) {
+  document.querySelector('#utility_not_logged')?.classList.remove('hidden');
+} else if (isAdmin) {
+  document.querySelector('#utility_logged_admin')?.classList.remove('hidden');
+} else {
+  document.querySelector('#utility_logged_user')?.classList.remove('hidden');
+}
+
+// Log ud
+const logoutBtnUser = document.querySelector('#logoutBtnUser');
+const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
+
+[logoutBtnUser, logoutBtnAdmin].forEach(btn => {
+    btn?.addEventListener('click', () => {
+    sessionStorage.removeItem('book_app_user_id');
+    sessionStorage.removeItem('book_app_user_token');
+    sessionStorage.removeItem('book_app_user_is_admin');
+    window.location.href = 'login.html';
+    });
+});
+
+/** ────────────────────────────────────────
  *  1) Hent og vis 15 tilfældige bøger
  *  ──────────────────────────────────────── */
 async function loadRandom() {
@@ -190,3 +227,4 @@ export { showPopup };
  *  7) Initialiser – hent 15 bøger
  *  ──────────────────────────────────────── */
 loadRandom();
+
