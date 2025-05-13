@@ -5,8 +5,10 @@
 
 dialog.book-popup {
     width: 95%;
-    max-width: 360px;
-    margin: 2rem auto;
+    padding:3rem ;
+    max-width: 600px;      /* større bredde */
+    min-height: 300px; 
+    margin: auto;
     border: none;
     border-radius: var(--marginDesktop);
     background: var(--colorPrimary);
@@ -14,57 +16,61 @@ dialog.book-popup {
     font-family: var(--fontText);
     color: var(--colorText);
     overflow: hidden;
-
+    
 }
 
-.popup-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--marginMobile);
-    font-family: var(--fontTitles);
-    color: var(--colorSecondary);
-}
 
-.popup-header h2 { margin: 0; font-size: 1.25rem; }
-.popup-header .close {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: var(--colorSecondary);
-    cursor: pointer;
+
+.popup-info .close {
+position: absolute;
+top: var(--marginMobile);
+right: var(--marginMobile);
+background: none;
+border: none;
+font-size: 1.5rem;
+color: var(--colorSecondary);
+cursor: pointer;
 }
 
 .popup-body {
     display: grid;
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: 200px 1fr;
     gap: var(--marginMobile);
     padding: var(--marginMobile);
     align-items: start;
+    
 }
 
+.popup-info{
+    margin-top: 3rem;
+}
 .popup-image img {
-    width: 100%;
+    width: 90%;
     height: auto;
     border-radius: var(--marginDesktop);
 }
 
-.popup-info h3 {
-    margin: 0 0 0.25rem;
-    font-size: 1rem;
+.popup-info .h3 {
+    font-size: var(--headerSizeMobile);
+    font: var(--fontText);
+    
 }
 
-.popup-info p { 
-    margin: 0 0 var(--marginMobile);
+.popup-info .p { 
+    font-size: var(--fontSizeMobile);
+    font: var(--fontText);
+    
+    
 }
 
 
 .popup-info .btn--loan {
-    display: inline-block;    /* ellers er <a> kun inline */
+    display: inline-block;    
     padding: 0.2rem 1rem;
     background: var(--colorAccent1);
     color: var(--colorText);
     text-decoration: none;    /* fjern understregning */
     border-radius: var(--marginMobile);
     cursor: pointer;
+    margin-top: 1rem;
 }

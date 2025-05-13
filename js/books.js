@@ -45,7 +45,6 @@ async function loadBooks(params, container) {
 /** ────────────────────────────────────────
  *  3) Render book-cards i container
  * 
- * <button class="btn--book-info">Læs om</button>
  *  ──────────────────────────────────────── */
 
 function renderBooks(books, container) {
@@ -70,6 +69,7 @@ function renderBooks(books, container) {
         />
       </div>
       <h3 class="book-title">${title}</h3>
+      <button class="btn--book-info">See more</button>
     
       
     `;
@@ -110,11 +110,6 @@ function showPopup({ title, author, cover, publishing_year, publishing_company }
   const imgSrc        = cover || DEFAULT_COVER;
 
   dialog.innerHTML = `
-    <header class="popup-header">
-      <h2>${title}</h2>
-      <button class="close" aria-label="Luk">&times;</button>
-    </header>
-
     <div class="popup-body">
       <div class="popup-image">
         <img
@@ -124,11 +119,13 @@ function showPopup({ title, author, cover, publishing_year, publishing_company }
         />
       </div>
       <div class="popup-info">
-        <h3>Forfatter</h3>
-        <p>${author}</p>
-        <p><strong>År:</strong> ${publishing_year}</p>
-        <p><strong>Forlag:</strong> ${publishing_company}</p>
-        <a href="login.html" class="btn--loan">Lån bog</a>
+      <button class="close" "Luk">&times;</button>
+      
+        <h3>${title}</h3>
+        <p><strong>Author: </strong>${author}</p>
+        <p> <strong>Year: </strong>${publishing_year}</p>
+        <p> <strong>Publisher: </strong>${publishing_company}</p>
+        <a href="login.html" class="btn--loan">Loan</a>
       </div>
     </div>
 
