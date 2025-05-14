@@ -93,7 +93,7 @@
 
 /*-------------- Sign up --------------*/
 
-main {
+.MainSignup {
     padding-top: var(--heightNav);
     padding-bottom: var(--heightFooter);
 }
