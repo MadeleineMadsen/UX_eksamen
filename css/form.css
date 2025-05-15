@@ -4,7 +4,10 @@
 /* Login, sign up og add books form */
 /*-------------- Login --------------*/
 .login-form,
-.wide-form, .add-form {
+.wide-form, 
+#addAuthorForm, 
+#addBookForm, 
+#addPublisherForm {
     background: var(--colorPrimary);
     border-radius: var(--marginDesktop);
     width: 90%;
@@ -62,7 +65,9 @@
 }
 
 .login-form input,
-.add-form input,
+#addAuthorForm input, 
+#addBookForm input, 
+#addPublisherForm input,
 .wide-form input {
     font-size: 1rem;
     padding: 1rem;
@@ -74,7 +79,9 @@
 }
 
 .login-form input:focus,
-.add-form input:focus,
+#addAuthorForm input:focus, 
+#addBookForm input:focus, 
+#addPublisherForm input:focus,
 .wide-form input:focus {
     outline: none;
     box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2), inset -2px -2px 4px rgba(255,255,255,0.9);
@@ -217,7 +224,7 @@
 
 /* Admin form knap */
 .btn-save {
-    margin: 1rem;
+    margin: 1rem 0 1rem 1rem;
     padding: 0.4rem 1rem;
     background: var(--colorPrimary);
     color: var(--colorSecondary);
@@ -229,8 +236,44 @@
     }
 }
 
-.add-form {
-    max-width: 460px;
-    display: flex;
+#addAuthorForm, 
+#addBookForm, 
+#addPublisherForm {
+    margin: 0 var(--marginMobile);
+    padding: 1rem;
+    width: 95%;
+    }
+
+#addAuthorForm input, 
+#addBookForm input, 
+#addPublisherForm input {
+    padding: 1rem;
     justify-content: center;
+    align-items: center;
+    width: 13.25rem;
+    }
+
+
+@media (min-width: 768px) {
+    
+    #addAuthorForm input, 
+    #addBookForm input, 
+    #addPublisherForm input {
+        padding: 1rem;
+        justify-content: center;
+        align-items: center;
+        width: 20rem;
+    }
+    
+    #addAuthorForm, 
+    #addBookForm, 
+    #addPublisherForm {
+        margin: 1rem 0;
+        max-width: 32.5rem;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
 }
+
+
