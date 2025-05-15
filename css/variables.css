@@ -7,6 +7,7 @@
     --colorSecondary: #2B2B2B;
     --colorAccent1: #90CAF9;
     --colorAccent2: #A5D6A7;
+    --colorAccent3: #F99090;
     --colorBackground: linear-gradient(to left top, #FAF9F6, #C9E6CA 30%, #BCDFFB 70%, #FAF9F6);
     
     /* Tekst farve */
@@ -38,4 +39,8 @@
     --imgThumbnailDimension: 150px;
     --bookCardMin: 150px;   /* mindste kort-bredde */
     --gap: 1rem;            /* afstand mellem kort - bruger vi den her?*/
+
+    /* Padding til sider */
+    --paddingT: 2rem;
+    --paddingB: 6rem;
 }

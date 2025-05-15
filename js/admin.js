@@ -109,7 +109,7 @@ const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
     sessionStorage.removeItem('book_app_user_is_admin');
     window.location.href = 'login.html';
     });
-}
+});
 
 // === HENT BRUGERDATA ===
 const userId = sessionStorage.getItem('book_app_user_id');

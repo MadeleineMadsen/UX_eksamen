@@ -1,10 +1,11 @@
 @import 'style.css';
 
-
 /* Login, sign up og add books form */
+
 /*-------------- Login --------------*/
 .login-form,
-.wide-form, .add-form {
+.wide-form, 
+.add-form {
     background: var(--colorPrimary);
     border-radius: var(--marginDesktop);
     width: 90%;

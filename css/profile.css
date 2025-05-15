@@ -39,14 +39,134 @@
     }
 }
 
+#user_info {
+    padding-top:  var(--paddingT);
+    padding-bottom: var(--paddingB);
+    margin: auto;
+
+    header {
+        text-align: left;
+        margin-left: 1rem;
+
+        h1 {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    h2 {
+        margin: 0;
+        font-family: var(--fontTitles);
+        font-size: 1rem;
+        color: var(--colorSecondary);
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1rem 1rem;
+    }
+
+    fieldset {
+        border: none;
+
+        legend {
+            font-family: var(--fontTitles);
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .form-row .form-group {
+            flex: 1;
+            min-width: 0;
+        }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        label {
+            font-size: 0.9rem;
+            font-family: var(--fontTitles);
+            color: var(--colorSecondary);
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        input {
+            padding: 1rem;
+            border: none;
+            border-radius: var(--marginDesktop);
+            background: var(--colorPrimary);
+            box-shadow: inset 6px 6px 8px rgba(0,0,0,0.1), inset -4px -4px 8px rgba(255,255,255,0.7);
+            transition: box-shadow 0.2s ease;
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2), inset -2px -2px 4px rgba(255,255,255,0.9);
+        }
+    }
+
+    .SectionDelete {
+        margin: 1rem 1rem;
+    }
+
+    .btnCancel,
+    .btnSubmit,
+    .btnDelete {
+        display: inline-block;
+        min-width: 10%;
+        padding: 1rem 1rem;
+        margin-top: 1rem;
+        font-weight: bold;
+        border-radius: var(--marginDesktop);
+        box-shadow: 8px 8px 16px rgba(0,0,0,0.1),
+                    -8px -8px 16px rgba(255,255,255,0.7);
+        cursor: pointer;
+        transition: transform 0.1s ease, box-shadow 0.2s ease;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .btnCancel {
+        color: var(--colorSecondary);
+        background: var(--colorPrimary);
+        border: solid var(--colorAccent1);
+    }
+
+    .btnSubmit {
+        color: var(--colorSecondary);
+        background: var(--colorAccent1);
+        border: none;
+    }
+
+    .btnDelete {
+        color: var(--colorSecondary);
+        background: var(--colorAccent3);
+        border: none;
+    }
+}
+
 @media (min-width: 768px) {
     main {
         display: grid;
         grid-template-columns: 2fr 12fr;
         
         #user_nav {
+            position: fixed;
             font-size: var(--fontSizeDesktop);
             grid-column: 1;
+            padding-right: var(--marginDesktop);
             border-right: solid 0.5px var(--colorSecondary);
             border-bottom: none;
             min-height: calc(100vh - var(--heightNav) - var(--heightFooter));
@@ -80,9 +200,18 @@
     }
 
     #user_info {
+        padding-top:  var(--paddingT);
+        padding-bottom: var(--paddingB);
+        margin: auto;
+        width: 60%;
+
         header {
             text-align: left;
-            padding: 1rem 1rem 1rem;
+            margin-left: 1rem;
+
+            h1 {
+                padding: var(--marginDesktop);
+            }
         }
 
         h2 {
@@ -96,7 +225,7 @@
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
-            padding: 1rem 1.5rem 2rem;
+            padding: 1rem 2rem;
         }
 
         fieldset {
@@ -110,6 +239,17 @@
             }
         }
 
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .form-row .form-group {
+                flex: 1;
+                min-width: 0;
+            }
+
         .form-group {
             display: flex;
             flex-direction: column;
@@ -117,7 +257,9 @@
 
             label {
                 font-size: 0.9rem;
+                font-family: var(--fontTitles);
                 color: var(--colorSecondary);
+                margin: 1rem 0 0.5rem 0;
             }
 
             input {
@@ -135,46 +277,44 @@
             }
         }
 
-        .btnCancel {
-            padding: 1rem;
-            background: transparent;
-            color: var(--colorSecondary);
+        .SectionDelete {
+            margin: 2rem 2rem;
+        }
+
+        .btnCancel,
+        .btnSubmit,
+        .btnDelete {
+            display: inline-block;
+            min-width: 10%;
+            padding: 1rem 1rem;
+            margin-top: 1rem;
             font-weight: bold;
-            border: solid var(--colorAccent1);
             border-radius: var(--marginDesktop);
-            box-shadow: 8px 8px 16px rgba(0,0,0,0.1), -8px -8px 16px rgba(255,255,255,0.7);
+            box-shadow: 8px 8px 16px rgba(0,0,0,0.1),
+                        -8px -8px 16px rgba(255,255,255,0.7);
             cursor: pointer;
             transition: transform 0.1s ease, box-shadow 0.2s ease;
-            
-            &:hover {
-                transform: translateY(-2px);
-            }
-            
-            &:active {
-                transform: translateY(0);
-            }
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .btnCancel {
+            color: var(--colorSecondary);
+            background: var(--colorPrimary);
+            border: solid var(--colorAccent1);
         }
 
         .btnSubmit {
-            padding: 1rem;
-            background: var(--colorAccent1);
             color: var(--colorSecondary);
-            font-weight: bold;
+            background: var(--colorAccent1);
             border: none;
-            border-radius: var(--marginDesktop);
-            box-shadow: 8px 8px 16px rgba(0,0,0,0.1), -8px -8px 16px rgba(255,255,255,0.7);
-            cursor: pointer;
-            transition: transform 0.1s ease, box-shadow 0.2s ease;
-            
-            &:hover {
-                transform: translateY(-2px);
-            }
-            
-            &:active {
-                transform: translateY(0);
-            }
         }
 
+        .btnDelete {
+            color: var(--colorSecondary);
+            background: var(--colorAccent3);
+            border: none;
+        }
     }
 }
 

@@ -34,14 +34,14 @@ function showStatus(message, type = 'info') {
     setTimeout(() => msg.remove(), 4000);
 }
 
-// === HENT DATA ===
+// === Hent data ===
 fetch(`http://127.0.0.1:5555/users/${userId}`, {
     headers: {
     'X-Session-Token': token
     }
 })
 .then(res => {
-    if (!res.ok) throw new Error('Brugerdata kunne ikke hentes');
+    if (!res.ok) throw new Error('User data could not be retrieved');
     return res.json();
 })
 .then(data => {
@@ -62,11 +62,11 @@ fetch(`http://127.0.0.1:5555/users/${userId}`, {
     setText('#member', data.membership_date);
 })
 .catch(err => {
-    console.error('Fejl ved indlæsning af brugerdata:', err);
-    alert('Der opstod en fejl under hentning af din profilinformation.');
+    console.error('Error loading user data:', err);
+    alert('An error occurred while retrieving your profile information.');
 });
 
-// === GEM OPDATERINGER ===
+// === Gem opdateringer ===
 document.getElementById('editUserForm').addEventListener('submit', async e => {
     e.preventDefault();
 
@@ -90,11 +90,11 @@ document.getElementById('editUserForm').addEventListener('submit', async e => {
 
     if (!res.ok) {
         const errorText = await res.text();
-        console.error('Fejl fra serveren:', errorText);
-        throw new Error('Oplysningerne kunne ikke opdateres');
+        console.error('Server error:', errorText);
+        throw new Error('The information could not be updated');
     }
 
-    showStatus('Dine oplysninger blev gemt!', 'success');
+    showStatus('Your information was saved!', 'success');
 
     originalUserData = {
         first_name: formData.get('first_name'),
@@ -106,12 +106,12 @@ document.getElementById('editUserForm').addEventListener('submit', async e => {
     };
 
     } catch (err) {
-    console.error('Fejl ved opdatering:', err);
-    showStatus('Fejl: oplysninger blev ikke gemt.', 'error');
+    console.error('Update error:', err);
+    showStatus('Error: Information was not saved', 'error');
     }
 });
 
-// === ANNULLER ÆNDRINGER ===
+// === Annuller ændringer ===
 document.getElementById('btnCancel').addEventListener('click', () => {
     if (!originalUserData) return;
 
@@ -122,10 +122,44 @@ document.getElementById('btnCancel').addEventListener('click', () => {
     document.getElementById('txtPhone').value = originalUserData.phone_number;
     document.getElementById('txtBirthdate').value = originalUserData.birth_date;
 
-    showStatus('Ændringer annulleret.');
+    showStatus('Changes canceled.');
 });
 
-// === VIS / SKJUL SEKTIONER ===
+// === Slet bruger / Fjern bruger ===
+document.getElementById('btnDelete').addEventListener('click', async () => {
+    const confirmed = confirm('Are you sure you want to delete your profile? This action cannot be undone.');
+
+    if (!confirmed) return;
+
+    try {
+    const res = await fetch(`http://127.0.0.1:5555/users/${userId}`, {
+        method: 'DELETE',
+        headers: {
+        'X-Session-Token': token
+        }
+    });
+
+    if (!res.ok) {
+        const errorText = await res.text();
+        console.error('Error while deleting profile:', errorText);
+        alert('Your profile could not be deleted. Please try again later.');
+        return;
+    }
+
+    alert('Your profile has been deleted. You will now be logged out.');
+    sessionStorage.removeItem('book_app_user_id');
+    sessionStorage.removeItem('book_app_user_token');
+    sessionStorage.removeItem('book_app_user_is_admin');
+    window.location.href = 'login.html';
+
+    } catch (err) {
+    console.error('Network error while deleting profile:', err);
+    alert('A network error occurred while deleting your profile. Please try again.');
+    }
+});
+
+
+// === Vis / Skjul sektioner ===
 document.getElementById('loaned_books').onclick = () => {
     document.getElementById('my_books').classList.remove('hidden');
     document.getElementById('user_info').classList.add('hidden');
@@ -136,7 +170,7 @@ document.getElementById('personal_info').onclick = () => {
     document.getElementById('user_info').classList.remove('hidden');
 };
 
-// === LOGOUT ===
+// === Log ud ===
 const logoutBtnUser = document.querySelector('#logoutBtnUser');
 const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
 
