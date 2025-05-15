@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/form.css">
     <script type="module" src="js/profile.js"></script>
     <title>Profile | RentABook</title>
 </head>
@@ -72,17 +73,63 @@
             <p>Her skal der være udlånte bøger</p>
     </section>
     
-    <section id="user_info" class="hidden">
-        <h1>Personal Information</h2>
-        
-        <ul>
-            <li><strong>Navn:</strong> <span id="name"></span></li>
-            <li><strong>Email:</strong> <span id="email"></span></li>
-            <li><strong>Fødselsdato:</strong> <span id="birth"></span></li>
-            <li><strong>Adresse:</strong> <span id="address"></span></li>
-            <li><strong>Telefon:</strong> <span id="phone"></span></li>
-            <li><strong>Medlem siden:</strong> <span id="member"></span></li>
-        </ul>
+    <section id="user_info" class="user_info hidden">
+        <header>
+            <h1>Personal information</h1>
+        </header>
+
+        <form id="editUserForm">
+            <fieldset>
+                <legend>Edit profile</legend>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="txtFirstname">First name</label>
+                        <input type="text" id="txtFirstname" name="txtFirstname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtLastname">Last name</label>
+                        <input type="text" id="txtLastname" name="txtLastname" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtEmail">Email</label>
+                    <input type="email" id="txtEmail" name="txtEmail" required placeholder="you@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="txtAddress">Address</label>
+                    <input type="text" id="txtAddress" name="txtAddress" required placeholder="Eksempelvej 12, 1000 By">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="txtPhone">Phone</label>
+                        <input type="tel" id="txtPhone" name="txtPhone" required placeholder="12345678">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtBirthdate">Birth date</label>
+                        <input type="date" id="txtBirthdate" name="txtBirthdate" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtPassword">Password</label>
+                    <input type="password" id="txtPassword" name="txtPassword" required>
+                </div>
+
+                <div class="form-row">
+                    <button type="button" id="btnCancel" class="btnCancel">Cancel</button>
+                    <button type="submit" class="btnSubmit">Save</button>
+                </div>
+            </fieldset>
+        </form>
+
+        <section>
+            <h2>Delete profile</h2>
+            <button type="button" class="btnSubmit" id="btnDelete">Delete</button>
+        </section>
     </section>
 </main>
 
