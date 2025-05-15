@@ -5,7 +5,8 @@
 
 dialog.book-popup {
     width: 95%;
-    padding:3rem ;
+    padding:2rem ;
+    
     max-width: 600px;      /* større bredde */
     min-height: 300px; 
     margin: auto;
@@ -16,6 +17,12 @@ dialog.book-popup {
     font-family: var(--fontText);
     color: var(--colorText);
     overflow: hidden;
+    
+}
+@media (min-width: 768px) {
+    dialog.book-popup{
+        padding:3rem;
+    }
     
 }
 
