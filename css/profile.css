@@ -256,7 +256,7 @@
 
             label {
                 font-size: 0.9rem;
-                font-family: var(--fontTitles);
+                font-family: var(--fontText);
                 color: var(--colorSecondary);
                 margin: 1rem 0 0.5rem 0;
             }

@@ -60,6 +60,7 @@
 }
 
 .form-group label {
+    font-family: var(--fontText);
     font-size: 0.9rem;
     color: var(--colorSecondary);
 }
@@ -181,6 +182,7 @@
 }
 
 .form-group label {
+    font-family: var(--fontText);
     font-size: 0.9rem;
     color: var(--colorSecondary);
 }
