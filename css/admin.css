@@ -32,7 +32,7 @@
         text-align: center;
         font-size: var(--headerSizeMobile);
         margin: var(--marginMobile);
-        padding-top: var(--marginMobile);
+        padding-top: var(--paddingMobile);
     }
 }
 
@@ -44,7 +44,7 @@
         margin-top: var(--marginMobile);
         li {
             gap: var(--marginMobile);
-            padding: var(--marginMobile);
+            padding: var(--paddingMobile);
         }
     }
 }
@@ -92,7 +92,7 @@
             margin: var(--marginDesktop) 0 0 var(--marginDesktop);
             li {
                 gap: var(--marginDesktop);
-                padding: var(--marginDesktop);
+                padding: var(--paddingDesktop);
             }
         }
     }

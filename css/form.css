@@ -7,12 +7,12 @@
 .wide-form, 
 .add-form {
     background: var(--colorPrimary);
-    border-radius: var(--marginDesktop);
+    border-radius: var(--cardRadius);
     width: 90%;
     max-width: 400px;
     margin: 5rem auto;
     padding: 2rem;
-    box-shadow: 8px 8px 16px rgba(0,0,0,0.1), -8px -8px 16px rgba(255,255,255,0.7);
+    box-shadow: var(--shadowOuter);
     overflow: hidden;
 }
 
@@ -26,7 +26,7 @@
     margin: 0 auto var(--marginMobile);
     background: var(--colorPrimary);
     border-radius: 50%;
-    box-shadow: 4px 4px 8px rgba(0,0,0,0.1), -4px -4px 8px rgba(255,255,255,0.7);
+    box-shadow: var(--shadowOuter);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,9 +68,9 @@
     font-size: 1rem;
     padding: 1rem;
     border: none;
-    border-radius: var(--marginDesktop);
+    border-radius: var(--buttonRadius);
     background: var(--colorPrimary);
-    box-shadow: inset 6px 6px 8px rgba(0,0,0,0.1), inset -4px -4px 8px rgba(255,255,255,0.7);
+    box-shadow: var(--shadowInner);
     transition: box-shadow 0.2s ease;
 }
 
@@ -78,7 +78,7 @@
 .add-form input:focus,
 .wide-form input:focus {
     outline: none;
-    box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2), inset -2px -2px 4px rgba(255,255,255,0.9);
+    box-shadow: var(--shadowInner);
 }
 
 .btnSubmit {
@@ -88,8 +88,8 @@
     color: var(--colorSecondary);
     font-weight: bold;
     border: none;
-    border-radius: var(--marginDesktop);
-    box-shadow: 8px 8px 16px rgba(0,0,0,0.1), -8px -8px 16px rgba(255,255,255,0.7);
+    border-radius: var(--buttonRadius);
+    box-shadow: var(--shadowOuter);
     cursor: pointer;
     transition: transform 0.1s ease, box-shadow 0.2s ease;
     &:hover {
@@ -109,13 +109,13 @@
 
 .signup-form {
     background: var(--colorPrimary);
-    border-radius: var(--marginDesktop);
+    border-radius: var(--cardRadius);
     width: 90%;
     max-width: 600px;
     margin: 0 auto;
     margin-bottom: 1rem;
     padding: 2rem;
-    box-shadow: 8px 8px 16px rgba(0,0,0,0.1), -8px -8px 16px rgba(255,255,255,0.7);
+    box-shadow: var(--shadowOuter);
     overflow: hidden;
 }
 
@@ -129,7 +129,7 @@
     margin: 0 auto var(--marginMobile);
     background: var(--colorPrimary);
     border-radius: 50%;
-    box-shadow: 4px 4px 8px rgba(0,0,0,0.1), -4px -4px 8px rgba(255,255,255,0.7);
+    box-shadow: var(--shadowOuter);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -182,15 +182,15 @@
 .signup-form input {
     padding: 1rem;
     border: none;
-    border-radius: var(--marginDesktop);
+    border-radius: var(--buttonRadius);
     background: var(--colorPrimary);
-    box-shadow: inset 6px 6px 8px rgba(0,0,0,0.1), inset -4px -4px 8px rgba(255,255,255,0.7);
+    box-shadow: var(--shadowInner);
     transition: box-shadow 0.2s ease;
 }
 
 .signup-form input:focus {
     outline: none;
-    box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2), inset -2px -2px 4px rgba(255,255,255,0.9);
+    box-shadow: var(--shadowInner);
 }
 
 .btnSubmit {
@@ -200,8 +200,8 @@
     color: var(--colorSecondary);
     font-weight: bold;
     border: none;
-    border-radius: var(--marginDesktop);
-    box-shadow: 8px 8px 16px rgba(0,0,0,0.1), -8px -8px 16px rgba(255,255,255,0.7);
+    border-radius: var(--buttonRadius);
+    box-shadow: var(--shadowOuter);
     cursor: pointer;
     transition: transform 0.1s ease, box-shadow 0.2s ease;
     &:hover {
@@ -223,7 +223,7 @@
     background: var(--colorPrimary);
     color: var(--colorSecondary);
     border: 2px solid var(--colorAccent1);
-    border-radius: var(--marginDesktop);
+    border-radius: var(--buttonRadius);
     cursor: pointer;
     &:hover {
         background-color: var(--colorAccent1);

@@ -25,7 +25,7 @@
             .pill {
                 display: inline-block;
                 padding: 0 1rem;
-                border-radius: 1rem;
+                border-radius: var(--cardRadius);
                 color: var(--colorPrimary);
                 background-color: var(--colorPrimary);
             }
@@ -43,7 +43,7 @@
         article {
             width: var(--cardWidth);
             border: thin solid var(--colorSecondary);
-            border-radius: 1rem;
+            border-radius: var(--cardRadius);
             padding: 0 1rem 0.5rem 1rem;
         }
     }

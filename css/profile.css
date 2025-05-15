@@ -35,13 +35,13 @@
         text-align: center;
         font-size: var(--headerSizeMobile);
         margin: var(--marginMobile);
-        padding-top: var(--marginMobile);
+        padding-top: var(--paddingMobile);
     }
 }
 
 #user_info {
-    padding-top:  var(--paddingT);
-    padding-bottom: var(--paddingB);
+    padding-top:  var(--paddingSiteTop);
+    padding-bottom: var(--paddingSiteBottom);
     margin: auto;
 
     header {
@@ -105,15 +105,15 @@
         input {
             padding: 1rem;
             border: none;
-            border-radius: var(--marginDesktop);
+            border-radius: var(--buttonRadius);
             background: var(--colorPrimary);
-            box-shadow: inset 6px 6px 8px rgba(0,0,0,0.1), inset -4px -4px 8px rgba(255,255,255,0.7);
+            box-shadow: var(--shadowInner);
             transition: box-shadow 0.2s ease;
         }
 
         input:focus {
             outline: none;
-            box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2), inset -2px -2px 4px rgba(255,255,255,0.9);
+            box-shadow: var(--shadowInner);
         }
     }
 
@@ -129,9 +129,8 @@
         padding: 1rem 1rem;
         margin-top: 1rem;
         font-weight: bold;
-        border-radius: var(--marginDesktop);
-        box-shadow: 8px 8px 16px rgba(0,0,0,0.1),
-                    -8px -8px 16px rgba(255,255,255,0.7);
+        border-radius: var(--buttonRadius);
+        box-shadow: var(--shadowOuter);
         cursor: pointer;
         transition: transform 0.1s ease, box-shadow 0.2s ease;
         text-align: center;
@@ -166,7 +165,7 @@
             position: fixed;
             font-size: var(--fontSizeDesktop);
             grid-column: 1;
-            padding-right: var(--marginDesktop);
+            padding-right: var(--paddingDesktop);
             border-right: solid 0.5px var(--colorSecondary);
             border-bottom: none;
             min-height: calc(100vh - var(--heightNav) - var(--heightFooter));
@@ -200,8 +199,8 @@
     }
 
     #user_info {
-        padding-top:  var(--paddingT);
-        padding-bottom: var(--paddingB);
+        padding-top:  var(--paddingSiteTop);
+        padding-bottom: var(--paddingSiteBottom);
         margin: auto;
         width: 60%;
 
@@ -210,7 +209,7 @@
             margin-left: 1rem;
 
             h1 {
-                padding: var(--marginDesktop);
+                padding: var(--paddingDesktop);
             }
         }
 
@@ -265,15 +264,15 @@
             input {
                 padding: 1rem;
                 border: none;
-                border-radius: var(--marginDesktop);
+                border-radius: var(--buttonRadius);
                 background: var(--colorPrimary);
-                box-shadow: inset 6px 6px 8px rgba(0,0,0,0.1), inset -4px -4px 8px rgba(255,255,255,0.7);
+                box-shadow: var(--shadowInner);
                 transition: box-shadow 0.2s ease;
             }
 
             input:focus {
                 outline: none;
-                box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2), inset -2px -2px 4px rgba(255,255,255,0.9);
+                box-shadow: var(--shadowInner);
             }
         }
 
@@ -289,9 +288,8 @@
             padding: 1rem 1rem;
             margin-top: 1rem;
             font-weight: bold;
-            border-radius: var(--marginDesktop);
-            box-shadow: 8px 8px 16px rgba(0,0,0,0.1),
-                        -8px -8px 16px rgba(255,255,255,0.7);
+            border-radius: var(--buttonRadius);
+            box-shadow: var(--shadowOuter);
             cursor: pointer;
             transition: transform 0.1s ease, box-shadow 0.2s ease;
             text-align: center;

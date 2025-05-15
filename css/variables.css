@@ -13,6 +13,10 @@
     /* Tekst farve */
     --colorText: #2B2B2B;
 
+    /* Skygger */
+    --shadowInner: inset 4px 4px 4px rgba(0,0,0,0.1);
+    --shadowOuter: 8px 8px 8px rgba(0, 0, 0, 0.1);
+
     /* Fonte */
     --fontTitles: 'Libre+Baskerville', Arial, Helvetica, sans-serif;
     --fontText: 'Poppins', Arial, Helvetica, sans-serif;
@@ -21,26 +25,34 @@
     /* Paragraph */
     --fontSizeMobile: 15px;
     --fontSizeDesktop: 16px;
+
     /* Header på sider */
     --headerSizeMobile: 28px;
     --headerSizeDesktop: 34px;
-
-
-    /* Margin */
-    --marginDesktop: 1rem;
-    --marginMobile: 0.5rem;
-
-    /* Højde nav / footer */
-    --heightNav: 4rem;
-    --heightFooter: 6rem;
 
     /* Cards */
     --cardWidth: 250px; /* bruger vi den her? */
     --imgThumbnailDimension: 150px;
     --bookCardMin: 150px;   /* mindste kort-bredde */
     --gap: 1rem;            /* afstand mellem kort - bruger vi den her?*/
+    --cardRadius: 1rem;
+
+    /* Buttons */
+    --buttonRadius: 2rem;
+
+    /* Margin */
+    --marginDesktop: 1rem;
+    --marginMobile: 0.5rem;
+
+    /* Padding */
+    --paddingDesktop: 1rem;
+    --paddingMobile: 0.5rem;
+
+    /* Højde nav / footer */
+    --heightNav: 4rem;
+    --heightFooter: 6rem;
 
     /* Padding til sider */
-    --paddingT: 2rem;
-    --paddingB: 6rem;
+    --paddingSiteTop: 2rem;
+    --paddingSiteBottom: 6rem;
 }

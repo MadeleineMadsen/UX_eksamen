@@ -4,6 +4,7 @@
 @import 'card.css';
 
 main {
+    padding-top: var(--heightNav);
     padding-bottom: var(--heightFooter);
 }
 
@@ -41,8 +42,8 @@ main {
   /* Selve kortene render sig til cellestørrelsen */
 .book-card {
     background: var(--colorPrimary);
-    border: thin solid var(--colorSecondary);
-    border-radius: var(--marginMobile);
+    border-radius: var(--cardRadius);
+    box-shadow: var(--shadowOuter);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -58,7 +59,7 @@ main {
     width: 100%;
     aspect-ratio: 2/3;
     overflow: hidden;
-    border-radius: var(--marginMobile);
+    border-radius: var(--cardRadius);
     margin-top: var(--marginMobile);
 }
 .book-card .book-image img {
@@ -68,10 +69,7 @@ main {
     object-position: top;
     
     cursor: pointer;
-    
-    
 }
-
 
 .book-card .book-title {
     margin: var(--marginMobile) var(--marginDesktop) 0;
@@ -89,13 +87,15 @@ main {
     min-height: 1.2rem;
 }
 .book-card .btn--book-info {
+    min-width: 10%;
+    padding: 1rem 1rem;
     margin: 0 var(--marginDesktop) var(--marginDesktop);
     padding: 0.5rem;
     background: var(--colorAccent1);
     color: var(--colorSecondary);
     border: none;
-    border-radius: var(--marginMobile);
-    box-shadow: 4px 4px 8px rgba(0,0,0,0.1), -4px -4px 8px rgba(255,255,255,0.7);
+    border-radius: var(--buttonRadius);
+    box-shadow: var(--shadowOuter);
     cursor: pointer;
     transition: transform 0.1s ease;
     margin-top: auto;
@@ -103,8 +103,6 @@ main {
 .book-card .btn--book-info:hover {
     transform: translateY(-2px);
 }
-
-
 
 /* søgnings style*/
 
@@ -117,18 +115,18 @@ main {
 
 .search-section input[type="search"] {
     width: 100%;
-    padding: var(--marginMobile);
+    padding: 1rem;
     border: none;
-    border-radius: var(--marginMobile);
+    border-radius: var(--buttonRadius);
     font-family: var(--fontText);
     font-size: 1rem;
-    box-shadow: inset 4px 4px 8px rgba(0,0,0,0.1), inset -4px -4px 8px rgba(255,255,255,0.7);
+    box-shadow: var(--shadowOuter);
     transition: box-shadow 0.2s ease;
 }
 
 .search-section input[type="search"]:focus {
     outline: none;
-    box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2), inset -2px -2px 4px rgba(255,255,255,0.9);
+    box-shadow: var(--shadowOuter);
 }
 
 .suggestions-list {
@@ -138,7 +136,7 @@ main {
     list-style: none;
     background: var(--colorPrimary);
     border-radius: 0 0 var(--marginMobile) var(--marginMobile);
-    box-shadow: 4px 4px 8px rgba(0,0,0,0.1), -4px -4px 8px rgba(255,255,255,0.7);
+    box-shadow: var(--shadowOuter);
     max-height: 15rem;
     overflow-y: auto;
     z-index: 10;

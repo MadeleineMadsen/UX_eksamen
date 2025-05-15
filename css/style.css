@@ -28,18 +28,21 @@ nav#main {
     background: var(--colorBackground);
     background-attachment: fixed;
     z-index: 5;
+
     ul {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
         font-size: var(--fontSizeMobile);
+        
         li {
             list-style-type: none;
             padding: 0 0.5rem;
             display: flex;
             align-items: center;
             cursor: pointer;
+            
             a {
                 display: flex;
                 align-items: center;
@@ -47,16 +50,24 @@ nav#main {
                 color: var(--colorText);
             }
         }
+
+        button {
+            padding: 0 0.5rem;
+        }
+
         #main_nav {
             align-items: center;
         }
+
         div {
             display: flex;
         }
+
         .hidden {
             display: none;
         }
     }
+    
     .logo {
         width: 46px;
         height: 46px;
@@ -79,7 +90,6 @@ main {
     margin: 0 var(--marginMobile);
 }
 
-
 /* Footer mobile */
 footer {
     bottom: 0;
@@ -96,32 +106,41 @@ footer {
     z-index: 5;
 }
 
-
 @media (min-width: 768px) {
 
     /* Navigation og footer desktop */
     nav#main {
         padding: 0.5rem 1rem;
+        
         ul {
             font-size: var(--fontSizeDesktop);
+            
             li {
                 padding: 0 1rem;
+                
                 a:hover {
                     text-decoration: underline;
                     transform: scale(1.1);
-                }
-                }
+                }     
             }
+
+            button {
+                padding: 0 1rem;
+            }
+        }
+
         .logo {
             width: 50px;
             height: 50px;
             margin-right: 1rem;
             }
+
         .icon {
             width: 55px;
             height: 55px;            
             }
-        .icon:hover {
+        
+            .icon:hover {
             transform: scale(1.1);
         }
 
@@ -129,9 +148,7 @@ footer {
         font-size: var(--fontSizeDesktop);
         padding: 1.2rem 0;
     }
-    }
-
-
+}
 
     /* Main desktop */
 main {

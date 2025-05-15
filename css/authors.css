@@ -6,7 +6,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.5rem;
-    padding: var(--marginMobile);
+    padding: var(--paddingMobile);
     & > button {
         background: none;
         border: none;
@@ -27,13 +27,13 @@
     display: grid;
     grid-template-columns: 1fr;
     font-family: var(--fontText);
-    padding: 0 var(--marginMobile) 4rem var(--marginMobile);
+    padding: 0 var(--paddingMobile) 4rem var(--paddingMobile);
     margin: 0 auto;
     gap: var(--marginMobile);
     .author-group {
         background: transparent;
         border: none;
-        padding: var(--marginMobile);
+        padding: var(--paddingMobile);
         /* Overskrift */
         h2 {
             font-size: 1.2rem; /* rettes til samme variabel som h2 på andre sider */
@@ -71,21 +71,21 @@
     }
     #author-list {
         margin-top: 2rem;
-        padding: 0 var(--marginDesktop);
+        padding: 0 var(--paddingDesktop);
         gap: var(--marginDesktop);
         justify-items: space-around;
         width: 64%;
         .author-group {
             padding: 0;
             h2 {
-                padding-left: var(--marginDesktop);
+                padding-left: var(--paddingDesktop);
                 font-size: 1.4rem; /* rettes til samme variabel som h2 på andre sider */
             }
             ul {
                 column-count: 4;
                 column-gap: var(--marginDesktop);
                 li {
-                    padding: 0 var(--marginDesktop);
+                    padding: 0 var(--paddingDesktop);
                 }
             }
         }
