@@ -26,7 +26,7 @@
     }
 }
 
-#book_form, #admin {
+#book_form, #admin, #new_books {
     h1 {
         font-family: var(--fontTitles);
         text-align: center;
@@ -36,17 +36,51 @@
     }
 }
 
-#panel {
+#admin, #new_books {
     ul {
         font-family: var(--fontText);
         font-size: var(--fontSizeMobile);
         list-style-type: none;
         margin-top: var(--marginMobile);
         li {
-            gap: var(--marginMobile);
-            padding: var(--paddingMobile);
+            gap: var(--marginMobile); /*måske slettes*/
+            padding: var(--paddingMobile); /*måske slettes*/
         }
     }
+}
+
+#admin {
+    li {
+        margin: var(--marginMobile);
+        padding: var(--marginMobile);
+    }
+}
+
+#new_books {
+    li {
+        margin-left: var(--marginMobile);
+        padding: 0 0 0 var(--marginMobile);
+    }
+}
+
+#book_form {
+    margin: 0;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+}
+
+#book_form h2 {
+    font-family: var(--fontTitles);
+    font-size: var(--headerSizeMobile);
+    margin: var(--marginMobile);
+}
+#book_form h3, #new_books h3 {
+    font-family: var(--fontText);
+    font-size: var(--fontSizeMobile);
+    margin: var(--marginMobile);
+    padding: var(--marginMobile);
+    justify-self: self-start;
 }
 
 
@@ -55,8 +89,10 @@
         display: grid;
         grid-template-columns: 2fr 12fr;
         #admin_nav {
+            position: fixed;
             font-size: var(--fontSizeDesktop);
             grid-column: 1;
+            padding-right: var(--marginDesktop);
             border-right: solid 0.5px var(--colorSecondary);
             border-bottom: none;
             min-height: calc(100vh - var(--heightNav) - var(--heightFooter));
@@ -76,9 +112,14 @@
             grid-column: 2;
         }
     }
+
+    #book_form {
+        margin: auto;
+        display: inline-block;
+    }
     
     
-    #book_form, #admin {
+    #book_form, #admin, #new_books {
         h1 {
             text-align: left;
             margin: var(--marginDesktop);
@@ -86,7 +127,7 @@
         }
     }
 
-    #panel {
+    #admin {
         ul {
             font-size: var(--fontSizeDesktop);
             margin: var(--marginDesktop) 0 0 var(--marginDesktop);
@@ -96,8 +137,36 @@
             }
         }
     }
+
+    #book_form h2 {
+        font-size: var(--headerSizeDesktop);
+        margin-top: var(--marginDesktop);
+    }
+    #book_form h3, #new_books h3  {
+        font-size: var(--fontSizeDesktop);
+        margin: var(--marginDesktop) 0;
+        padding-top: var(--marginDesktop);
+    }
+
+    #new_books {
+        ul {
+            margin-left: var(--marginDesktop);
+            font-size: var(--fontSizeDesktop);
+            margin: var(--marginDesktop) 0 0 var(--marginDesktop);
+            padding-bottom: var(--marginDesktop);
+            li {
+                /* margin-left: var(--marginDesktop); */
+                padding-left: 0;
+            }
+        }
+        h3 {
+            margin: 0 0 0 var(--marginDesktop);
+        }
+    }
 }
 
-.hidden {
+#book_form.hidden,
+#new_books.hidden,
+#admin.hidden {
     display: none;
 }
