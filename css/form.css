@@ -1,7 +1,10 @@
 @import 'style.css';
 
+
+/* Login, sign up og add books form */
 /*-------------- Login --------------*/
-.login-form {
+.login-form,
+.wide-form, .add-form {
     background: var(--colorPrimary);
     border-radius: var(--marginDesktop);
     width: 90%;
@@ -39,7 +42,8 @@
     color: var(--colorSecondary);
 }
 
-.login-form form {
+.login-form form,
+.wide-form form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -57,7 +61,9 @@
     color: var(--colorSecondary);
 }
 
-.login-form input {
+.login-form input,
+.add-form input,
+.wide-form input {
     font-size: 1rem;
     padding: 1rem;
     border: none;
@@ -67,7 +73,9 @@
     transition: box-shadow 0.2s ease;
 }
 
-.login-form input:focus {
+.login-form input:focus,
+.add-form input:focus,
+.wide-form input:focus {
     outline: none;
     box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2), inset -2px -2px 4px rgba(255,255,255,0.9);
 }
@@ -205,4 +213,24 @@
 
 .login-link {
     text-align: center;
+}
+
+/* Admin form knap */
+.btn-save {
+    margin: 1rem;
+    padding: 0.4rem 1rem;
+    background: var(--colorPrimary);
+    color: var(--colorSecondary);
+    border: 2px solid var(--colorAccent1);
+    border-radius: var(--marginDesktop);
+    cursor: pointer;
+    &:hover {
+        background-color: var(--colorAccent1);
+    }
+}
+
+.add-form {
+    max-width: 460px;
+    display: flex;
+    justify-content: center;
 }

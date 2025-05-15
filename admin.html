@@ -81,30 +81,20 @@
     </nav>
 
     <section id="book_form">
-        <section class="admin-section">
-            <h2>Add authors</h2>
-            <form id="addAuthorForm">
-                <input type="text" name="first_name" placeholder="First name" required>
-                <input type="text" name="last_name" placeholder="Last name" required>
-                <button type="submit">Add author</button>
+            <form class="add-form">
+                <input type="text" name="title" placeholder="Title" required>
+                <button class="btn-save" type="submit"><strong>Save</strong></button>
             </form>
-        </section>
 
-        <section class="admin-section">
-            <h2>Add books</h2>
-            <form id="addBookForm">
-                <input type="text" name="title" placeholder="Book title" required>
-                <button type="submit">Add book</button>
+            <form class="add-form">
+                <input type="text" name="first_name" placeholder="Author" required>
+                <button class="btn-save" type="submit"><strong>Save</strong></button>
             </form>
-        </section>
 
-        <section class="admin-section">
-            <h2>Add publishers</h2>
-            <form id="addPublisherForm">
-                <input type="text" name="name" placeholder="Publisher name" required>
-                <button type="submit">Add publisher</button>
+            <form class="add-form">
+                <input type="text" name="name" placeholder="Publisher" required>
+                <button class="btn-save" type="submit"><strong>Save</strong></button>
             </form>
-        </section>
     </section>
     
     <section id="admin" class="hidden">

@@ -1,15 +1,15 @@
 import { baseBookApiUrl } from './info.js';
 import {
-    handleAPIError,
-    handleFetchCatchError,
-    handleCloseDialogButton
+handleAPIError,
+handleFetchCatchError,
+handleCloseDialogButton
 } from './common.js';
 
 const listEl    = document.getElementById('author-list');
 const navEl     = document.getElementById('letter-nav');
 
-let groups = {};   // her gemmer vi forfatterne efter bogstav
-let current = 'A'; // default visning
+let groups = {};
+let current = 'A';
 
 /** ────────────────────────────────────────
  *  1) Navigation
@@ -50,19 +50,22 @@ const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
 
 async function loadRandom() {
     try {
-    const res = await fetch(`${baseBookApiUrl}/authors`); // hent op til 100, justér som ønsket
-    const authors = await handleAPIError(res);
+        const res = await fetch(`${baseBookApiUrl}/authors`);
+        const authors = await handleAPIError(res);
 
-    // Gruppér dem efter første bogstav
+    // ← ÆNDRET: gem både id og name
     groups = authors.reduce((acc, a) => {
         const letter = a.author_name.charAt(0).toUpperCase();
         if (!acc[letter]) acc[letter] = [];
-        acc[letter].push(a.author_name);
+        acc[letter].push({
+        id:   a.author_id,   // ← NY
+        name: a.author_name
+    });
         return acc;
     }, {});
 
-    buildNav();        // Lav bogstavs-knapperne
-    showGroup(current); // Vis default "A"
+    buildNav();
+    showGroup(current);
     } catch (err) {
     handleFetchCatchError(err);
     }
@@ -70,51 +73,281 @@ async function loadRandom() {
 
 function buildNav() {
     navEl.innerHTML = '';
-  // Tag alle bogstaver som findes, sorter alfabetisk
     const letters = Object.keys(groups).sort();
     letters.forEach(letter => {
     const btn = document.createElement('button');
     btn.textContent = letter;
     btn.dataset.letter = letter;
     if (letter === current) btn.classList.add('selected');
-
     btn.addEventListener('click', () => {
         if (letter === current) return;
         current = letter;
-      // marker knapper
         navEl.querySelectorAll('button').forEach(b => b.classList.remove('selected'));
         btn.classList.add('selected');
         showGroup(letter);
     });
-
     navEl.append(btn);
     });
 }
 
 function showGroup(letter) {
     listEl.innerHTML = '';
-    const names = groups[letter] || [];
+    const authors = groups[letter] || [];
 
     const section = document.createElement('section');
     section.className = 'author-group';
     section.innerHTML = `
     <h2>${letter}</h2>
     <ul>
-    ${names.map(n => `<li>${n}</li>`).join('')}
+        ${authors.map(a =>
+        // ← ÆNDRET: tilføj data-author-id
+        `<li data-author-id="${a.id}">${a.name}</li>`
+        ).join('')}
     </ul>
-    `;
-    listEl.append(section);
+`;
+listEl.append(section);
 }
 
-// Popup-handler (kan beholde som du havde den)
+// ────────────────────────────────────────────────────────────────
+// ← FJERNDET: det gamle klik‐listener som brugte det forkerte endpoint
+// ────────────────────────────────────────────────────────────────
+
+// ────────────────────────────────────────────────────────────────
+// NY: Popup ved klik på forfatternavn
+// ────────────────────────────────────────────────────────────────
 document.body.addEventListener('click', async e => {
-    if (!e.target.matches('li')) return;
-  // hvis du ønsker popup på navn, kan du fange klik her...
-  // const name = e.target.textContent;
-  // showPopupForName(name);
+  // kun hvis vi klikker på et <li> som har data-author-id
+    const li = e.target.closest('li[data-author-id]');
+    if (!li) return;
+
+    const authorId   = li.dataset.authorId;      // ← NY
+    const authorName = li.textContent.trim();
+
+    try {
+    // ← ÆNDRET: korrekt endpoint /books?a=<author_id>
+        const res   = await fetch(`${baseBookApiUrl}/books?a=${authorId}`);
+        const books = await handleAPIError(res);
+
+
+// 2) Udvid hver bog med cover via detail-kald
+    const booksWithCover = await Promise.all(
+        books.map(async b => {
+            try {
+         // Gentag præcis som i books.js:
+            const det = await handleAPIError(
+            await fetch(`${baseBookApiUrl}/books/${b.book_id}`)
+        );
+        return { ...b, cover: det.cover };
+        } catch {
+        return { ...b, cover: null };
+        }
+    })
+);
+
+
+
+    showAuthorPopup(authorName, booksWithCover);
+    } catch (err) {
+    handleFetchCatchError(err);
+    }
 });
 
+function showAuthorPopup(authorName, books) {
+    const dialog = document.createElement('dialog');
+    dialog.className = 'author-popup';
+    const DEFAULT_COVER = 'images/placeholder.svg'; 
+    
+    dialog.innerHTML = `
+    <div class="popup-info-author">
+    <button class="close">&times;</button>
+    <h3 id="books_by">Books by ${authorName}</h3>
+    <ul class="book-by-author">
+        ${books.map(b => {
+            const imgSrc = b.cover || DEFAULT_COVER;                                  
+            return `
+            <li class="book-item">
+                <div class="book-cover">                                          
+                <img
+                    src="${imgSrc}"
+                    alt="Forside af ${b.title}"
+                    onerror="this.src='${DEFAULT_COVER}'"
+                />
+                </div>
+                <p class="book-title">${b.title || '– ingen titel –'}</p>
+            </li>`;
+        }).join('')}
+        </ul>
+    </div>
+`;
+    dialog.querySelector('.close')
+        .addEventListener('click', handleCloseDialogButton);
+    document.body.append(dialog);
+    dialog.showModal();
+}
+
 loadRandom();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { baseBookApiUrl } from './info.js';
+// import {
+//     handleAPIError,
+//     handleFetchCatchError,
+//     handleCloseDialogButton
+// } from './common.js';
+
+// const listEl    = document.getElementById('author-list');
+// const navEl     = document.getElementById('letter-nav');
+
+// let groups = {};   // her gemmer vi forfatterne efter bogstav
+// let current = 'A'; // default visning
+
+// async function loadRandom() {
+//     try {
+//     const res = await fetch(`${baseBookApiUrl}/authors`); // hent op til 100, justér som ønsket
+//     const authors = await handleAPIError(res);
+
+//     // Gruppér dem efter første bogstav
+//     groups = authors.reduce((acc, a) => {
+//         const letter = a.author_name.charAt(0).toUpperCase();
+//         if (!acc[letter]) acc[letter] = [];
+//         acc[letter].push({ id: a.author_id, name: a.author_name });
+//         return acc;        return acc;
+//     }, {});
+
+//     buildNav();        // Lav bogstavs-knapperne
+//     showGroup(current); // Vis default "A"
+//     } catch (err) {
+//     handleFetchCatchError(err);
+//     }
+// }
+
+// function buildNav() {
+//     navEl.innerHTML = '';
+//   // Tag alle bogstaver som findes, sorter alfabetisk
+//     const letters = Object.keys(groups).sort();
+//     letters.forEach(letter => {
+//     const btn = document.createElement('button');
+//     btn.textContent = letter;
+//     btn.dataset.letter = letter;
+//     if (letter === current) btn.classList.add('selected');
+
+//     btn.addEventListener('click', () => {
+//         if (letter === current) return;
+//         current = letter;
+//       // marker knapper
+//         navEl.querySelectorAll('button').forEach(b => b.classList.remove('selected'));
+//         btn.classList.add('selected');
+//         showGroup(letter);
+//     });
+
+//     navEl.append(btn);
+//     });
+// }
+
+// function showGroup(letter) {
+//     listEl.innerHTML = '';
+//     const names = groups[letter] || [];
+
+//     const section = document.createElement('section');
+//     section.className = 'author-group';
+//     section.innerHTML = `
+//     <h2>${letter}</h2>
+//     <ul>
+//     ${names
+//         .map(n => `<li data-author-id="${n.id}">${n.name}</li>`)
+//         .join('')}
+//     </ul>
+//     `;
+//     listEl.append(section);
+// }
+
+// // // Popup-handler (kan beholde som du havde den)
+// // document.body.addEventListener('click', async e => {
+// //     if (!e.target.matches('li')) return;
+// //   // hvis du ønsker popup på navn, kan du fange klik her...
+// //   // const name = e.target.textContent;
+// //   // showPopupForName(name);
+// // });
+
+// // loadRandom();
+
+// document.body.addEventListener('click', async e => {
+//     // kun hvis klik er på et <li> inde i #author-list
+//     if (!e.target.matches('#author-list li')) return;
+
+//     const authorId = e.target.dataset.authorId;
+//     const authorName = e.target.textContent;
+//     try {
+//        // Henter forfatterens bøger (justér endpoint om nødvendigt)
+//         const res   = await fetch(`${baseBookApiUrl}/authors/${encodeURIComponent(authorName)}/books`);
+//         const books = await handleAPIError(res);
+//         showAuthorPopup(authorName, books);
+//         } catch (err) {
+//         handleFetchCatchError(err);
+//         }
+//     });
+
+// function showAuthorPopup(authorName, books) {
+//     const dialog = document.createElement('dialog');
+//     dialog.className = 'author-popup';
+//     dialog.innerHTML = `
+//         <div class="popup-body">
+//         <button class="close">&times;</button>
+//         <h3>Bøger af ${authorName}</h3>
+//         <ul>
+//             ${books.map(b => `<li>${b.title || '– ingen titel –'}</li>`).join('')}
+//         </ul>
+//         </div>
+//     `;
+//     // bind luk-knap
+//     dialog.querySelector('.close')
+//         .addEventListener('click', handleCloseDialogButton);
+
+//     document.body.append(dialog);
+//     dialog.showModal();
+// }
+//   // ────────────────────────────────────────────────────────────
+
+// loadRandom();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,6 +1,7 @@
 /* Css til panel siden på admin */
 
 @import 'style.css';
+@import 'form.css';
 
 #admin_nav {
     font-family: var(--fontText);

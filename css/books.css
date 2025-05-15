@@ -3,7 +3,9 @@
 @import 'style.css';
 @import 'card.css';
 
-
+main {
+    padding-bottom: var(--heightFooter);
+}
 
 
 #book-list {
