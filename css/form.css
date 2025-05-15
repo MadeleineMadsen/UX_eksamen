@@ -1,8 +1,8 @@
-/* Login og sign up form */
+/* Login, sign up og add books form */
 
 @import 'style.css';
 
-.wide-form {
+.wide-form, .add-form {
     background: var(--colorPrimary);
     border-radius: var(--marginDesktop);
     width: 90%;
@@ -40,6 +40,7 @@
     color: var(--colorSecondary);
 }
 
+
 .wide-form form {
     display: flex;
     flex-direction: column;
@@ -58,6 +59,7 @@
     color: var(--colorSecondary);
 }
 
+.add-form input,
 .wide-form input {
     font-size: 1rem;
     padding: 1rem;
@@ -68,6 +70,7 @@
     transition: box-shadow 0.2s ease;
 }
 
+.add-form input:focus,
 .wide-form input:focus {
     outline: none;
     box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2), inset -2px -2px 4px rgba(255,255,255,0.9);
@@ -89,4 +92,23 @@
     &:active {
         transform: translateY(0);
     }
+}
+
+.btn-save {
+    margin: 1rem;
+    padding: 0.4rem 1rem;
+    background: var(--colorPrimary);
+    color: var(--colorSecondary);
+    border: 2px solid var(--colorAccent1);
+    border-radius: var(--marginDesktop);
+    cursor: pointer;
+    &:hover {
+        background-color: var(--colorAccent1);
+    }
+}
+
+.add-form {
+    max-width: 460px;
+    display: flex;
+    justify-content: center;
 }

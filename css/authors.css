@@ -53,6 +53,10 @@
                 line-height: 1.4;
                 color: var(--colorText);
                 break-inside: avoid; /* undgå at et navn deles mellem kolonner */
+                cursor: pointer;                  
+                &:hover {
+                    text-decoration: underline 1px; 
+                }
             }
         }
     }
@@ -61,6 +65,9 @@
 @media (min-width: 768px) {
     #letter-nav {
         cursor: pointer;
+        button:hover {
+            border-bottom: 2px solid var(--colorText);
+        }
     }
     #author-list {
         margin-top: 2rem;

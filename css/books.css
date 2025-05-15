@@ -3,7 +3,9 @@
 @import 'style.css';
 @import 'card.css';
 
-
+main {
+    padding-bottom: var(--heightFooter);
+}
 
 
 #book-list {
@@ -35,7 +37,7 @@
     margin: var(--marginDesktop) auto;
     }
 }
-  
+
   /* Selve kortene render sig til cellestørrelsen */
 .book-card {
     background: var(--colorPrimary);
