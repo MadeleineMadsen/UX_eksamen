@@ -72,7 +72,7 @@
     box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2), inset -2px -2px 4px rgba(255,255,255,0.9);
 }
 
-.btn-submit {
+.btnSubmit {
     margin-top: 1rem;
     padding: 1rem;
     background: var(--colorAccent1);
@@ -184,7 +184,7 @@
     box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2), inset -2px -2px 4px rgba(255,255,255,0.9);
 }
 
-.btn-submit {
+.btnSubmit {
     margin-top: 1rem;
     padding: 1rem;
     background: var(--colorAccent1);

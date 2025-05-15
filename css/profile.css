@@ -7,15 +7,19 @@
     font-size: var(--fontSizeMobile);
     margin: var(--marginMobile);
     border-bottom: solid 0.5px var(--colorSecondary);
+    
     h3 {
         margin: var(--marginMobile);
     }
+
     ul {
         list-style-type: none;
         margin-bottom: var(--marginMobile);
         margin-left: var(--marginMobile);
+        
         li {
             margin: var(--marginMobile) 0;
+            
             a {
                 display: inline-block;
                 text-decoration: none;
@@ -39,29 +43,33 @@
     main {
         display: grid;
         grid-template-columns: 2fr 12fr;
+        
         #user_nav {
             font-size: var(--fontSizeDesktop);
             grid-column: 1;
             border-right: solid 0.5px var(--colorSecondary);
             border-bottom: none;
             min-height: calc(100vh - var(--heightNav) - var(--heightFooter));
+            
             h3 {
                 margin-top: var(--marginDesktop);
                 margin-left: 0;
             }
+            
             ul {
                 margin-left: 0;
             }
+            
             a:hover {
                 text-decoration: underline;
                 transform: scale(1.1);
             }
         }
+        
         section {
             grid-column: 2;
         }
     }
-    
     
     #my_books, #user_info {
         h1 {
@@ -69,6 +77,104 @@
             margin: var(--marginDesktop);
             font-size: var(--headerSizeDesktop);
         }
+    }
+
+    #user_info {
+        header {
+            text-align: left;
+            padding: 1rem 1rem 1rem;
+        }
+
+        h2 {
+            margin: 0;
+            font-family: var(--fontTitles);
+            font-size: 1rem;
+            color: var(--colorSecondary);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 1rem 1.5rem 2rem;
+        }
+
+        fieldset {
+            border: none;
+
+            legend {
+                font-family: var(--fontTitles);
+                font-size: 1rem;
+                font-weight: bold;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            label {
+                font-size: 0.9rem;
+                color: var(--colorSecondary);
+            }
+
+            input {
+                padding: 1rem;
+                border: none;
+                border-radius: var(--marginDesktop);
+                background: var(--colorPrimary);
+                box-shadow: inset 6px 6px 8px rgba(0,0,0,0.1), inset -4px -4px 8px rgba(255,255,255,0.7);
+                transition: box-shadow 0.2s ease;
+            }
+
+            input:focus {
+                outline: none;
+                box-shadow: inset 2px 2px 4px rgba(0,0,0,0.2), inset -2px -2px 4px rgba(255,255,255,0.9);
+            }
+        }
+
+        .btnCancel {
+            padding: 1rem;
+            background: transparent;
+            color: var(--colorSecondary);
+            font-weight: bold;
+            border: solid var(--colorAccent1);
+            border-radius: var(--marginDesktop);
+            box-shadow: 8px 8px 16px rgba(0,0,0,0.1), -8px -8px 16px rgba(255,255,255,0.7);
+            cursor: pointer;
+            transition: transform 0.1s ease, box-shadow 0.2s ease;
+            
+            &:hover {
+                transform: translateY(-2px);
+            }
+            
+            &:active {
+                transform: translateY(0);
+            }
+        }
+
+        .btnSubmit {
+            padding: 1rem;
+            background: var(--colorAccent1);
+            color: var(--colorSecondary);
+            font-weight: bold;
+            border: none;
+            border-radius: var(--marginDesktop);
+            box-shadow: 8px 8px 16px rgba(0,0,0,0.1), -8px -8px 16px rgba(255,255,255,0.7);
+            cursor: pointer;
+            transition: transform 0.1s ease, box-shadow 0.2s ease;
+            
+            &:hover {
+                transform: translateY(-2px);
+            }
+            
+            &:active {
+                transform: translateY(0);
+            }
+        }
+
     }
 }
 
