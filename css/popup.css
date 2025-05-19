@@ -47,26 +47,24 @@ cursor: pointer;
     
 }
 
-.popup-info{
-    margin-top: 3rem;
-}
 .popup-image img {
     width: 90%;
     height: auto;
     border-radius: var(--cardRadius);
 }
 
-.popup-info .h3 {
-    font-size: var(--headerSizeMobile);
-    font: var(--fontText);
-    
-}
+.popup-info {
+    margin-top: 3rem;
 
-.popup-info .p { 
-    font-size: var(--fontSizeMobile);
-    font: var(--fontText);
-    
-    
+    h3 {
+        font-family: var(--fontTitles);
+        font-size: var(--headerSizeMobile);
+    }
+
+    p {
+        font-family: var(--fontText);
+        font-size: var(--fontSizeMobile);
+    }
 }
 
 .popup-info .btn--loan {
@@ -97,6 +95,10 @@ button.close {
 dialog.author-popup {
     padding: 2rem;
     max-width: 800px;
+
+    h3 {
+        font-family: var(--fontTitles);
+    }
 }
 
 

@@ -7,6 +7,8 @@
     justify-content: center;
     gap: 0.5rem;
     padding: var(--paddingMobile);
+    font-family: var(--fontText);
+    
     & > button {
         background: none;
         border: none;
@@ -15,6 +17,7 @@
         padding: 0 0.6rem;
         cursor: pointer;
         color: var(--colorText);
+        
         &.selected {
             /* color: var(--colorPrimary); */
             transform: scale(1.2);
@@ -30,15 +33,19 @@
     padding: 0 var(--paddingMobile) 4rem var(--paddingMobile);
     margin: 0 auto;
     gap: var(--marginMobile);
+    
     .author-group {
         background: transparent;
         border: none;
         padding: var(--paddingMobile);
+        
         /* Overskrift */
         h2 {
+            font-family: var(--fontTitles);
             font-size: 1.2rem; /* rettes til samme variabel som h2 på andre sider */
             margin-bottom: var(--marginMobile);
         }
+        
         ul {
             list-style: none;
             margin: 0;
@@ -47,6 +54,7 @@
           /* 2 kolonner på mobil */
             column-count: 2;
             column-gap: var(--marginMobile);
+            
             li {
                 margin-bottom: 0.5rem;
                 font-size: 0.9rem;
@@ -54,6 +62,7 @@
                 color: var(--colorText);
                 break-inside: avoid; /* undgå at et navn deles mellem kolonner */
                 cursor: pointer;                  
+                
                 &:hover {
                     text-decoration: underline 1px; 
                 }

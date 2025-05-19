@@ -9,6 +9,7 @@
     border-bottom: solid 0.5px var(--colorSecondary);
     
     h3 {
+        font-family: var(--fontTitles);
         margin: var(--marginMobile);
     }
 
@@ -36,6 +37,10 @@
         font-size: var(--headerSizeMobile);
         margin: var(--marginMobile);
         padding-top: var(--paddingMobile);
+    }
+
+    p {
+        font-family: var(--fontText);
     }
 }
 
@@ -97,12 +102,13 @@
 
         label {
             font-size: 0.9rem;
-            font-family: var(--fontTitles);
+            font-family: var(--fontText);
             color: var(--colorSecondary);
             margin: 1rem 0 0.5rem 0;
         }
 
         input {
+            font-family: var(--fontText);
             padding: 1rem;
             border: none;
             border-radius: var(--buttonRadius);
@@ -124,6 +130,7 @@
     .btnCancel,
     .btnSubmit,
     .btnDelete {
+        font-family: var(--fontText);
         display: inline-block;
         min-width: 10%;
         padding: 1rem 1rem;

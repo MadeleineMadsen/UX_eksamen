@@ -8,12 +8,13 @@
 #addAuthorForm, 
 #addBookForm, 
 #addPublisherForm {
+    font-family: var(--fontText);
     background: var(--colorPrimary);
     border-radius: var(--cardRadius);
     width: 90%;
     max-width: 400px;
     margin: 5rem auto;
-    padding: 2rem;
+    padding: 1rem;
     box-shadow: var(--shadowOuter);
     overflow: hidden;
 }
@@ -70,6 +71,7 @@
 #addBookForm input, 
 #addPublisherForm input,
 .wide-form input {
+    font-family: var(--fontText);
     font-size: 1rem;
     padding: 1rem;
     border: none;
@@ -89,6 +91,7 @@
 }
 
 .btnSubmit {
+    font-family: var(--fontText);
     margin-top: 1rem;
     padding: 1rem;
     background: var(--colorAccent1);
@@ -190,6 +193,7 @@
 .signup-form input {
     padding: 1rem;
     border: none;
+    font-family: var(--fontText);
     border-radius: var(--buttonRadius);
     background: var(--colorPrimary);
     box-shadow: var(--shadowInner);
@@ -202,6 +206,7 @@
 }
 
 .btnSubmit {
+    font-family: var(--fontText);
     margin-top: 1rem;
     padding: 1rem;
     background: var(--colorAccent1);
@@ -221,6 +226,7 @@
 }
 
 .login-link {
+    font-family: var(--fontText);
     text-align: center;
 }
 

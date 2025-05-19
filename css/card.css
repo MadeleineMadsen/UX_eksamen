@@ -5,10 +5,12 @@
 
 #recipe-list {
     article {
+        font-family: var(--fontText);
         margin-bottom: 1rem;
         border-top: solid thin var(--colorSecondary);
 
         h2 {
+            font-family: var(--fontTitles);
             font-size: 1.2rem;
         }
         

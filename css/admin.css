@@ -8,15 +8,20 @@
     font-size: var(--fontSizeMobile);
     margin: var(--marginMobile);
     border-bottom: solid 0.5px var(--colorSecondary);
+
     h3 {
+        font-family: var(--fontTitles);
         margin: var(--marginMobile);
     }
+
     ul {
         list-style-type: none;
         margin-bottom: var(--marginMobile);
         margin-left: var(--marginMobile);
+        
         li {
             margin: var(--marginMobile) 0;
+            
             a {
                 display: inline-block;
                 text-decoration: none;
@@ -76,11 +81,22 @@
     margin: var(--marginMobile);
 }
 #book_form h3, #new_books h3 {
-    font-family: var(--fontText);
+    font-family: var(--fontTitles);
     font-size: var(--fontSizeMobile);
     margin: var(--marginMobile);
     padding: var(--marginMobile);
     justify-self: self-start;
+}
+
+#addBookForm {
+
+    input {
+        font-family: var(--fontText);
+    }
+
+    button {
+        font-family: var(--fontText);
+    }
 }
 
 
