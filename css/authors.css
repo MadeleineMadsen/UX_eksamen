@@ -21,7 +21,7 @@
         &.selected {
             /* color: var(--colorPrimary); */
             transform: scale(1.2);
-            border-bottom: 2px solid var(--colorText);
+            border-bottom: thin solid var(--colorText);
         }
     }
 }
@@ -64,7 +64,7 @@
                 cursor: pointer;                  
                 
                 &:hover {
-                    text-decoration: underline 1px; 
+                    text-decoration: underline 0.05rem; 
                 }
             }
         }
@@ -75,7 +75,7 @@
     #letter-nav {
         cursor: pointer;
         button:hover {
-            border-bottom: 2px solid var(--colorText);
+            border-bottom: thin solid var(--colorText);
         }
     }
     #author-list {

@@ -6,7 +6,7 @@
     font-family: var(--fontText);
     font-size: var(--fontSizeMobile);
     margin: var(--marginMobile);
-    border-bottom: solid 0.5px var(--colorSecondary);
+    border-bottom: solid thin var(--colorSecondary);
     
     h3 {
         font-family: var(--fontTitles);
@@ -173,7 +173,7 @@
             font-size: var(--fontSizeDesktop);
             grid-column: 1;
             padding-right: var(--paddingDesktop);
-            border-right: solid 0.5px var(--colorSecondary);
+            border-right: solid thin var(--colorSecondary);
             border-bottom: none;
             min-height: calc(100vh - var(--heightNav) - var(--heightFooter));
             

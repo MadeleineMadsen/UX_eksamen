@@ -18,7 +18,7 @@ html {
 
 /* Navigation mobile */
 nav#main {
-    border-bottom: solid 0.5px var(--colorSecondary);
+    border-bottom: solid thin var(--colorSecondary);
     padding: 0.6rem;
     z-index: 10;
     position: fixed;
@@ -69,14 +69,14 @@ nav#main {
     }
     
     .logo {
-        width: 46px;
-        height: 46px;
+        width: 2.8rem;
+        height: 2.8rem;
         margin-right: 0.6rem;
         }
 
     .icon {
-        width: 50px;
-        height: 50px;
+        width: 3.1rem;
+        height: 3.1rem;
         }
 
     button {
@@ -97,7 +97,7 @@ footer {
     position: fixed;
     padding: 1rem 0;
     color: var(--colorText);
-    border-top: solid 0.5px var(--colorSecondary);
+    border-top: solid thin var(--colorSecondary);
     text-align: center;
     font-size: var(--fontSizeMobile);
     font-family: var(--fontText);
@@ -130,14 +130,14 @@ footer {
         }
 
         .logo {
-            width: 50px;
-            height: 50px;
+            width: 3.1rem;
+            height: 3.1rem;
             margin-right: var(--marginDesktop);
             }
 
         .icon {
-            width: 55px;
-            height: 55px;            
+            width: 3.4rem;
+            height: 3.4rem;            
             }
         
             .icon:hover {
