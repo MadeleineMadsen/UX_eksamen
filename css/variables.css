@@ -14,8 +14,8 @@
     --colorText: #2B2B2B;
 
     /* Skygger */
-    --shadowInner: inset 4px 4px 4px rgba(0,0,0,0.1);
-    --shadowOuter: 8px 8px 8px rgba(0, 0, 0, 0.1);
+    --shadowInner: inset 0.25rem 0.25rem 0.25rem rgba(0,0,0,0.1);
+    --shadowOuter: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
 
     /* Fonte */
     --fontTitles: 'Libre+Baskerville', Arial, Helvetica, sans-serif;
