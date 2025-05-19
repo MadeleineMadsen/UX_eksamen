@@ -32,7 +32,7 @@
     font-family: var(--fontText);
     padding: 0 var(--paddingMobile) 4rem var(--paddingMobile);
     margin: 0 auto;
-    gap: var(--marginMobile);
+    gap: var(--gabMobile);
     
     .author-group {
         background: transparent;
@@ -53,10 +53,10 @@
             
           /* 2 kolonner på mobil */
             column-count: 2;
-            column-gap: var(--marginMobile);
+            column-gap: var(--gabMobile);
             
             li {
-                margin-bottom: 0.5rem;
+                margin-bottom: var(--marginMobile);
                 font-size: 0.9rem;
                 line-height: 1.4;
                 color: var(--colorText);
@@ -81,7 +81,7 @@
     #author-list {
         margin-top: 2rem;
         padding: 0 var(--paddingDesktop);
-        gap: var(--marginDesktop);
+        gap: var(--gabDesktop);
         justify-items: space-around;
         width: 64%;
         .author-group {
@@ -92,7 +92,7 @@
             }
             ul {
                 column-count: 4;
-                column-gap: var(--marginDesktop);
+                column-gap: var(--gabDesktop);
                 li {
                     padding: 0 var(--paddingDesktop);
                 }

@@ -12,7 +12,7 @@ main {
 #book-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--marginDesktop);
+    gap: var(--gabDesktop);
     padding-inline: 2rem;
     margin: var(--marginDesktop) auto;
     padding-top: 5rem;
@@ -133,10 +133,11 @@ main {
 .suggestions-list {
     position: absolute;
     top: 100%; left: 0; right: 0;
-    margin: 0; padding: 0;
+    margin: 0; 
+    padding: 0;
     list-style: none;
     background: var(--colorPrimary);
-    border-radius: 0 0 var(--marginMobile) var(--marginMobile);
+    border-radius: 0 0 var(--cardRadius) var(--cardRadius);
     box-shadow: var(--shadowOuter);
     max-height: 15rem;
     overflow-y: auto;

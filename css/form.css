@@ -92,7 +92,7 @@
 
 .btnSubmit {
     font-family: var(--fontText);
-    margin-top: 1rem;
+    margin-top: var(--marginDesktop);
     padding: 1rem;
     background: var(--colorAccent1);
     color: var(--colorSecondary);
@@ -123,7 +123,7 @@
     width: 90%;
     max-width: 600px;
     margin: 0 auto;
-    margin-bottom: 1rem;
+    margin-bottom: var(--marginDesktop);
     padding: 2rem;
     box-shadow: var(--shadowOuter);
     overflow: hidden;
@@ -207,7 +207,7 @@
 
 .btnSubmit {
     font-family: var(--fontText);
-    margin-top: 1rem;
+    margin-top: var(--marginDesktop);
     padding: 1rem;
     background: var(--colorAccent1);
     color: var(--colorSecondary);

@@ -51,7 +51,7 @@
 
     header {
         text-align: left;
-        margin-left: 1rem;
+        margin-left: var(--marginDesktop);
 
         h1 {
             margin: 0;
@@ -134,7 +134,7 @@
         display: inline-block;
         min-width: 10%;
         padding: 1rem 1rem;
-        margin-top: 1rem;
+        margin-top: var(--marginDesktop);
         font-weight: bold;
         border-radius: var(--buttonRadius);
         box-shadow: var(--shadowOuter);
@@ -293,7 +293,7 @@
             display: inline-block;
             min-width: 10%;
             padding: 1rem 1rem;
-            margin-top: 1rem;
+            margin-top: var(--marginDesktop);
             font-weight: bold;
             border-radius: var(--buttonRadius);
             box-shadow: var(--shadowOuter);

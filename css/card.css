@@ -6,7 +6,7 @@
 #recipe-list {
     article {
         font-family: var(--fontText);
-        margin-bottom: 1rem;
+        margin-bottom: var(--marginDesktop);
         border-top: solid thin var(--colorSecondary);
 
         h2 {
@@ -22,7 +22,7 @@
         }
         
         div:has(.pill) {
-            margin-top: 0.5rem;
+            margin-top: var(--marginMobile);
             text-align: center;
             .pill {
                 display: inline-block;

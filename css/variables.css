@@ -48,6 +48,10 @@
     --paddingDesktop: 1rem;
     --paddingMobile: 0.5rem;
 
+    /* Gab */
+    --gabDesktop: 1rem;
+    --gabMobile: 0.5rem;
+
     /* Højde nav / footer */
     --heightNav: 4rem;
     --heightFooter: 6rem;

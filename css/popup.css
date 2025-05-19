@@ -41,8 +41,8 @@ cursor: pointer;
 .popup-body {
     display: grid;
     grid-template-columns: 200px 1fr;
-    gap: var(--marginMobile);
-    padding: var(--marginMobile);
+    gap: var(--gabMobile);
+    padding: var(--paddingMobile);
     align-items: start;
     
 }
@@ -75,7 +75,7 @@ cursor: pointer;
     text-decoration: none;    /* fjern understregning */
     border-radius: var(--buttonRadius);
     cursor: pointer;
-    margin-top: 1rem;
+    margin-top: var(--marginDesktop);
 }
 
 button.close {
@@ -109,7 +109,7 @@ dialog.author-popup {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     justify-content: center;      /* centrer hvis ekstra plads */
-    gap: var(--marginMobile);
+    gap: var(--gabMobile);
     padding: var(--paddingMobile) 0;
 }
 
