@@ -1,5 +1,5 @@
 // search.js
-import { baseBookApiUrl } from './info.js';
+import { BASE_URL } from './info.js';
 import { handleAPIError, handleFetchCatchError } from './common.js';
 import { showPopup } from './books.js';  
 
@@ -22,7 +22,7 @@ searchInput.addEventListener('input', () => {
 // Opret en ny AbortController til den kommende forespørgsel
   abortController = new AbortController();
 
-  fetch(`${baseBookApiUrl}/books?s=${encodeURIComponent(q)}`, {
+  fetch(`${BASE_URL}/books?s=${encodeURIComponent(q)}`, {
     signal: abortController.signal
   })
     .then(handleAPIError)
@@ -47,7 +47,7 @@ suggContainer.addEventListener('click', async e => {
   searchInput.value = '';            
 
   try {
-    const res  = await fetch(`${baseBookApiUrl}/books/${bookId}`);
+    const res  = await fetch(`${BASE_URL}/books/${bookId}`);
     const book = await handleAPIError(res);
     // genbruger popup-funktion
     showPopup(book);                 

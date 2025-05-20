@@ -1,4 +1,4 @@
-import { baseBookApiUrl } from './info.js';
+import { BASE_URL } from './info.js';
 import {
 handleAPIError,
 handleFetchCatchError,
@@ -48,7 +48,7 @@ const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
 // Load forfattere fra API´en
 async function loadRandom() {
     try {
-        const res = await fetch(`${baseBookApiUrl}/authors`);
+        const res = await fetch(`${BASE_URL}/authors`);
         const authors = await handleAPIError(res);
 
 // Gem både id og navn på forfattere
@@ -119,7 +119,7 @@ document.body.addEventListener('click', async e => {
 
     try {
     // fetcher data med endpoint /books?a=<author_id>
-        const res   = await fetch(`${baseBookApiUrl}/books?a=${authorId}`);
+        const res   = await fetch(`${BASE_URL}/books?a=${authorId}`);
         const books = await handleAPIError(res);
 
 
@@ -128,7 +128,7 @@ document.body.addEventListener('click', async e => {
         books.map(async b => {
             try {
             const det = await handleAPIError(
-            await fetch(`${baseBookApiUrl}/books/${b.book_id}`)
+            await fetch(`${BASE_URL}/books/${b.book_id}`)
         );
         return { ...b, cover: det.cover };
         } catch {

@@ -1,4 +1,4 @@
-import { baseBookApiUrl }            from './info.js';
+import { BASE_URL }            from './info.js';
 import {
   handleAPIError,
   handleFetchCatchError,
@@ -57,14 +57,14 @@ async function loadRandom() {
 // Hent bøger i en given container
 async function loadBooks(params, container) {
   const qs    = new URLSearchParams(params);
-  const res   = await fetch(`${baseBookApiUrl}/books?${qs}`);
+  const res   = await fetch(`${BASE_URL}/books?${qs}`);
   const books = await handleAPIError(res);
 
   // Hent billedcover ind via detail-kald
   const booksWithCover = await Promise.all(books.map(async b => {
     try {
       const det    = await handleAPIError(
-        await fetch(`${baseBookApiUrl}/books/${b.book_id}`)
+        await fetch(`${BASE_URL}/books/${b.book_id}`)
       );
       return { ...b, cover: det.cover };
     } catch {
@@ -108,13 +108,13 @@ function renderBooks(books, container) {
         if (isAdmin) {
           // Admin: hent detaljer + loans
           const res = await fetch(
-            `${baseBookApiUrl}/admin/${loggedUserID()}/books/${book_id}`,
+            `${BASE_URL}/admin/${loggedUserID()}/books/${book_id}`,
             { headers: tokenHeader() }
           );
           fullBook = await handleAPIError(res);
         } else {
           // User: hent kun detaljer og giv showPopup en tom loans-array
-          const res    = await fetch(`${baseBookApiUrl}/books/${book_id}`);
+          const res    = await fetch(`${BASE_URL}/books/${book_id}`);
           const basic  = await handleAPIError(res);
           fullBook = { ...basic, book_id, loans: [] };
         }
@@ -138,7 +138,7 @@ document.body.addEventListener('click', async e => {
   try {
     const userId = loggedUserID();
     const res = await fetch(
-      `${baseBookApiUrl}/admin/${userId}/books/${id}`,
+      `${BASE_URL}/admin/${userId}/books/${id}`,
       { headers: tokenHeader() }
     );
     const book = await handleAPIError(res);
