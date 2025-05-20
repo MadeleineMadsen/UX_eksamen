@@ -149,3 +149,7 @@ const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
     });
 });
 
+
+
+// call it when the profile page loads
+renderLoanedBooks();
