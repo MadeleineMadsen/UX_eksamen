@@ -1,9 +1,12 @@
-import { baseBookApiUrl } from './info.js';
+import { baseBookApiUrl }            from './info.js';
 import {
   handleAPIError,
   handleFetchCatchError,
-  handleCloseDialogButton
+  handleCloseDialogButton,
+  loanBook
 } from './common.js';
+import { loggedUserID, tokenHeader } from './common.js';
+
 
 const listEl        = document.getElementById('book-list');
 const searchInput   = document.getElementById('txtSearch');
@@ -46,7 +49,7 @@ const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
 });
 
 
-// Hent og vis 15 tilfældige bøger
+// Hent og vis 12 tilfældige bøger
 async function loadRandom() {
   await loadBooks({ n: 12 }, listEl);
 }
@@ -77,17 +80,13 @@ async function loadBooks(params, container) {
 function renderBooks(books, container) {
   const DEFAULT_COVER = 'images/placeholder.svg';
   container.innerHTML = '';
-  books.forEach(b => {
-    const { book_id, title, author, cover } = b;
-    const card = document.createElement('article');
-    card.className = 'book-card';
-    card.dataset.bookId = book_id;
-    card.dataset.title  = title;
-    card.dataset.author = author;
-    const imgSrc = cover || DEFAULT_COVER;
 
-    card.innerHTML = `
-    
+  books.forEach(book => {
+    const { book_id, title, cover } = book;
+    const card = document.createElement('article');
+    card.className      = 'book-card';
+    card.dataset.bookId = book_id;
+    card.innerHTML      = `
       <div class="book-image">
         <img
           src="${imgSrc}"
@@ -97,16 +96,38 @@ function renderBooks(books, container) {
       </div>
       <h3 class="book-title">${title}</h3>
       <button class="btn--book-info">See more</button>
-    
-      
     `;
+
+    const infoBtn = card.querySelector('.btn--book-info');
+    infoBtn.addEventListener('click', async () => {
+      try {
+        let fullBook;
+        if (isAdmin) {
+          // Admin: hent detaljer + loans
+          const res = await fetch(
+            `${baseBookApiUrl}/admin/${loggedUserID()}/books/${book_id}`,
+            { headers: tokenHeader() }
+          );
+          fullBook = await handleAPIError(res);
+        } else {
+          // User: hent kun detaljer og giv showPopup en tom loans-array
+          const res    = await fetch(`${baseBookApiUrl}/books/${book_id}`);
+          const basic  = await handleAPIError(res);
+          fullBook = { ...basic, book_id, loans: [] };
+        }
+        showPopup(fullBook);
+      } catch (err) {
+        handleFetchCatchError(err);
+      }
+    });
+
     container.append(card);
   });
 }
 
 
-
 // Pop-op ved klik på CTA-button
+
 document.body.addEventListener('click', async e => {
 
   // Hvis vi ikke ved et klik inde i selve .book-card, så gør vi ingenting
@@ -116,9 +137,15 @@ document.body.addEventListener('click', async e => {
   // Find book_id og vis popup
   const id = card.dataset.bookId;
   try {
-    const res  = await fetch(`${baseBookApiUrl}/books/${id}`);
+    const userId = loggedUserID();
+    const res = await fetch(
+      `${baseBookApiUrl}/admin/${userId}/books/${id}`,
+      { headers: tokenHeader() }
+    );
     const book = await handleAPIError(res);
-    showPopup(book);
+    //showPopup(book);
+    
+    
   } catch (err) {
     handleFetchCatchError(err);
   }
@@ -126,13 +153,25 @@ document.body.addEventListener('click', async e => {
 
 
 
-// Byg og vis pop-up
-function showPopup({ title, author, cover, publishing_year, publishing_company }) {
-  const dialog = document.createElement('dialog');
-  dialog.className = 'book-popup';
+/** ────────────────────────────────────────
+ *  5) Byg og vis dialog
+ *  ──────────────────────────────────────── */
+function showPopup(book) {
+  const {
+    book_id,
+    title,
+    author,
+    cover,
+    publishing_year,
+    publishing_company,
+    loans
+  } = book;
+
   const DEFAULT_COVER = 'images/placeholder.svg';
   const imgSrc        = cover || DEFAULT_COVER;
 
+  const dialog = document.createElement('dialog');
+  dialog.className = 'book-popup';
   dialog.innerHTML = `
     <div class="popup-body">
       <div class="popup-image">
@@ -146,29 +185,57 @@ function showPopup({ title, author, cover, publishing_year, publishing_company }
       <button class="close" "Close">&times;</button>
       
         <h3>${title}</h3>
-        <p><strong>Author: </strong>${author}</p>
-        <p> <strong>Year: </strong>${publishing_year}</p>
-        <p> <strong>Publisher: </strong>${publishing_company}</p>
-        <a href="login.html" class="btn--loan">Loan</a>
+        <p><strong>Author:</strong> ${author}</p>
+        <p><strong>Year:</strong> ${publishing_year}</p>
+        <p><strong>Publisher:</strong> ${publishing_company}</p>
+
+        <h4>Lånehistorik</h4>
+        <ul class="loan-history"></ul>
+
+        <button type="button" class="btn--loan">Loan</button>
       </div>
     </div>
-
-
   `;
 
-  // Bind luk-knapper
-  dialog.querySelectorAll('.close')
-        .forEach(el => el.addEventListener('click', handleCloseDialogButton));
-   // Lån-bog redirect + luk
-  dialog.querySelector('.btn--loan').addEventListener('click', e => {
-    // Luk dialogen
-    handleCloseDialogButton.call(e.currentTarget);
-    // Navigate til login 
-    window.location.href = 'login.html';
-  });
+  // Bind luk‐knap
+  dialog.querySelector('.close')
+        .addEventListener('click', handleCloseDialogButton);
+
+  // Fyld historik
+  const historyEl = dialog.querySelector('.loan-history');
+  if (Array.isArray(loans) && loans.length) {
+    loans
+      .sort((a, b) => new Date(b.loan_date) - new Date(a.loan_date))
+      .forEach(({ user_id, loan_date }) => {
+        const li = document.createElement('li');
+        li.textContent = 
+          `Bruger ${user_id} – ${new Intl.DateTimeFormat('da-DK').format(new Date(loan_date))}`;
+        historyEl.appendChild(li);
+      });
+  } else {
+    const li = document.createElement('li');
+    li.textContent = 'Ingen lånehistorik for denne bog.';
+    historyEl.appendChild(li);
+  }
+
+  // Bind Loan‐knap
+  dialog.querySelector('.btn--loan')
+        .addEventListener('click', async () => {
+          try {
+            await loanBook(book_id);
+            handleCloseDialogButton.call(dialog.querySelector('.btn--loan'));
+            alert('Dit lån er registreret i databasen!');
+          } catch (err) {
+            alert('Fejl: ' + err.message);
+          }
+        });
+
+  // Vis popup
   document.body.append(dialog);
   dialog.showModal();
 }
+
+
 export { showPopup };
 
 
