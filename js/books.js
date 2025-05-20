@@ -133,10 +133,6 @@ function renderBooks(books, container) {
 
 document.body.addEventListener('click', async e => {
 
-  // Hvis vi ikke ved et klik inde i selve .book-card, så gør vi ingenting
-  const card = e.target.closest('.book-card');
-  if (!card) return;
-
   // Find book_id og vis popup
   const id = card.dataset.bookId;
   try {
@@ -172,6 +168,7 @@ function showPopup(book) {
 
   const DEFAULT_COVER = 'images/placeholder.svg';
   const imgSrc        = cover || DEFAULT_COVER;
+  const userId        = sessionStorage.getItem('book_app_user_id'); // tjek login
 
   const dialog = document.createElement('dialog');
   dialog.className = 'book-popup';
@@ -185,64 +182,72 @@ function showPopup(book) {
         />
       </div>
       <div class="popup-info">
-      <button class="close" "Close">&times;</button>
-      
+        <button class="close">&times;</button>
         <h3>${title}</h3>
         <p><strong>Author:</strong> ${author}</p>
         <p><strong>Year:</strong> ${publishing_year}</p>
         <p><strong>Publisher:</strong> ${publishing_company}</p>
 
-        <h4>Lånehistorik</h4>
-        <ul class="loan-history"></ul>
+        ${isAdmin ? `
+          <h4>Loanhistorik</h4>
+          <ul class="loan-history"></ul>
+        ` : ''}
 
-        <button type="button" class="btn--loan">Loan</button>
+        <!-- Knappen vises for alle ikke-admin, men opfører sig forskelligt -->
+        ${!isAdmin ? `<button type="button" class="btn--loan">Loan</button>` : ''}
       </div>
     </div>
   `;
 
-  // Bind luk‐knap
-  dialog.querySelectorAll('.close')
-        .forEach(el => el.addEventListener('click', handleCloseDialogButton));
-   // Lån-bog redirect + luk
-  dialog.querySelector('.btn--loan').addEventListener('click', e => {
-    // Luk dialogen
-    handleCloseDialogButton.call(e.currentTarget);
-    // Navigate til login (tilpas stien hvis nødvendigt)
-    window.location.href = 'login.html';
-  });
-  // Fyld historik
+  // Luk-knap
+  dialog.querySelector('.close')
+        .addEventListener('click', handleCloseDialogButton);
+
+  // Fyld historik hvis admin
   const historyEl = dialog.querySelector('.loan-history');
-  if (Array.isArray(loans) && loans.length) {
-    loans
-      .sort((a, b) => new Date(b.loan_date) - new Date(a.loan_date))
-      .forEach(({ user_id, loan_date }) => {
-        const li = document.createElement('li');
-        li.textContent = 
-          `Bruger ${user_id} – ${new Intl.DateTimeFormat('da-DK').format(new Date(loan_date))}`;
-        historyEl.appendChild(li);
-      });
-  } else {
-    const li = document.createElement('li');
-    
-    historyEl.appendChild(li);
+  if (historyEl) {
+    if (loans.length) {
+      loans.sort((a,b)=>new Date(b.loan_date)-new Date(a.loan_date))
+          .forEach(({user_id,loan_date})=>{
+            const li=document.createElement('li');
+            li.textContent = `Bruger ${user_id} – ${new Intl.DateTimeFormat('da-DK').format(new Date(loan_date))}`;
+            historyEl.append(li);
+          });
+    } else {
+      const li=document.createElement('li');
+      li.textContent = 'No previous loans';
+      historyEl.append(li);
+    }
   }
 
-  // Bind Loan‐knap
-  dialog.querySelector('.btn--loan')
-        .addEventListener('click', async () => {
-          try {
-            await loanBook(book_id);
-            handleCloseDialogButton.call(dialog.querySelector('.btn--loan'));
-            alert('Dit lån er registreret i databasen!');
-          } catch (err) {
-            alert('Fejl: ' + err.message);
-          }
-        });
+  // Loan-knap: hvis ikke-logget -> til login, ellers kald loanBook
+  const loanBtn = dialog.querySelector('.btn--loan');
+  if (loanBtn) {
+    loanBtn.addEventListener('click', async () => {
+      if (!userId) {
+        // ingen bruger i sessionStorage
+        window.location.href = 'login.html';
+        return;
+      }
+      try {
+        await loanBook(book_id);
+        handleCloseDialogButton.call(loanBtn);
+        alert(
+          'Your loan has been registered!\n' +
+          'You’ll have access to the e-book for 30 days – a link will be sent to your email.'
+        );
+      } catch {
+        alert('You’ve already loand this book');
+      }
+    });
+  }
 
-  // Vis popup
   document.body.append(dialog);
   dialog.showModal();
 }
+
+
+
 
 
 export { showPopup };
