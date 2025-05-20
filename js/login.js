@@ -4,18 +4,21 @@ import { handleError } from './api.js';
 document.querySelector('#frmLogin').addEventListener('submit', async e => {
     e.preventDefault();
 
+    // Opret et objekt til at samle input-værdier
     const params = new FormData();
     params.append('email', e.target.txtEmail.value.trim());
     params.append('password', e.target.txtPassword.value.trim());
 
+    // Send en POST-request til login-endpointet
     try {
     const response = await fetch(`${BASE_URL}/auth/login`, {
         method: 'POST',
         body: params
     });
-
-    const data = await response.json(); // Parse JSON før du bruger det
-    console.log('Login response:', data); // Debug
+    
+    // Parse JSON før du bruger det
+    const data = await response.json(); 
+    console.log('Login response:', data);
 
     if (!response.ok) throw new Error(data.error || 'Login failed');
 

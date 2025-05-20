@@ -3,7 +3,7 @@ import { handleError } from './api.js';
 
 document.querySelector('#frmSignup').addEventListener('submit', async e => {
   e.preventDefault();
-  console.log('Signup forsøgt');
+  console.log('Signup attempted');
 
   // Indhent værdier
   const firstName = e.target.txtFirstname.value.trim();
@@ -27,6 +27,7 @@ document.querySelector('#frmSignup').addEventListener('submit', async e => {
     return;
   }
 
+  // Opret et objekt til at samle query-parametre
   const params = new URLSearchParams();
   params.append('first_name', firstName);
   params.append('last_name', lastName);
@@ -37,16 +38,20 @@ document.querySelector('#frmSignup').addEventListener('submit', async e => {
   params.append('birth_date', birthDate);
 
   try {
+// Send POST-request til /users-endpoint med body som URL-kodede parametre
     const res = await fetch(`${BASE_URL}/users`, {
       method: 'POST',
       body: params
     });
 
+// Parse svaret som JSON
     const data = await res.json();
     console.log(data);
 
+// Hvis status ikke er OK (200–299), kast en fejl med serverens meddelelse
     if (!res.ok) throw new Error(data.error || 'Signup failed');
 
+// Ved succes vis en bekræftelses-alert og omdiriger til login-side
     alert('Signup successful! You can now log in.');
     window.location.href = 'login.html';
   } catch (err) {

@@ -1,10 +1,10 @@
+/* Login, sign up og add books form */
 @import 'style.css';
 
-/* Login, sign up og add books form */
 
-/*-------------- Login --------------*/
+/*-------------- Overall alle forms --------------*/
 .login-form,
-.wide-form, 
+.wide-form,                     /* ??? - wide-form - bruger vi den overhovedet? */
 #addAuthorForm, 
 #addBookForm, 
 #addPublisherForm {
@@ -18,6 +18,33 @@
     overflow: hidden;
 }
 
+/* Inputfield til forms */
+.login-form input,
+#addAuthorForm input, 
+#addBookForm input, 
+#addPublisherForm input,
+.wide-form input {
+    font-size: 1rem;
+    padding: 1rem;
+    border: none;
+    border-radius: var(--buttonRadius);
+    background: var(--colorPrimary);
+    box-shadow: var(--shadowInner);
+    transition: box-shadow 0.2s ease;
+}
+
+/* Focus på inputfields */
+.login-form input:focus,
+#addAuthorForm input:focus, 
+#addBookForm input:focus, 
+#addPublisherForm input:focus,
+.wide-form input:focus {
+    outline: none;
+    box-shadow: var(--shadowInner);
+}
+
+
+/*-------------- Log in form??????? --------------*/
 .login-form > header {
     text-align: center;
     padding: 1rem 1rem 1rem;
@@ -64,29 +91,7 @@
     color: var(--colorSecondary);
 }
 
-.login-form input,
-#addAuthorForm input, 
-#addBookForm input, 
-#addPublisherForm input,
-.wide-form input {
-    font-size: 1rem;
-    padding: 1rem;
-    border: none;
-    border-radius: var(--buttonRadius);
-    background: var(--colorPrimary);
-    box-shadow: var(--shadowInner);
-    transition: box-shadow 0.2s ease;
-}
-
-.login-form input:focus,
-#addAuthorForm input:focus, 
-#addBookForm input:focus, 
-#addPublisherForm input:focus,
-.wide-form input:focus {
-    outline: none;
-    box-shadow: var(--shadowInner);
-}
-
+/* Login/signup - submit button */
 .btnSubmit {
     margin-top: 1rem;
     padding: 1rem;
@@ -106,8 +111,8 @@
     }
 }
 
-/*-------------- Sign up --------------*/
 
+/*-------------- Sign up --------------*/
 .MainSignup {
     padding-top: var(--heightNav);
     padding-bottom: var(--heightFooter);
@@ -199,30 +204,12 @@
     box-shadow: var(--shadowInner);
 }
 
-.btnSubmit {
-    margin-top: 1rem;
-    padding: 1rem;
-    background: var(--colorAccent1);
-    color: var(--colorSecondary);
-    font-weight: bold;
-    border: none;
-    border-radius: var(--buttonRadius);
-    box-shadow: var(--shadowOuter);
-    cursor: pointer;
-    transition: transform 0.1s ease, box-shadow 0.2s ease;
-    &:hover {
-        transform: translateY(-2px);
-    }
-    &:active {
-        transform: translateY(0);
-    }
-}
-
 .login-link {
     text-align: center;
 }
 
-/* Admin form knap */
+
+/*-------------- Admin - tilføj content --------------*/
 .btn-save {
     margin: 1rem 0 1rem 1rem;
     padding: 0.4rem 1rem;
@@ -252,7 +239,6 @@
     align-items: center;
     width: 13.25rem;
     }
-
 
 @media (min-width: 768px) {
     
