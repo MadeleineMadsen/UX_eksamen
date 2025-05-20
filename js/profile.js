@@ -1,4 +1,4 @@
-// === HENT BRUGERDATA ===
+// Hent brugerdata
 const userId = sessionStorage.getItem('book_app_user_id');
 const token = sessionStorage.getItem('book_app_user_token');
 
@@ -8,7 +8,7 @@ if (!userId || !token) {
 
 let originalUserData = null;
 
-// === Hjælpere ===
+// Hjælpere
 function setText(selector, value) {
     const el = document.querySelector(selector);
     if (el) el.textContent = value;
@@ -34,7 +34,7 @@ function showStatus(message, type = 'info') {
     setTimeout(() => msg.remove(), 4000);
 }
 
-// === Hent data ===
+// Hent data
 fetch(`http://127.0.0.1:5555/users/${userId}`, {
     headers: {
     'X-Session-Token': token
@@ -66,7 +66,7 @@ fetch(`http://127.0.0.1:5555/users/${userId}`, {
     alert('An error occurred while retrieving your profile information.');
 });
 
-// === Gem opdateringer ===
+// Gem oplysninger
 document.getElementById('editUserForm').addEventListener('submit', async e => {
     e.preventDefault();
 
@@ -80,7 +80,8 @@ document.getElementById('editUserForm').addEventListener('submit', async e => {
 
     try {
     const res = await fetch(`http://127.0.0.1:5555/users/${userId}`, {
-      method: 'PUT', // Backend tillader kun PUT
+        // Backend tillader kun PUT
+        method: 'PUT',
         headers: {
         'X-Session-Token': token
         // IKKE Content-Type — browser sætter multipart/form-data selv
@@ -111,7 +112,7 @@ document.getElementById('editUserForm').addEventListener('submit', async e => {
     }
 });
 
-// === Annuller ændringer ===
+// Annuller ændringer
 document.getElementById('btnCancel').addEventListener('click', () => {
     if (!originalUserData) return;
 
@@ -125,7 +126,7 @@ document.getElementById('btnCancel').addEventListener('click', () => {
     showStatus('Changes canceled.');
 });
 
-// === Slet bruger / Fjern bruger ===
+// Slet bruger / Fjern bruger
 document.getElementById('btnDelete').addEventListener('click', async () => {
     const confirmed = confirm('Are you sure you want to delete your profile? This action cannot be undone.');
 
@@ -159,7 +160,7 @@ document.getElementById('btnDelete').addEventListener('click', async () => {
 });
 
 
-// === Vis / Skjul sektioner ===
+// Vis / Skjul sektioner
 document.getElementById('loaned_books').onclick = () => {
     document.getElementById('my_books').classList.remove('hidden');
     document.getElementById('user_info').classList.add('hidden');
@@ -170,7 +171,7 @@ document.getElementById('personal_info').onclick = () => {
     document.getElementById('user_info').classList.remove('hidden');
 };
 
-// === Log ud ===
+// Log ud
 const logoutBtnUser = document.querySelector('#logoutBtnUser');
 const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
 

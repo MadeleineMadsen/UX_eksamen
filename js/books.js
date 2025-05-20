@@ -11,22 +11,19 @@ const suggContainer = document.getElementById('suggestions');
 
 let abortController = null;
 
-/** ────────────────────────────────────────
- *  1) Navigation
- *  ──────────────────────────────────────── */
-
+// Navigation
 const userId = sessionStorage.getItem('book_app_user_id');
 const isAdmin = sessionStorage.getItem('book_app_user_is_admin') === 'true';
 
 console.log('User ID:', userId);
 console.log('Admin:', isAdmin);
 
-// Skjul alle først
+// Skjul alle nav med hidden først
 document.querySelector('#utility_not_logged')?.classList.add('hidden');
 document.querySelector('#utility_logged_user')?.classList.add('hidden');
 document.querySelector('#utility_logged_admin')?.classList.add('hidden');
 
-// Vis relevant sektion
+// Vis relevant nav sektion
 if (!userId) {
   document.querySelector('#utility_not_logged')?.classList.remove('hidden');
 } else if (isAdmin) {
@@ -48,22 +45,19 @@ const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
     });
 });
 
-/** ────────────────────────────────────────
- *  1) Hent og vis 15 tilfældige bøger
- *  ──────────────────────────────────────── */
+
+// Hent og vis 15 tilfældige bøger
 async function loadRandom() {
   await loadBooks({ n: 12 }, listEl);
 }
 
-/** ────────────────────────────────────────
- *  2) Hent bøger med valgfri query og vis i en given container
- *  ──────────────────────────────────────── */
+// Hent bøger i en given container
 async function loadBooks(params, container) {
   const qs    = new URLSearchParams(params);
   const res   = await fetch(`${baseBookApiUrl}/books?${qs}`);
   const books = await handleAPIError(res);
 
-  // slå cover ind via detail-kald
+  // Hent billedcover ind via detail-kald
   const booksWithCover = await Promise.all(books.map(async b => {
     try {
       const det    = await handleAPIError(
@@ -79,11 +73,7 @@ async function loadBooks(params, container) {
 }
 
 
-/** ────────────────────────────────────────
- *  3) Render book-cards i container
- * 
- *  ──────────────────────────────────────── */
-
+// Render book-cards i container
 function renderBooks(books, container) {
   const DEFAULT_COVER = 'images/placeholder.svg';
   container.innerHTML = '';
@@ -101,7 +91,7 @@ function renderBooks(books, container) {
       <div class="book-image">
         <img
           src="${imgSrc}"
-          alt="Forside af ${title}"
+          alt="Bookcover of ${title}"
           onerror="this.src='${DEFAULT_COVER}'"
         />
       </div>
@@ -116,15 +106,14 @@ function renderBooks(books, container) {
 
 
 
-/** ────────────────────────────────────────
- *  4) Popup ved klik på "Læs om"
- *  ──────────────────────────────────────── */
+// Pop-op ved klik på CTA-button
 document.body.addEventListener('click', async e => {
-  // hvis vi ikke ved et klik inde i selve .book-card, så gør vi ingenting
+
+  // Hvis vi ikke ved et klik inde i selve .book-card, så gør vi ingenting
   const card = e.target.closest('.book-card');
   if (!card) return;
 
-  // find book_id og vis popup
+  // Find book_id og vis popup
   const id = card.dataset.bookId;
   try {
     const res  = await fetch(`${baseBookApiUrl}/books/${id}`);
@@ -137,9 +126,7 @@ document.body.addEventListener('click', async e => {
 
 
 
-/** ────────────────────────────────────────
- *  5) Byg og vis dialog
- *  ──────────────────────────────────────── */
+// Byg og vis pop-up
 function showPopup({ title, author, cover, publishing_year, publishing_company }) {
   const dialog = document.createElement('dialog');
   dialog.className = 'book-popup';
@@ -151,12 +138,12 @@ function showPopup({ title, author, cover, publishing_year, publishing_company }
       <div class="popup-image">
         <img
           src="${imgSrc}"
-          alt="Forside af ${title}"
+          alt="Bookcover of ${title}"
           onerror="this.src='${DEFAULT_COVER}'"
         />
       </div>
       <div class="popup-info">
-      <button class="close" "Luk">&times;</button>
+      <button class="close" "Close">&times;</button>
       
         <h3>${title}</h3>
         <p><strong>Author: </strong>${author}</p>
@@ -169,14 +156,14 @@ function showPopup({ title, author, cover, publishing_year, publishing_company }
 
   `;
 
-  // bind luk-knapper
+  // Bind luk-knapper
   dialog.querySelectorAll('.close')
         .forEach(el => el.addEventListener('click', handleCloseDialogButton));
    // Lån-bog redirect + luk
   dialog.querySelector('.btn--loan').addEventListener('click', e => {
     // Luk dialogen
     handleCloseDialogButton.call(e.currentTarget);
-    // Navigate til login (tilpas stien hvis nødvendigt)
+    // Navigate til login 
     window.location.href = 'login.html';
   });
   document.body.append(dialog);
@@ -184,44 +171,6 @@ function showPopup({ title, author, cover, publishing_year, publishing_company }
 }
 export { showPopup };
 
-/** ────────────────────────────────────────
- *  6) Live‐search: vis suggestions under input
- *  ──────────────────────────────────────── */
-// searchInput.addEventListener('input', () => {
-//   const q = searchInput.value.trim();
-//   // cancel tidligere
-//   if (abortController) abortController.abort();
-//   if (!q) {
-//     suggContainer.hidden = true;
-//     return;
-//   }
-//   abortController = new AbortController();
-//   fetch(`${baseBookApiUrl}/books?s=${encodeURIComponent(q)}`, {
-//     signal: abortController.signal
-//   })
-//     .then(handleAPIError)
-//     .then(books => {
-//       suggContainer.innerHTML = books
-//         .map(b => `<li data-title="${b.title}">${b.title}</li>`)
-//         .join('');
-//       suggContainer.hidden = books.length === 0;
-//     })
-//     .catch(err => {
-//       if (err.name !== 'AbortError') console.error(err);
-//     });
-// });
 
-// // Klik på et suggestion‐item
-// suggContainer.addEventListener('click', e => {
-//   if (!e.target.matches('li')) return;
-//   const title = e.target.dataset.title;
-//   searchInput.value = title;
-//   suggContainer.hidden = true;
-//   // evt. trig loadBooks med { s: title } hvis du vil vise resultater et andet sted
-// });
-
-/** ────────────────────────────────────────
- *  7) Initialiser – hent 15 bøger
- *  ──────────────────────────────────────── */
 loadRandom();
 

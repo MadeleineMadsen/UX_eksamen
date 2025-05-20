@@ -3,6 +3,7 @@
 @import 'style.css';
 @import 'form.css';
 
+/* Overall adminside med venstre navigation */
 #admin_nav {
     font-family: var(--fontText);
     font-size: var(--fontSizeMobile);
@@ -31,6 +32,7 @@
     }
 }
 
+/* Overskrifter på alle tre sections */
 #book_form, #admin, #new_books {
     h1 {
         font-family: var(--fontTitles);
@@ -41,33 +43,7 @@
     }
 }
 
-#admin, #new_books {
-    ul {
-        font-family: var(--fontText);
-        font-size: var(--fontSizeMobile);
-        list-style-type: none;
-        margin-top: var(--marginMobile);
-        li {
-            gap: var(--gabMobile); /*måske slettes*/
-            padding: var(--paddingMobile); /*måske slettes*/
-        }
-    }
-}
-
-#admin {
-    li {
-        margin: var(--marginMobile);
-        padding: var(--paddingMobile);
-    }
-}
-
-#new_books {
-    li {
-        margin-left: var(--marginMobile);
-        padding: 0 0 0 var(--paddingMobile);
-    }
-}
-
+/*-------------- Section 1 - Add new books --------------*/
 #book_form {
     margin: 0;
     display: grid;
@@ -80,27 +56,53 @@
     font-size: var(--headerSizeMobile);
     margin: var(--marginMobile);
 }
-#book_form h3, #new_books h3 {
-    font-family: var(--fontTitles);
+#book_form h3 {
+    font-family: var(--fontText);
     font-size: var(--fontSizeMobile);
     margin: var(--marginMobile);
     padding: var(--paddingMobile);
     justify-self: self-start;
 }
 
-#addBookForm {
-
-    input {
+/*-------------- Section 2 - Added books --------------*/
+#new_books {
+    ul {
         font-family: var(--fontText);
+        font-size: var(--fontSizeMobile);
+        list-style-type: none;
+        margin-top: var(--marginMobile);
+        li {
+            margin-left: var(--marginMobile);
+            padding-left: var(--marginMobile);
+        }
     }
-
-    button {
+    h3 {
         font-family: var(--fontText);
+        font-size: var(--fontSizeMobile);
+        margin: var(--marginMobile);
+        padding: var(--marginMobile);
+    }
+}
+
+/*-------------- Section 3 - Personal information --------------*/
+#admin {
+    ul {
+        font-family: var(--fontText);
+        font-size: var(--fontSizeMobile);
+        list-style-type: none;
+        margin-top: var(--marginMobile);
+        li {
+            margin: var(--marginMobile);
+            padding: var(--marginMobile);
+        }
     }
 }
 
 
+/* Desktop */
 @media (min-width: 768px) {
+
+/* Overall & venstre navigation */
     main {
         display: grid;
         grid-template-columns: 2fr 12fr;
@@ -129,12 +131,7 @@
         }
     }
 
-    #book_form {
-        margin: auto;
-        display: inline-block;
-    }
-    
-    
+/* Overskrifter på alle 3 sektioner */
     #book_form, #admin, #new_books {
         h1 {
             text-align: left;
@@ -143,44 +140,50 @@
         }
     }
 
-    #admin {
-        ul {
+/*-------------- Section 1 - Add new books --------------*/
+    #book_form {
+        margin: auto;
+        display: inline-block;
+        h2 {
+            font-size: var(--headerSizeDesktop);
+            margin-top: var(--marginDesktop);
+        }
+        h3 {
             font-size: var(--fontSizeDesktop);
-            margin: var(--marginDesktop) 0 0 var(--marginDesktop);
-            li {
-                gap: var(--gabDesktop);
-                padding: var(--paddingDesktop);
-            }
+            margin: var(--marginDesktop) 0;
+            padding-top: var(--marginDesktop);
         }
     }
 
-    #book_form h2 {
-        font-size: var(--headerSizeDesktop);
-        margin-top: var(--marginDesktop);
-    }
-    #book_form h3, #new_books h3  {
-        font-size: var(--fontSizeDesktop);
-        margin: var(--marginDesktop) 0;
-        padding-top: var(--paddingDesktop);
-    }
-
+/*-------------- Section 2 - Added books --------------*/
     #new_books {
         ul {
-            margin-left: var(--marginDesktop);
             font-size: var(--fontSizeDesktop);
             margin: var(--marginDesktop) 0 0 var(--marginDesktop);
             padding-bottom: var(--paddingDesktop);
             li {
-                /* margin-left: var(--marginDesktop); */
-                padding-left: 0;
+                margin-left: var(--marginDesktop);
+                padding-left: 0;            
             }
         }
         h3 {
-            margin: 0 0 0 var(--marginDesktop);
+            font-size: var(--fontSizeDesktop);
+            margin-left: var(--marginDesktop);
+            padding: var(--marginDesktop) 0 0 var(--marginDesktop);
+        }
+    }
+
+/*-------------- Section 3 - Personal information --------------*/
+    #admin {
+        ul {
+            font-size: var(--fontSizeDesktop);
+            margin: var(--marginDesktop) 0 0 var(--marginDesktop);
         }
     }
 }
 
+
+/* Display hidden */
 #book_form.hidden,
 #new_books.hidden,
 #admin.hidden {

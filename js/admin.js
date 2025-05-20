@@ -1,16 +1,12 @@
-// import { BASE_URL } from './info.js';
-// import { handleError } from './api.js';
 
-// Tjek admin-adgang
+// Tjek om der er admin-adgang
 const isAdmin = sessionStorage.getItem('book_app_user_is_admin') === 'true';
 if (!isAdmin) {
     alert('You don´t have access to the adminpanel.');
     window.location.href = 'index.html';
 }
 
-
-
-// === FORFATTER (localStorage) ===
+// Author (localstorage)
 const authorForm = document.getElementById('addAuthorForm');
 authorForm?.addEventListener('submit', e => {
     e.preventDefault();
@@ -32,10 +28,10 @@ authorForm?.addEventListener('submit', e => {
 
     renderAuthors(); 
     authorForm.reset();
-    alert('Author saved locally');
+    alert('Author saved successfully');
 });
 
-// === BOG (localStorage) ===
+// Book (localstorage)
 const bookForm = document.getElementById('addBookForm');
 bookForm?.addEventListener('submit', e => {
     e.preventDefault();
@@ -47,18 +43,20 @@ bookForm?.addEventListener('submit', e => {
     return;
     }
 
+    // Hent eksisterende eller opret nyt array
     const storedBooks = localStorage.getItem('books');
     const books       = storedBooks ? JSON.parse(storedBooks) : [];
 
+    // Tilføj og gem
     books.push({ title });
     localStorage.setItem('books', JSON.stringify(books));
 
     renderBooks();
     bookForm.reset();
-    alert('Booktitle saved locally');
+    alert('Booktitle saved successfully');
 });
 
-// === FORLAG (localStorage) ===
+// Publisher (localstorage)
 const publisherForm = document.getElementById('addPublisherForm');
 publisherForm?.addEventListener('submit', e => {
     e.preventDefault();
@@ -70,108 +68,20 @@ publisherForm?.addEventListener('submit', e => {
     return;
     }
 
+    // Hent eksisterende eller opret nyt array
     const storedPublishers = localStorage.getItem('publishers');
     const publishers       = storedPublishers ? JSON.parse(storedPublishers) : [];
 
+    // Tilføj og gem
     publishers.push({ name });
     localStorage.setItem('publishers', JSON.stringify(publishers));
 
     renderPublishers(); 
     publisherForm.reset();
-    alert('Publisher saved locally');
+    alert('Publisher saved successfully');
 });
 
-// === FORFATTER ===
-// const authorForm = document.getElementById('addAuthorForm');
-// authorForm.addEventListener('submit', async (e) => {
-//     e.preventDefault();
-//     const name = authorForm.name.value.trim();
-
-//     try {
-//     const response = await fetch(`${BASE_URL}/authors`, {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-
-//         body: JSON.stringify({ name }),
-//     });
-
-//     if (response.ok) {
-//         alert('Forfatter tilføjet!');
-//         authorForm.reset();
-    
-//     } else {
-//         handleError(response, 'Kunne ikke tilføje forfatter.');
-//     }
-
-//     } catch (err) {
-//     console.error(err);
-//     alert('Netværksfejl ved tilføjelse af forfatter.');
-//     }
-// });
-
-// === BOG ===
-// const bookForm = document.getElementById('addBookForm');
-// bookForm.addEventListener('submit', async (e) => {
-//     e.preventDefault();
-//     const title = bookForm.title.value.trim();
-
-//     try {
-//     const response = await fetch(`${BASE_URL}/books`, {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-
-//         body: JSON.stringify({ title }),
-//     });
-
-//     if (response.ok) {
-//         alert('Bog tilføjet!');
-//         bookForm.reset();
-
-//     } else {
-//         handleError(response, 'Kunne ikke tilføje bog.');
-//     }
-
-//     } catch (err) {
-//     console.error(err);
-//     alert('Netværksfejl ved tilføjelse af bog.');
-//     }
-// });
-
-// === FORLAG ===
-// const publisherForm = document.getElementById('addPublisherForm');
-// publisherForm.addEventListener('submit', async (e) => {
-//     e.preventDefault();
-//     const name = publisherForm.name.value.trim();
-
-//     try {
-//     const response = await fetch(`${BASE_URL}/publishers`, {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-        
-//         body: JSON.stringify({ name }),
-//     });
-
-//     if (response.ok) {
-//         alert('Forlag tilføjet!');
-//         publisherForm.reset();
-    
-//     } else {
-//         handleError(response, 'Kunne ikke tilføje forlag.');
-//     }
-    
-// } catch (err) {
-//     console.error(err);
-//     alert('Netværksfejl ved tilføjelse af forlag.');
-//     }
-// });
-
-// === LOG UD ===
+// Log ud
 const logoutBtnUser = document.querySelector('#logoutBtnUser');
 const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
 
@@ -184,7 +94,7 @@ const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
     });
 });
 
-// === HENT BRUGERDATA ===
+// Hent brugerdata
 const userId = sessionStorage.getItem('book_app_user_id');
 const token = sessionStorage.getItem('book_app_user_token');
 
@@ -200,7 +110,7 @@ fetch(`http://127.0.0.1:5555/users/${userId}`, {
 })
 
 .then(res => {
-    if (!res.ok) throw new Error('Brugerdata kunne ikke hentes');
+    if (!res.ok) throw new Error('Userdata could not be fetched');
     return res.json();
 })
 
@@ -214,12 +124,11 @@ fetch(`http://127.0.0.1:5555/users/${userId}`, {
 })
 
 .catch(err => {
-    console.error('Fejl ved indlæsning af brugerdata:', err);
-    alert('Der opstod en fejl under hentning af din profilinformation.');
+    console.error('Error loading user data:', err);
+    alert('An error occurred while retrieving your profile information.');
 });
 
-// --- NY KODE: RENDER-FUNKTIONER TIL AT VISE LOCALSTORAGE ---
-
+// Render-funktioner til at vise gemt localstorage på siden
 function renderAuthors() {
     const list  = document.getElementById('authorsList');
     const data  = JSON.parse(localStorage.getItem('authors') || '[]');
@@ -244,7 +153,7 @@ function renderPublishers() {
         .join('');
     }
 
-  // Kald render-funktionerne, når siden indlæses
+  // Kalder render-funktionerne, når siden indlæses
 document.addEventListener('DOMContentLoaded', () => {
     renderAuthors();
     renderBooks();
@@ -252,6 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+// Fjern / tilføj display none ved klik i den venstre navigation
 document.getElementById('add_books').onclick = () => {
     document.getElementById('book_form').classList.remove('hidden');
     document.getElementById('new_books').classList.add('hidden');
