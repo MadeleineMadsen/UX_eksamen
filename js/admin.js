@@ -1,3 +1,5 @@
+import { BASE_URL } from './info.js';
+import { handleError } from './api.js';
 
 // Tjek om der er admin-adgang
 const isAdmin = sessionStorage.getItem('book_app_user_is_admin') === 'true';
@@ -8,7 +10,7 @@ if (!isAdmin) {
 
 // Author (localstorage)
 const authorForm = document.getElementById('addAuthorForm');
-authorForm?.addEventListener('submit', e => {
+authorForm?.addEventListener('submit', async e => {
     e.preventDefault();
 
     const input = authorForm.querySelector('input[name="first_name"]');
@@ -33,7 +35,7 @@ authorForm?.addEventListener('submit', e => {
 
 // Book (localstorage)
 const bookForm = document.getElementById('addBookForm');
-bookForm?.addEventListener('submit', e => {
+bookForm?.addEventListener('submit', async e => {
     e.preventDefault();
 
     const input = bookForm.querySelector('input[name="title"]');
@@ -58,7 +60,7 @@ bookForm?.addEventListener('submit', e => {
 
 // Publisher (localstorage)
 const publisherForm = document.getElementById('addPublisherForm');
-publisherForm?.addEventListener('submit', e => {
+publisherForm?.addEventListener('submit', async e => {
     e.preventDefault();
 
     const input = publisherForm.querySelector('input[name="name"]');
