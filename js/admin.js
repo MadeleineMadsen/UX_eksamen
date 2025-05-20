@@ -1,4 +1,3 @@
-
 // Tjek om der er admin-adgang
 const isAdmin = sessionStorage.getItem('book_app_user_is_admin') === 'true';
 if (!isAdmin) {
