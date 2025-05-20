@@ -30,7 +30,7 @@
     }
 }
 
-#my_books, #user_info {
+#user_info {
     h1 {
         font-family: var(--fontTitles);
         text-align: center;
@@ -197,7 +197,7 @@
         }
     }
     
-    #my_books, #user_info {
+    #user_info {
         h1 {
             text-align: left;
             margin: var(--remDesktop);

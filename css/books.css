@@ -4,10 +4,8 @@
 @import 'card.css';
 
 main {
-    padding-top: var(--heightNav);
     padding-bottom: var(--heightFooter);
 }
-
 
 #book-list {
     display: grid;
@@ -111,7 +109,7 @@ main {
     position: relative;
     width: 90%;
     max-width: 360px;
-    margin: 1rem auto 0.5rem;
+    margin: var(--heightNav) auto 0.5rem;
 }
 
 .search-section input[type="search"] {
