@@ -192,7 +192,7 @@ function showPopup(book) {
         <p><strong>Year:</strong> ${publishing_year}</p>
         <p><strong>Publisher:</strong> ${publishing_company}</p>
 
-        <h4>Lånehistorik</h4>
+        <p><strong>Lånehistorik:</strong></p>
         <ul class="loan-history"></ul>
 
         <button type="button" class="btn--loan">Loan</button>

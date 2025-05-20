@@ -56,26 +56,45 @@ cursor: pointer;
 .popup-info {
     margin-top: 3rem;
 
-    h3 {
-        font-family: var(--fontTitles);
-        font-size: var(--headerSizeMobile);
-    }
-
     p {
         font-family: var(--fontText);
         font-size: var(--fontSizeMobile);
+        margin-bottom: 0.5rem ;
     }
 }
 
+.loan-history {
+    list-style: disc;
+    max-height: 200px;
+    overflow-y: auto;        /* Scrollbar hvis nødvendigt */
+    padding-left: 1.5rem;
+    padding-right: var(--remMobile);   /* Plads til scrollbar */
+    margin: var(--remDesktop) 0;
+}
+
+.loan-history li {
+    position: relative;
+    padding-left: var(--remMobile);
+    margin-bottom: var(--remMobile);
+}
+
+
 .popup-info .btn--loan {
-    display: inline-block;    
-    padding: 0.2rem 1rem;
+    font-family: var(--fontText);
+    min-width: 30%;
+    padding: var(--remMobile);
     background: var(--colorAccent1);
-    color: var(--colorText);
-    text-decoration: none;    /* fjern understregning */
+    color: var(--colorSecondary);
+    border: none;
     border-radius: var(--buttonRadius);
+    box-shadow: var(--shadowOuter);
     cursor: pointer;
-    margin-top: var(--remDesktop);
+    transition: transform 0.1s ease;
+    margin-top: auto;
+}
+
+.popup-info .btn--loan:hover {
+    transform: scale(1.1);
 }
 
 button.close {
