@@ -82,10 +82,13 @@ function renderBooks(books, container) {
   container.innerHTML = '';
 
   books.forEach(book => {
-    const { book_id, title, cover } = book;
+    const { book_id, title, author, cover } = book;
     const card = document.createElement('article');
     card.className      = 'book-card';
     card.dataset.bookId = book_id;
+    card.dataset.title = title;
+    card.dataset.author = author;
+    const imgSrc = cover || DEFAULT_COVER;
     card.innerHTML      = `
       <div class="book-image">
         <img
@@ -177,7 +180,7 @@ function showPopup(book) {
       <div class="popup-image">
         <img
           src="${imgSrc}"
-          alt="Bookcover of ${title}"
+          alt="Forside af ${title}"
           onerror="this.src='${DEFAULT_COVER}'"
         />
       </div>
@@ -198,9 +201,15 @@ function showPopup(book) {
   `;
 
   // Bind luk‐knap
-  dialog.querySelector('.close')
-        .addEventListener('click', handleCloseDialogButton);
-
+  dialog.querySelectorAll('.close')
+        .forEach(el => el.addEventListener('click', handleCloseDialogButton));
+   // Lån-bog redirect + luk
+  dialog.querySelector('.btn--loan').addEventListener('click', e => {
+    // Luk dialogen
+    handleCloseDialogButton.call(e.currentTarget);
+    // Navigate til login (tilpas stien hvis nødvendigt)
+    window.location.href = 'login.html';
+  });
   // Fyld historik
   const historyEl = dialog.querySelector('.loan-history');
   if (Array.isArray(loans) && loans.length) {
@@ -214,7 +223,7 @@ function showPopup(book) {
       });
   } else {
     const li = document.createElement('li');
-    li.textContent = 'Ingen lånehistorik for denne bog.';
+    
     historyEl.appendChild(li);
   }
 
