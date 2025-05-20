@@ -189,9 +189,10 @@ function showPopup(book) {
         <p><strong>Publisher:</strong> ${publishing_company}</p>
 
         ${isAdmin ? `
-          <h4>Loanhistorik</h4>
+          <p><strong>Loan history:</strong></p>
           <ul class="loan-history"></ul>
         ` : ''}
+
 
         <!-- Knappen vises for alle ikke-admin, men opfører sig forskelligt -->
         ${!isAdmin ? `<button type="button" class="btn--loan">Loan</button>` : ''}

@@ -44,6 +44,14 @@
     box-shadow: var(--shadowInner);
 }
 
+/* Error-besked på både login og sidnup */
+#error {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--colorAccent3);
+    margin-bottom: var(--remDesktop);
+}
+
 
 /*-------------- Log in form??????? --------------*/
 .login-form > header {
@@ -138,20 +146,14 @@
     }
 }
 
-
 /*-------------- Sign up --------------*/
-.MainSignup {
-    padding-top: var(--heightNav);
-    padding-bottom: var(--heightFooter);
-}
 
 .signup-form {
     background: var(--colorPrimary);
     border-radius: var(--cardRadius);
     width: 90%;
     max-width: 600px;
-    margin: 0 auto;
-    margin-bottom: var(--remDesktop);
+    margin: 5rem auto 9rem auto;
     padding: 2rem;
     box-shadow: var(--shadowOuter);
     overflow: hidden;
