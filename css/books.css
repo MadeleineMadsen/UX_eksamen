@@ -12,9 +12,9 @@ main {
 #book-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--gabDesktop);
+    gap: var(--remDesktop);
     padding-inline: 2rem;
-    margin: var(--marginDesktop) auto;
+    margin: var(--remDesktop) auto;
     padding-top: 5rem;
 }
   /* Sørger for centreret overskrift med god afstand */
@@ -34,7 +34,7 @@ main {
     #book-list {
     grid-template-columns: repeat(6, minmax(180px, 1fr));
     padding-inline: 4rem;
-    max-width: calc((180px * 6) + (var(--marginDesktop) * 12)); /* 5 kort + 4 mellemrum */
+    max-width: calc((180px * 6) + (var(--remDesktop) * 12)); /* 5 kort + 4 mellemrum */
     margin: auto;
     }
 }
@@ -50,7 +50,7 @@ main {
     width: 100%;
     max-width: 180px; /* matcher min-width fra grid’en */
     margin: auto;
-    padding: 1rem;
+    padding: var(--remDesktop);
     height: 100%;
 }
 
@@ -60,7 +60,7 @@ main {
     aspect-ratio: 2/3;
     overflow: hidden;
     border-radius: var(--cardRadius);
-    margin-top: var(--marginMobile);
+    margin-top: var(--remMobile);
 }
 .book-card .book-image img {
     width: 100%;
@@ -72,14 +72,14 @@ main {
 }
 
 .book-card .book-title {
-    margin: var(--marginMobile) var(--marginDesktop) 0;
+    margin: var(--remMobile) var(--remDesktop) 0;
     font-family: var(--fontTitles);
     font-size: var(--fontSizeMobile);
     text-align: center;
     min-height: 3rem;
 }
 .book-card .book-author {
-    margin: 0 var(--marginDesktop) var(--marginMobile);
+    margin: 0 var(--remDesktop) var(--remMobile);
     font-size: 0.9rem;
     text-align: center;
     color: var(--colorText);
@@ -89,9 +89,9 @@ main {
 .book-card .btn--book-info {
     font-family: var(--fontText);
     min-width: 10%;
-    padding: 1rem 1rem;
-    margin: 0 var(--marginDesktop) var(--marginDesktop);
-    padding: 0.5rem;
+    padding: var(--remDesktop);
+    margin: 0 var(--remDesktop) var(--remDesktop);
+    padding: var(--remMobile);
     background: var(--colorAccent1);
     color: var(--colorSecondary);
     border: none;
@@ -116,7 +116,7 @@ main {
 
 .search-section input[type="search"] {
     width: 100%;
-    padding: 1rem;
+    padding: var(--remDesktop);
     border: none;
     border-radius: var(--buttonRadius);
     font-family: var(--fontText);

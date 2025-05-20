@@ -5,8 +5,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.5rem;
-    padding: var(--paddingMobile);
+    gap: var(--remMobile);
+    padding: var(--remMobile);
     font-family: var(--fontText);
     
     & > button {
@@ -30,20 +30,20 @@
     display: grid;
     grid-template-columns: 1fr;
     font-family: var(--fontText);
-    padding: 0 var(--paddingMobile) 4rem var(--paddingMobile);
+    padding: 0 var(--remMobile) 4rem var(--remMobile);
     margin: 0 auto;
-    gap: var(--gabMobile);
+    gap: var(--remMobile);
     
     .author-group {
         background: transparent;
         border: none;
-        padding: var(--paddingMobile);
+        padding: var(--remMobile);
         
         /* Overskrift */
         h2 {
             font-family: var(--fontTitles);
             font-size: 1.2rem; /* rettes til samme variabel som h2 på andre sider */
-            margin-bottom: var(--marginMobile);
+            margin-bottom: var(--remMobile);
         }
         
         ul {
@@ -53,10 +53,10 @@
             
           /* 2 kolonner på mobil */
             column-count: 2;
-            column-gap: var(--gabMobile);
+            column-gap: var(--remMobile);
             
             li {
-                margin-bottom: var(--marginMobile);
+                margin-bottom: var(--remMobile);
                 font-size: 0.9rem;
                 line-height: 1.4;
                 color: var(--colorText);
@@ -80,21 +80,21 @@
     }
     #author-list {
         margin-top: 2rem;
-        padding: 0 var(--paddingDesktop);
-        gap: var(--gabDesktop);
+        padding: 0 var(--remDesktop);
+        gap: var(--remDesktop);
         justify-items: space-around;
         width: 64%;
         .author-group {
             padding: 0;
             h2 {
-                padding-left: var(--paddingDesktop);
+                padding-left: var(--remDesktop);
                 font-size: 1.4rem; /* rettes til samme variabel som h2 på andre sider */
             }
             ul {
                 column-count: 4;
-                column-gap: var(--gabDesktop);
+                column-gap: var(--remDesktop);
                 li {
-                    padding: 0 var(--paddingDesktop);
+                    padding: 0 var(--remDesktop);
                 }
             }
         }

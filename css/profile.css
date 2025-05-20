@@ -5,21 +5,21 @@
 #user_nav {
     font-family: var(--fontText);
     font-size: var(--fontSizeMobile);
-    margin: var(--marginMobile);
+    margin: var(--remMobile);
     border-bottom: solid thin var(--colorSecondary);
     
     h3 {
         font-family: var(--fontTitles);
-        margin: var(--marginMobile);
+        margin: var(--remMobile);
     }
 
     ul {
         list-style-type: none;
-        margin-bottom: var(--marginMobile);
-        margin-left: var(--marginMobile);
+        margin-bottom: var(--remMobile);
+        margin-left: var(--remMobile);
         
         li {
-            margin: var(--marginMobile) 0;
+            margin: var(--remMobile) 0;
             
             a {
                 display: inline-block;
@@ -35,8 +35,8 @@
         font-family: var(--fontTitles);
         text-align: center;
         font-size: var(--headerSizeMobile);
-        margin: var(--marginMobile);
-        padding-top: var(--paddingMobile);
+        margin: var(--remMobile);
+        padding-top: var(--remMobile);
     }
 
     p {
@@ -45,13 +45,13 @@
 }
 
 #user_info {
-    padding-top:  var(--paddingSiteTop);
-    padding-bottom: var(--paddingSiteBottom);
+    padding-top: 2rem;
+    padding-bottom: 6rem;
     margin: auto;
 
     header {
         text-align: left;
-        margin-left: var(--marginDesktop);
+        margin-left: var(--remDesktop);
 
         h1 {
             margin: 0;
@@ -70,7 +70,7 @@
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
-        padding: 1rem 1rem;
+        padding: var(--remDesktop);
     }
 
     fieldset {
@@ -98,7 +98,7 @@
     .form-group {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: var(--remMobile);
 
         label {
             font-size: 0.9rem;
@@ -109,7 +109,7 @@
 
         input {
             font-family: var(--fontText);
-            padding: 1rem;
+            padding: var(--remDesktop);
             border: none;
             border-radius: var(--buttonRadius);
             background: var(--colorPrimary);
@@ -133,8 +133,8 @@
         font-family: var(--fontText);
         display: inline-block;
         min-width: 10%;
-        padding: 1rem 1rem;
-        margin-top: var(--marginDesktop);
+        padding: 1rem 1.5rem;
+        margin-top: var(--remDesktop);
         font-weight: bold;
         border-radius: var(--buttonRadius);
         box-shadow: var(--shadowOuter);
@@ -172,13 +172,13 @@
             position: fixed;
             font-size: var(--fontSizeDesktop);
             grid-column: 1;
-            padding-right: var(--paddingDesktop);
+            padding-right: var(--remDesktop);
             border-right: solid thin var(--colorSecondary);
             border-bottom: none;
             min-height: calc(100vh - var(--heightNav) - var(--heightFooter));
             
             h3 {
-                margin-top: var(--marginDesktop);
+                margin-top: var(--remDesktop);
                 margin-left: 0;
             }
             
@@ -200,7 +200,7 @@
     #my_books, #user_info {
         h1 {
             text-align: left;
-            margin: var(--marginDesktop);
+            margin: var(--remDesktop);
             font-size: var(--headerSizeDesktop);
         }
     }
@@ -231,7 +231,7 @@
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
-            padding: 1rem 2rem;
+            padding: var(--remDesktop);
         }
 
         fieldset {
@@ -259,7 +259,7 @@
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: var(--remMobile);
 
             label {
                 font-size: 0.9rem;
@@ -269,7 +269,7 @@
             }
 
             input {
-                padding: 1rem;
+                padding: var(--remDesktop);
                 border: none;
                 border-radius: var(--buttonRadius);
                 background: var(--colorPrimary);
@@ -292,8 +292,8 @@
         .btnDelete {
             display: inline-block;
             min-width: 10%;
-            padding: 1rem 1rem;
-            margin-top: var(--marginDesktop);
+            padding: 1rem 1.5rem;
+            margin-top: var(--remDesktop);
             font-weight: bold;
             border-radius: var(--buttonRadius);
             box-shadow: var(--shadowOuter);

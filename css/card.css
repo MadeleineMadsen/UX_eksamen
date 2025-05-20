@@ -6,7 +6,7 @@
 #recipe-list {
     article {
         font-family: var(--fontText);
-        margin-bottom: var(--marginDesktop);
+        margin-bottom: var(--remDesktop);
         border-top: solid thin var(--colorSecondary);
 
         h2 {
@@ -22,11 +22,11 @@
         }
         
         div:has(.pill) {
-            margin-top: var(--marginMobile);
+            margin-top: var(--remMobile);
             text-align: center;
             .pill {
                 display: inline-block;
-                padding: 0 1rem;
+                padding: 0 var(--remDesktop);
                 border-radius: var(--cardRadius);
                 color: var(--colorPrimary);
                 background-color: var(--colorPrimary);
@@ -38,7 +38,7 @@
     @media (min-width: 560px) {
         display: flex;
         flex-flow: row wrap;
-        column-gap: 1rem;
+        column-gap: var(--remDesktop);
         max-width: calc((var(--cardWidth) * 3) + (1rem * 2));
         margin: auto;
 

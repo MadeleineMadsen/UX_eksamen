@@ -38,7 +38,7 @@ nav#main {
         
         li {
             list-style-type: none;
-            padding: 0 0.5rem;
+            padding: 0 var(--remMobile);
             display: flex;
             align-items: center;
             cursor: pointer;
@@ -52,7 +52,7 @@ nav#main {
         }
 
         button {
-            padding: 0 0.5rem;
+            padding: 0 var(--remMobile);
         }
 
         #main_nav {
@@ -87,7 +87,7 @@ nav#main {
 
 /* Main mobile */
 main {
-    margin: 0 var(--marginMobile);
+    margin: 0 var(--remMobile);
 }
 
 /* Footer mobile */
@@ -95,7 +95,7 @@ footer {
     bottom: 0;
     width: 100%;
     position: fixed;
-    padding: 1rem 0;
+    padding: var(--remDesktop) 0;
     color: var(--colorText);
     border-top: solid thin var(--colorSecondary);
     text-align: center;
@@ -116,7 +116,7 @@ footer {
             font-size: var(--fontSizeDesktop);
             
             li {
-                padding: 0 1rem;
+                padding: 0 var(--remDesktop);
                 
                 a:hover {
                     text-decoration: underline;
@@ -125,14 +125,14 @@ footer {
             }
 
             button {
-                padding: 0 1rem;
+                padding: 0 var(--remDesktop);
             }
         }
 
         .logo {
             width: 3.1rem;
             height: 3.1rem;
-            margin-right: var(--marginDesktop);
+            margin-right: var(--remDesktop);
             }
 
         .icon {
@@ -152,6 +152,6 @@ footer {
 
     /* Main desktop */
 main {
-    margin: 0 var(--marginDesktop);
+    margin: 0 var(--remDesktop);
 }
 }

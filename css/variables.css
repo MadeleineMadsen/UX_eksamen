@@ -40,17 +40,9 @@
     /* Buttons */
     --buttonRadius: 2rem;
 
-    /* Margin */
-    --marginDesktop: 1rem;
-    --marginMobile: 0.5rem;
-
-    /* Padding */
-    --paddingDesktop: 1rem;
-    --paddingMobile: 0.5rem;
-
-    /* Gab */
-    --gabDesktop: 1rem;
-    --gabMobile: 0.5rem;
+    /* Til margin, padding og gap */
+    --remDesktop: 1rem;
+    --remMobile: 0.5rem;
 
     /* Højde nav / footer */
     --heightNav: 4rem;

@@ -7,21 +7,21 @@
 #admin_nav {
     font-family: var(--fontText);
     font-size: var(--fontSizeMobile);
-    margin: var(--marginMobile);
+    margin: var(--remMobile);
     border-bottom: solid thin var(--colorSecondary);
 
     h3 {
         font-family: var(--fontTitles);
-        margin: var(--marginMobile);
+        margin: var(--remMobile);
     }
 
     ul {
         list-style-type: none;
-        margin-bottom: var(--marginMobile);
-        margin-left: var(--marginMobile);
+        margin-bottom: var(--remMobile);
+        margin-left: var(--remMobile);
         
         li {
-            margin: var(--marginMobile) 0;
+            margin: var(--remMobile) 0;
             
             a {
                 display: inline-block;
@@ -38,8 +38,8 @@
         font-family: var(--fontTitles);
         text-align: center;
         font-size: var(--headerSizeMobile);
-        margin: var(--marginMobile);
-        padding-top: var(--paddingMobile);
+        margin: var(--remMobile);
+        padding-top: var(--remMobile);
     }
 }
 
@@ -54,13 +54,13 @@
 #book_form h2 {
     font-family: var(--fontTitles);
     font-size: var(--headerSizeMobile);
-    margin: var(--marginMobile);
+    margin: var(--remMobile);
 }
 #book_form h3 {
     font-family: var(--fontText);
     font-size: var(--fontSizeMobile);
-    margin: var(--marginMobile);
-    padding: var(--paddingMobile);
+    margin: var(--remMobile);
+    padding: var(--remMobile);
     justify-self: self-start;
 }
 
@@ -70,17 +70,17 @@
         font-family: var(--fontText);
         font-size: var(--fontSizeMobile);
         list-style-type: none;
-        margin-top: var(--marginMobile);
+        margin-top: var(--remMobile);
         li {
-            margin-left: var(--marginMobile);
-            padding-left: var(--marginMobile);
+            margin-left: var(--remMobile);
+            padding-left: var(--remMobile);
         }
     }
     h3 {
         font-family: var(--fontText);
         font-size: var(--fontSizeMobile);
-        margin: var(--marginMobile);
-        padding: var(--marginMobile);
+        margin: var(--remMobile);
+        padding: var(--remMobile);
     }
 }
 
@@ -90,10 +90,10 @@
         font-family: var(--fontText);
         font-size: var(--fontSizeMobile);
         list-style-type: none;
-        margin-top: var(--marginMobile);
+        margin-top: var(--remMobile);
         li {
-            margin: var(--marginMobile);
-            padding: var(--marginMobile);
+            margin: var(--remMobile);
+            padding: var(--remMobile);
         }
     }
 }
@@ -110,12 +110,12 @@
             position: fixed;
             font-size: var(--fontSizeDesktop);
             grid-column: 1;
-            padding-right: var(--paddingDesktop);
+            padding-right: var(--remDesktop);
             border-right: solid thin var(--colorSecondary);
             border-bottom: none;
             min-height: calc(100vh - var(--heightNav) - var(--heightFooter));
             h3 {
-                margin-top: var(--marginDesktop);
+                margin-top: var(--remDesktop);
                 margin-left: 0;
             }
             ul {
@@ -135,7 +135,7 @@
     #book_form, #admin, #new_books {
         h1 {
             text-align: left;
-            margin: var(--marginDesktop);
+            margin: var(--remDesktop);
             font-size: var(--headerSizeDesktop);
         }
     }
@@ -146,12 +146,12 @@
         display: inline-block;
         h2 {
             font-size: var(--headerSizeDesktop);
-            margin-top: var(--marginDesktop);
+            margin-top: var(--remDesktop);
         }
         h3 {
             font-size: var(--fontSizeDesktop);
-            margin: var(--marginDesktop) 0;
-            padding-top: var(--marginDesktop);
+            margin: var(--remDesktop) 0;
+            padding-top: var(--remDesktop);
         }
     }
 
@@ -159,17 +159,17 @@
     #new_books {
         ul {
             font-size: var(--fontSizeDesktop);
-            margin: var(--marginDesktop) 0 0 var(--marginDesktop);
-            padding-bottom: var(--paddingDesktop);
+            margin: var(--remDesktop) 0 0 var(--remDesktop);
+            padding-bottom: var(--remDesktop);
             li {
-                margin-left: var(--marginDesktop);
+                margin-left: var(--remDesktop);
                 padding-left: 0;            
             }
         }
         h3 {
             font-size: var(--fontSizeDesktop);
-            margin-left: var(--marginDesktop);
-            padding: var(--marginDesktop) 0 0 var(--marginDesktop);
+            margin-left: var(--remDesktop);
+            padding: var(--remDesktop) 0 0 var(--remDesktop);
         }
     }
 
@@ -177,7 +177,7 @@
     #admin {
         ul {
             font-size: var(--fontSizeDesktop);
-            margin: var(--marginDesktop) 0 0 var(--marginDesktop);
+            margin: var(--remDesktop) 0 0 var(--remDesktop);
         }
     }
 }

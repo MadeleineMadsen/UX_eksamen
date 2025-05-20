@@ -14,7 +14,7 @@
     width: 90%;
     max-width: 400px;
     margin: 5rem auto;
-    padding: 1rem;
+    padding: var(--remDesktop);
     box-shadow: var(--shadowOuter);
     overflow: hidden;
 }
@@ -26,7 +26,7 @@
 #addPublisherForm input,
 .wide-form input {
     font-size: 1rem;
-    padding: 1rem;
+    padding: var(--remDesktop);
     border: none;
     border-radius: var(--buttonRadius);
     background: var(--colorPrimary);
@@ -53,7 +53,7 @@
 
 .icon-wrapper {
     width: 6rem; height: 6rem;
-    margin: 0 auto var(--marginMobile);
+    margin: 0 auto var(--remMobile);
     background: var(--colorPrimary);
     border-radius: 50%;
     box-shadow: var(--shadowOuter);
@@ -84,7 +84,7 @@
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--remMobile);
 }
 
 .form-group label {
@@ -100,7 +100,7 @@
 .wide-form input {
     font-family: var(--fontText);
     font-size: 1rem;
-    padding: 1rem;
+    padding: var(--remDesktop);
     border: none;
     border-radius: var(--buttonRadius);
     background: var(--colorPrimary);
@@ -120,8 +120,8 @@
 /* Login/signup - submit button */
 .btnSubmit {
     font-family: var(--fontText);
-    margin-top: var(--marginDesktop);
-    padding: 1rem;
+    margin-top: var(--remDesktop);
+    padding: var(--remDesktop);
     background: var(--colorAccent1);
     color: var(--colorSecondary);
     font-weight: bold;
@@ -151,7 +151,7 @@
     width: 90%;
     max-width: 600px;
     margin: 0 auto;
-    margin-bottom: var(--marginDesktop);
+    margin-bottom: var(--remDesktop);
     padding: 2rem;
     box-shadow: var(--shadowOuter);
     overflow: hidden;
@@ -164,7 +164,7 @@
 
 .icon-wrapper {
     width: 6rem; height: 6rem;
-    margin: 0 auto var(--marginMobile);
+    margin: 0 auto var(--remMobile);
     background: var(--colorPrimary);
     border-radius: 50%;
     box-shadow: var(--shadowOuter);
@@ -209,7 +209,7 @@
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--remMobile);
 }
 
 .form-group label {
@@ -219,7 +219,7 @@
 }
 
 .signup-form input {
-    padding: 1rem;
+    padding: var(--remDesktop);
     border: none;
     font-family: var(--fontText);
     border-radius: var(--buttonRadius);
@@ -256,15 +256,15 @@
 #addAuthorForm, 
 #addBookForm, 
 #addPublisherForm {
-    margin: 0 var(--marginMobile);
-    padding: 1rem;
+    margin: 0 var(--remMobile);
+    padding: var(--remDesktop);
     width: 95%;
     }
 
 #addAuthorForm input, 
 #addBookForm input, 
 #addPublisherForm input {
-    padding: 1rem;
+    padding: var(--remDesktop);
     justify-content: center;
     align-items: center;
     width: 13.25rem;
@@ -275,7 +275,7 @@
     #addAuthorForm input, 
     #addBookForm input, 
     #addPublisherForm input {
-        padding: 1rem;
+        padding: var(--remDesktop);
         justify-content: center;
         align-items: center;
         width: 20rem;
