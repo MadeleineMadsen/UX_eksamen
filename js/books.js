@@ -211,7 +211,7 @@ function showPopup(book) {
       loans.sort((a,b)=>new Date(b.loan_date)-new Date(a.loan_date))
           .forEach(({user_id,loan_date})=>{
             const li=document.createElement('li');
-            li.textContent = `Bruger ${user_id} – ${new Intl.DateTimeFormat('da-DK').format(new Date(loan_date))}`;
+            li.textContent = `User ${user_id} – ${new Intl.DateTimeFormat('da-DK').format(new Date(loan_date))}`;
             historyEl.append(li);
           });
     } else {
