@@ -34,6 +34,7 @@ export async function loanBook(bookId) {
  */
 export const handleFetchCatchError = (error) => {
     const errorSection = document.createElement('section');
+    errorSection.setAttribute('role', 'alert');
     errorSection.innerHTML = `
     <header><h3>Error</h3></header>
     <p>Failed to load data</p>

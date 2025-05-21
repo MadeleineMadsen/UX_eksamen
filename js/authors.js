@@ -101,11 +101,45 @@ function showGroup(letter) {
     <ul>
         ${authors.map(a =>
         // ← ÆNDRET: tilføj data-author-id
-        `<li data-author-id="${a.id}">${a.name}</li>`
+        `<li role="button" tabindex="0" data-author-id="${a.id}" aria-label="Show books by ${a.name}">${a.name}</li>`
         ).join('')}
     </ul>
 `;
 listEl.append(section);
+
+// Tilføj tastaturhåndtering til hvert <li>
+section.querySelectorAll('li[data-author-id]').forEach(li => {
+    li.addEventListener('keydown', async e => {
+        if (e.key === 'Enter') {
+        const authorId = li.dataset.authorId;
+        const authorName = li.textContent.trim();
+
+        try {
+            const res = await fetch(`${BASE_URL}/books?a=${authorId}`);
+            const books = await handleAPIError(res);
+
+            const booksWithCover = await Promise.all(
+                books.map(async b => {
+                    try {
+                        const det = await handleAPIError(
+                            await fetch(`${BASE_URL}/books/${b.book_id}`)
+                        );
+                    
+                        return { ...b, cover: det.cover };
+                        } catch {
+                        return { ...b, cover: null };
+                        }
+                    })
+                );
+
+                showAuthorPopup(authorName, booksWithCover);
+
+                } catch (err) {
+                    handleFetchCatchError(err);
+                }
+            }
+        });
+    });
 }
 
 // Pop op ved klik på forfatter

@@ -47,7 +47,7 @@
 
 <main>
 
-    <div id="error" class="hidden">
+    <div id="error" class="hidden" role="alert" aria-live="assertive">
         <p id="errorText"></p>
     </div>
     
@@ -59,20 +59,22 @@
             <h2>Log in</h2>
         </header>
     
-        <form id="frmLogin">
+        <form id="frmLogin" aria-labelledby="login-title" aria-describedby="login-desc">
             <div class="form-group">
                 <label for="txtEmail">E-mail</label>
-                <input type="email" id="txtEmail" name="txtEmail" placeholder="you@example.com" required>
+                <input type="email" id="txtEmail" name="txtEmail" placeholder="you@example.com"
+                aria-required="true" aria-label="Email address" required>
             </div>
 
             <div class="form-group">
                 <label for="txtPassword">Password</label>
-                <input type="password" id="txtPassword" name="txtPassword" required>
+                <input type="password" id="txtPassword" name="txtPassword"
+                aria-required="true" aria-label="Password" required>
             </div>
 
-            <button type="submit" class="btnSubmit">Log in</button>
+            <button type="submit" class="btnSubmit" aria-label="Log in to your account">Log in</button>
 
-            <p class="login-link">
+            <p class="login-link" id="login-desc">
                 Don’t have an account?
                 <a href="signup.html">Sign up here</a>
             </p>

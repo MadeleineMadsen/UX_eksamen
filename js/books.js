@@ -88,17 +88,21 @@ function renderBooks(books, container) {
     card.dataset.bookId = book_id;
     card.dataset.title = title;
     card.dataset.author = author;
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-label', `Book: ${title} by ${author}`);
+
     const imgSrc = cover || DEFAULT_COVER;
     card.innerHTML      = `
       <div class="book-image">
         <img
           src="${imgSrc}"
           alt="Bookcover of ${title}"
+          aria-hidden="true"
           onerror="this.src='${DEFAULT_COVER}'"
         />
       </div>
       <h3 class="book-title">${title}</h3>
-      <button class="btn--book-info">See more</button>
+      <button class="btn--book-info" aria-label="See more information about ${title}">See more</button>
     `;
 
     const infoBtn = card.querySelector('.btn--book-info');
@@ -172,6 +176,9 @@ function showPopup(book) {
 
   const dialog = document.createElement('dialog');
   dialog.className = 'book-popup';
+  dialog.setAttribute('role', 'dialog');
+  dialog.setAttribute('aria-labelledby', 'popup-title');
+
   dialog.innerHTML = `
     <div class="popup-body">
       <div class="popup-image">
@@ -183,7 +190,7 @@ function showPopup(book) {
       </div>
       <div class="popup-info">
         <button class="close">&times;</button>
-        <h3>${title}</h3>
+        <h3 id="popup-title">${title}</h3>
         <p><strong>Author:</strong> ${author}</p>
         <p><strong>Year:</strong> ${publishing_year}</p>
         <p><strong>Publisher:</strong> ${publishing_company}</p>
@@ -195,7 +202,7 @@ function showPopup(book) {
 
 
         <!-- Knappen vises for alle ikke-admin, men opfører sig forskelligt -->
-        ${!isAdmin ? `<button type="button" class="btn--loan">Loan</button>` : ''}
+        ${!isAdmin ? `<button type="button" class="btn--loan" aria-label="Loan ${title} by ${author}">Loan</button>` : ''}
       </div>
     </div>
   `;

@@ -21,6 +21,8 @@ function showStatus(message, type = 'info') {
     const msg = document.createElement('div');
     msg.id = 'statusMessage';
     msg.textContent = message;
+    msg.setAttribute('role', 'alert');
+    msg.setAttribute('aria-live', 'polite');
     msg.style.padding = '1rem';
     msg.style.marginBottom = '1rem';
     msg.style.borderRadius = '8px';
