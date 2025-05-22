@@ -2,8 +2,8 @@
 
 @import 'style.css';
 
-
-#recipe-list {
+/* #recipe-list {
+    
     article {
         font-family: var(--fontText);
         margin-bottom: var(--remDesktop);
@@ -32,10 +32,10 @@
                 background-color: var(--colorPrimary);
             }
         }
-    }
+    } */
 
 /* Screen size */
-    @media (min-width: 560px) {
+    /* @media (min-width: 560px) {
         display: flex;
         flex-flow: row wrap;
         column-gap: var(--remDesktop);
@@ -49,4 +49,4 @@
             padding: 0 1rem 0.5rem 1rem;
         }
     }
-}
+} */

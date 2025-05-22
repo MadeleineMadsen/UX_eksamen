@@ -3,7 +3,9 @@
 @import 'style.css'; 
 @import 'card.css';
 
-dialog.book-popup, dialog.author-popup {
+/*-------------- Overall alle forms --------------*/
+.book-popup,
+.author-popup {
     width: 95%;
     padding:2rem ;
     
@@ -18,26 +20,21 @@ dialog.book-popup, dialog.author-popup {
     font-family: var(--fontText);
     color: var(--colorText);
     overflow: hidden;
-    
-}
-@media (min-width: 768px) {
-    dialog.book-popup{
-        padding:3rem;
-    }
-    
 }
 
 .popup-info-author .close,
 .popup-info .close {
-position: absolute;
-top: var(--remMobile);
-right: var(--remMobile);
-background: none;
-border: none;
-font-size: 1.5rem;
-color: var(--colorSecondary);
-cursor: pointer;
+    position: absolute;
+    top: var(--remMobile);
+    right: var(--remMobile);
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--colorSecondary);
+    cursor: pointer;
 }
+
+/*-------------- Book popup --------------*/
 
 .popup-body {
     display: grid;
@@ -46,24 +43,46 @@ cursor: pointer;
     padding: var(--remMobile);
     align-items: start;
     
-}
+    .popup-image img {
+        width: 90%;
+        height: auto;
+        border-radius: var(--cardRadius);
+    }
 
-.popup-image img {
-    width: 90%;
-    height: auto;
-    border-radius: var(--cardRadius);
-}
+    .popup-info {
+        margin-top: 3rem;
 
-.popup-info {
-    margin-top: 3rem;
+        p {
+            font-family: var(--fontText);
+            font-size: var(--fontSizeMobile);
+            margin-bottom: 0.5rem ;
+        }
 
-    p {
-        font-family: var(--fontText);
-        font-size: var(--fontSizeMobile);
-        margin-bottom: 0.5rem ;
+        .btn--loan {
+            font-family: var(--fontText);
+            min-width: 30%;
+            padding: var(--remMobile);
+            background: var(--colorAccent1);
+            color: var(--colorSecondary);
+            border: none;
+            border-radius: var(--buttonRadius);
+            box-shadow: var(--shadowOuter);
+            cursor: pointer;
+            transition: transform 0.1s ease;
+            margin-top: auto;
+        }
+
+        .btn--loan:hover {
+            transform: scale(1.1);
+        }
+
+        button.close {
+            margin-right: 0.6rem;
+        }
     }
 }
 
+/*-------------- Book popup - Låne historik (Kun for admin) --------------*/
 .loan-history {
     list-style: disc;
     max-height: 12.5rem;
@@ -71,48 +90,24 @@ cursor: pointer;
     padding-left: 1.5rem;
     padding-right: var(--remMobile);   /* Plads til scrollbar */
     margin: var(--remDesktop) 0;
+
+    li {
+        position: relative;
+        padding-left: var(--remMobile);
+        margin-bottom: var(--remMobile);
+    }
 }
 
-.loan-history li {
-    position: relative;
-    padding-left: var(--remMobile);
-    margin-bottom: var(--remMobile);
-}
+/*-------------- Author popup --------------*/
 
-
-.popup-info .btn--loan {
-    font-family: var(--fontText);
-    min-width: 30%;
-    padding: var(--remMobile);
-    background: var(--colorAccent1);
-    color: var(--colorSecondary);
-    border: none;
-    border-radius: var(--buttonRadius);
-    box-shadow: var(--shadowOuter);
-    cursor: pointer;
-    transition: transform 0.1s ease;
-    margin-top: auto;
-}
-
-.popup-info .btn--loan:hover {
-    transform: scale(1.1);
-}
-
-button.close {
-    margin-right: 0.6rem;
-}
-
-
-/* ─────────────────────────────────────────────────────────── */
 /* Cards i author-popup: grid med 3 kolonner og mindre størrelser */
-/* ─────────────────────────────────────────────────────────── */
 .book-by-author {
     li {
         list-style-type: none;
     }
 }
 
-dialog.author-popup {
+.author-popup {
     padding: 2rem;
     max-width: 50rem;
 
@@ -121,10 +116,7 @@ dialog.author-popup {
     }
 }
 
-
-  /* ─────────────────────────────────────────────────────────── */
-  /* Mobile (default): 2 kort på række */
-  /* ─────────────────────────────────────────────────────────── */
+/* Mobile (default): 2 kort på række */
 .author-popup .book-by-author {
     display: grid;
     grid-template-columns: repeat(3, 6.25rem);
@@ -133,45 +125,49 @@ dialog.author-popup {
     padding: var(--remMobile) 0;
 }
 
-.author-popup .book-item {
-    background: var(--colorPrimary);
-    border: thin solid var(--colorSecondary);
-    border-radius: var(--cardRadius);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: var(--remMobile);
-    width: 6.25rem;                 /* fast mobil-bredde */
-    margin: 0 auto;
-}
+.book-item {
+        background: var(--colorPrimary);
+        border: thin solid var(--colorSecondary);
+        border-radius: var(--cardRadius);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: var(--remMobile);
+        width: 6.25rem;                 /* fast mobil-bredde */
+        margin: 0 auto;
 
-.author-popup .book-cover {
-    width: 100%;
-    aspect-ratio: 2/3;
-    overflow: hidden;
-    border-radius: var(--cardRadius);
-}
+        .book-cover {
+            width: 100%;
+            aspect-ratio: 2/3;
+            overflow: hidden;
+            border-radius: var(--cardRadius);
 
-.author-popup .book-cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-}
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: top;
+            }
+        }
 
-.author-popup .book-title {
-    margin: var(--remMobile) 0 0;
-    font-family: var(--fontTitles);
-    font-size: 0.9rem;            /* mindre font på mobil */
-    text-align: center;
-    min-height: 2rem;             /* undgå forskellig højde */
-}
+        .book-title {
+            margin: var(--remMobile) 0 0;
+            font-family: var(--fontTitles);
+            font-size: 0.9rem;            /* mindre font på mobil */
+            text-align: center;
+            min-height: 2rem;    
+        }
+    }
 
-  /* ─────────────────────────────────────────────────────────── */
-  /* Tablet+ (≥768px): 3 kort på række, 140px brede */
-  /* ─────────────────────────────────────────────────────────── */
+/*-------------- Desktop --------------*/
+
+/* Tablet+ (≥768px): 3 kort på række, 140px brede */
 @media (min-width: 768px) {
+    .book-popup{
+        padding:3rem;
+    }
+
     .author-popup {
         width: fit-content;
     }

@@ -49,19 +49,14 @@
     display: grid;
     justify-items: center;
     grid-template-columns: 1fr;
-}
 
-#book_form h2 {
-    font-family: var(--fontTitles);
-    font-size: var(--headerSizeMobile);
-    margin: var(--remMobile);
-}
-#book_form h3 {
-    font-family: var(--fontText);
-    font-size: var(--fontSizeMobile);
-    margin: var(--remMobile);
-    padding: var(--remMobile);
-    justify-self: self-start;
+    h3 {
+        font-family: var(--fontText);
+        font-size: var(--fontSizeMobile);
+        margin: var(--remMobile);
+        padding: var(--remMobile);
+        justify-self: self-start;
+    }
 }
 
 /*-------------- Section 2 - Added books --------------*/
@@ -71,11 +66,13 @@
         font-size: var(--fontSizeMobile);
         list-style-type: none;
         margin-top: var(--remMobile);
+        
         li {
             margin-left: var(--remMobile);
             padding-left: var(--remMobile);
         }
     }
+
     h3 {
         font-family: var(--fontText);
         font-size: var(--fontSizeMobile);
@@ -91,6 +88,7 @@
         font-size: var(--fontSizeMobile);
         list-style-type: none;
         margin-top: var(--remMobile);
+        
         li {
             margin: var(--remMobile);
             padding: var(--remMobile);
@@ -98,8 +96,7 @@
     }
 }
 
-
-/* Desktop */
+/*-------------- Desktop --------------*/
 @media (min-width: 768px) {
 
 /* Overall & venstre navigation */
@@ -114,18 +111,22 @@
             border-right: solid thin var(--colorSecondary);
             border-bottom: none;
             min-height: calc(100vh - var(--heightNav) - var(--heightFooter));
+            
             h3 {
                 margin-top: var(--remDesktop);
                 margin-left: 0;
             }
+            
             ul {
                 margin-left: 0;
             }
+
             a:hover {
                 text-decoration: underline;
                 transform: scale(1.1);
             }
         }
+        
         section {
             grid-column: 2;
         }
@@ -144,10 +145,7 @@
     #book_form {
         margin: auto;
         display: inline-block;
-        h2 {
-            font-size: var(--headerSizeDesktop);
-            margin-top: var(--remDesktop);
-        }
+        
         h3 {
             font-size: var(--fontSizeDesktop);
             margin: var(--remDesktop) 0;
@@ -161,11 +159,13 @@
             font-size: var(--fontSizeDesktop);
             margin: var(--remDesktop) 0 0 var(--remDesktop);
             padding-bottom: var(--remDesktop);
+            
             li {
                 margin-left: var(--remDesktop);
                 padding-left: 0;            
             }
         }
+
         h3 {
             font-size: var(--fontSizeDesktop);
             margin-left: var(--remDesktop);
@@ -181,7 +181,6 @@
         }
     }
 }
-
 
 /* Display hidden */
 #book_form.hidden,
