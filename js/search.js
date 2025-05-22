@@ -65,31 +65,29 @@ suggContainer.addEventListener('click', async e => {
   if (!e.target.matches('li')) return;
   const bookId = e.target.dataset.id;
 
-  // luk dropdown
-  suggContainer.hidden = true; 
-
-  // evt. ryd input     
-  searchInput.value = '';            
+  suggContainer.hidden = true;
+  searchInput.value = '';
 
   try {
-
-    // genbruger popup-funktion
     const isAdmin = sessionStorage.getItem('book_app_user_is_admin') === 'true';
     const userId  = sessionStorage.getItem('book_app_user_id');
 
     let book;
     if (isAdmin) {
-      const res = await fetch(`${baseBookApiUrl}/admin/${userId}/books/${bookId}`, {
+      const res = await fetch(`${BASE_URL}/admin/${userId}/books/${bookId}`, {
         headers: tokenHeader()
       });
       book = await handleAPIError(res);
     } else {
-      const res = await fetch(`${baseBookApiUrl}/books/${bookId}`);
+      const res = await fetch(`${BASE_URL}/books/${bookId}`);
       const basic = await handleAPIError(res);
-      book = { ...basic, book_id: bookId, loans: [] }; // dummy loans for regular users
-    } // genbruger popup-funktion
-    showPopup(book);                 
+      book = { ...basic, book_id: bookId, loans: [] };
+    }
+
+    showPopup(book);
   } catch (err) {
     handleFetchCatchError(err);
   }
 });
+
+
