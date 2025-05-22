@@ -188,9 +188,9 @@
 
 .signup-form > header .sr-only {
     position: absolute;
-    left: -9999px;
-    width: 1px;
-    height: 1px;
+    left: -625rem;     /* -9999px ÷ 16 = -624.9375rem */
+    width: 0.0625rem;  /* 1px = 0.0625rem */
+    height: 0.0625rem; /* 1px = 0.0625rem */
     overflow: hidden;
 }
 
