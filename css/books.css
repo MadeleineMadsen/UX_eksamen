@@ -28,7 +28,7 @@ main {
 }
 
 
-@media (min-width: 48rem){
+@media (min-width:  768px){
     #book-list {
     grid-template-columns: repeat(auto-fit, minmax(11.25rem, 1fr));
     padding-inline: 4rem;

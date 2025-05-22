@@ -20,7 +20,7 @@ dialog.book-popup, dialog.author-popup {
     overflow: hidden;
     
 }
-@media (min-width: 48rem) {
+@media (min-width: 768px) {
     dialog.book-popup{
         padding:3rem;
     }
@@ -114,7 +114,7 @@ button.close {
 
 dialog.author-popup {
     padding: 2rem;
-    max-width: 800px;
+    max-width: 50rem;
 
     h3 {
         font-family: var(--fontTitles);
@@ -123,11 +123,11 @@ dialog.author-popup {
 
 
   /* ─────────────────────────────────────────────────────────── */
-  /* Mobile (default): 2 kort på række, 100px brede */
+  /* Mobile (default): 2 kort på række */
   /* ─────────────────────────────────────────────────────────── */
 .author-popup .book-by-author {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
+    grid-template-columns: repeat(3, 6.25rem);
     justify-content: center;      /* centrer hvis ekstra plads */
     gap: var(--remMobile);
     padding: var(--remMobile) 0;
@@ -142,7 +142,7 @@ dialog.author-popup {
     flex-direction: column;
     align-items: center;
     padding: var(--remMobile);
-    width: 100px;                 /* fast mobil-bredde */
+    width: 6.25rem;                 /* fast mobil-bredde */
     margin: 0 auto;
 }
 
