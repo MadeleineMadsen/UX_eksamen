@@ -14,71 +14,79 @@
     <nav id="main">
         <ul>
             <div id="main_nav">
-            <li>
-                <a href="/">
-                    <img class="logo" src="images/logo.svg" alt="Logo">
-                </a>
-            </li>
-            <li><a href="books.html" title="Authors">Books</a></li>
-            <li><a href="authors.html" title="Authors">Authors</a></li>
+                <li>
+                    <a href="/">
+                        <img class="logo" src="images/logo.svg" alt="Logo">
+                    </a>
+                </li>
+                <li><a href="books.html" title="Authors">Books</a></li>
+                <li><a href="authors.html" title="Authors">Authors</a></li>
             </div>
             
-            <div id="utility_nav">
+            <div id="utility_nav"> <!-- Hvad bruges denne til? Har ikke noget lukke tag -->
             
             <!-- Guest -->
             <div id="utility_not_logged" class="hidden">
-            <li><a href="login.html" title="Log in"><img class="icon" src="images/login.svg" alt="Login"></a></li>
-            <li><a href="signup.html" title="Sign up"><img class="icon" src="images/signup.svg" alt="Signup"></a></li>
+                <li><a href="login.html" title="Log in"><img class="icon" src="images/login.svg" alt="Login"></a></li>
+                <li><a href="signup.html" title="Sign up"><img class="icon" src="images/signup.svg" alt="Signup"></a></li>
             </div>
 
             <!-- User -->
             <div id="utility_logged_user" class="hidden">
-            <li><a href="profile.html" title="Profile"><img class="icon" src="images/profile.svg" alt="Profile"></a></li>
-            <button id="logoutBtnUser"><img class="icon" src="images/logout.svg" alt="Logout"></button>
+                <li><a href="profile.html" title="Profile"><img class="icon" src="images/profile.svg" alt="Profile"></a></li>
+                <button id="logoutBtnUser"><img class="icon" src="images/logout.svg" alt="Logout"></button>
             </div>
             
             <!-- Admin -->
             <div id="utility_logged_admin">
-            <li><a href="#" title="admin"><img class="icon" src="images/panel.svg" alt="Panel"></a></li>
-            <button id="logoutBtnAdmin"><img class="icon" src="images/logout.svg" alt="Logout"></button>
+                <li><a href="#" title="admin"><img class="icon" src="images/panel.svg" alt="Panel"></a></li>
+                <button id="logoutBtnAdmin"><img class="icon" src="images/logout.svg" alt="Logout"></button>
             </div>
         </ul>
     </nav>
 </header>
 
 <main>
-
     <nav id="admin_nav">
         <h3>Profile</h3>
+
         <ul id="dashboard">
-        <li><a id="add_books" href="#book_form">Add new entries</a></li>
-        <li><a id="added_books" href="#new_books">Created entries</a></li>
-        <li><a id="personal_info" href="#admin">Personal information</a></li>
+            <li><a id="add_books" href="#book_form">Add new entries</a></li>
+            <li><a id="added_books" href="#new_books">Created entries</a></li>
+            <li><a id="personal_info" href="#admin">Personal information</a></li>
         </ul>
     </nav>
 
     <section id="book_form">
-        <h1>Add new entry</h1>
-        <h3>Add new book</h3>
-        <form id="addBookForm">
-                <input type="text" name="title" placeholder="Title" required>
-                <button class="btn-save" type="submit"><strong>Save</strong></button>
-            </form>
-            <h3>Add new author</h3>
-            <form id="addAuthorForm">
-                <input type="text" name="first_name" placeholder="Author" required>
-                <button class="btn-save" type="submit"><strong>Save</strong></button>
-            </form>
 
-            <h3>Add new publisher</h3>
-            <form id="addPublisherForm">
-                <input type="text" name="name" placeholder="Publisher" required>
-                <button class="btn-save" type="submit"><strong>Save</strong></button>
-            </form>
-        </section>
+        <h1>Add new entry</h1>
+
+        <h3>Add new book</h3>
+
+        <form id="addBookForm">
+            <input type="text" name="title" placeholder="Title" required>
+            <button class="btn-save" type="submit"><strong>Save</strong></button>
+        </form>
+
+        <h3>Add new author</h3>
+
+        <form id="addAuthorForm">
+            <input type="text" name="first_name" placeholder="Author" required>
+            <button class="btn-save" type="submit"><strong>Save</strong></button>
+        </form>
+
+        <h3>Add new publisher</h3>
+
+        <form id="addPublisherForm">
+            <input type="text" name="name" placeholder="Publisher" required>
+            <button class="btn-save" type="submit"><strong>Save</strong></button>
+        </form>
+    </section>
         
     <section id="new_books" class="hidden">
+
         <h1>Created entries</h1>
+        
         <!-- Efter addAuthorForm -->
         <h3>Saved authors</h3>
         <ul id="authorsList"></ul>

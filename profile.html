@@ -14,47 +14,46 @@
     <nav id="main">
         <ul>
             <div id="main_nav">
-            <li>
-                <a href="/">
-                    <img class="logo" src="images/logo.svg" alt="Logo">
-                </a>
-            </li>
-            <li><a href="books.html" title="Authors">Books</a></li>
-            <li><a href="authors.html" title="Authors">Authors</a></li>
+                <li>
+                    <a href="/">
+                        <img class="logo" src="images/logo.svg" alt="Logo">
+                    </a>
+                </li>
+                <li><a href="books.html" title="Authors">Books</a></li>
+                <li><a href="authors.html" title="Authors">Authors</a></li>
             </div>
             
-            <div id="utility_nav">
+            <div id="utility_nav"> <!-- Hvad bruges denne til? Har ikke noget lukke tag -->
             
             <!-- Guest -->
             <div id="utility_not_logged" class="hidden">
-            <li><a href="login.html" title="Log in"><img class="icon" src="images/login.svg" alt="Login"></a></li>
-            <li><a href="signup.html" title="Sign up"><img class="icon" src="images/signup.svg" alt="Signup"></a></li>
+                <li><a href="login.html" title="Log in"><img class="icon" src="images/login.svg" alt="Login"></a></li>
+                <li><a href="signup.html" title="Sign up"><img class="icon" src="images/signup.svg" alt="Signup"></a></li>
             </div>
 
             <!-- User -->
             <div id="utility_logged_user">
-            <li><a href="#" title="Profile"><img class="icon" src="images/profile.svg" alt="Profile"></a></li>
-            <button id="logoutBtnUser"><img class="icon" src="images/logout.svg" alt="Logout"></button>
+                <li><a href="#" title="Profile"><img class="icon" src="images/profile.svg" alt="Profile"></a></li>
+                <button id="logoutBtnUser"><img class="icon" src="images/logout.svg" alt="Logout"></button>
             </div>
             
             <!-- Admin -->
             <div id="utility_logged_admin" class="hidden">
-            <li><a href="admin.html" title="admin"><img class="icon" src="images/panel.svg" alt="Panel"></a></li>
-            <button id="logoutBtnAdmin"><img class="icon" src="images/logout.svg" alt="Logout"></button>
+                <li><a href="admin.html" title="admin"><img class="icon" src="images/panel.svg" alt="Panel"></a></li>
+                <button id="logoutBtnAdmin"><img class="icon" src="images/logout.svg" alt="Logout"></button>
             </div>
         </ul>
     </nav>
 </header>
 
 <main>
-
     <nav id="user_nav">
         <h3>Profile</h3>
+
         <ul id="dashboard">
-        <li><a id="personal_info" href="#user_info">Personal information</a></li>
+            <li><a id="personal_info" href="#user_info">Personal information</a></li>
         </ul>
     </nav>
-
 
 <script type="module" src="./js/profile.js"></script>  <!-- Den her skal vel ikke være her?? -->
 
@@ -77,6 +76,7 @@
                         <input type="text" id="txtFirstname" name="txtFirstname" required
                         aria-label="First name" aria-required="true">
                     </div>
+
                     <div class="form-group">
                         <label for="txtLastname">Last name</label>
                         <input type="text" id="txtLastname" name="txtLastname" required
@@ -102,6 +102,7 @@
                         <input type="tel" id="txtPhone" name="txtPhone" required placeholder="12345678"
                         aria-label="Phone number" aria-required="true">
                     </div>
+
                     <div class="form-group">
                         <label for="txtBirthdate">Birth date</label>
                         <input type="date" id="txtBirthdate" name="txtBirthdate" required
@@ -127,7 +128,6 @@
             <button type="button" class="btnDelete" id="btnDelete" aria-label="Delete your profile permanently">Delete</button>
         </div>
     </section>
-
 </main>
 
 <!-- Footer -->
