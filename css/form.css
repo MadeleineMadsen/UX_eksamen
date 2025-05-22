@@ -269,7 +269,17 @@
     margin: 0 var(--remMobile);
     padding: var(--remDesktop);
     width: 95%;
-    }
+}
+
+#addAuthorForm .sr-only, 
+#addBookForm .sr-only, 
+#addPublisherForm .sr-only {
+    position: absolute;
+    left: -625rem;     /* -9999px ÷ 16 = -624.9375rem */
+    width: 0.0625rem;  /* 1px = 0.0625rem */
+    height: 0.0625rem; /* 1px = 0.0625rem */
+    overflow: hidden;
+}
 
 #addAuthorForm input, 
 #addBookForm input, 
@@ -278,7 +288,7 @@
     justify-content: center;
     align-items: center;
     width: 13.25rem;
-    }
+}
 
 @media (min-width: 768px) {
     

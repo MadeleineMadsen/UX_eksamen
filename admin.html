@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/admin.css">
-    <script type="module" src="js/admin.js" defer></script>
+    <script type="module" src="js/nav.js"></script>
+    <script type="module" src="js/admin.js"></script>
     <title>Admin | eShelf</title>
 </head>
 <body>
 
 <header>
     <!-- Navigation -->
-    <nav id="main">
+    <!-- <nav id="main">
         <ul>
-            <div id="main_nav">
+            <di id="main_nav">
                 <li>
                     <a href="/">
                         <img class="logo" src="images/logo.svg" alt="Logo">
@@ -21,28 +22,88 @@
                 </li>
                 <li><a href="books.html" title="Authors">Books</a></li>
                 <li><a href="authors.html" title="Authors">Authors</a></li>
-            </div>
+            </di> -->
             
-            <div id="utility_nav"> <!-- Hvad bruges denne til? Har ikke noget lukke tag -->
+            <!-- <div id="utility_nav"> Hvad bruges denne til? Har ikke noget lukke tag -->
             
             <!-- Guest -->
-            <div id="utility_not_logged" class="hidden">
+            <!-- <div id="utility_not_logged" class="hidden">
                 <li><a href="login.html" title="Log in"><img class="icon" src="images/login.svg" alt="Login"></a></li>
                 <li><a href="signup.html" title="Sign up"><img class="icon" src="images/signup.svg" alt="Signup"></a></li>
-            </div>
+            </div> -->
 
             <!-- User -->
-            <div id="utility_logged_user" class="hidden">
+            <!-- <div id="utility_logged_user" class="hidden">
                 <li><a href="profile.html" title="Profile"><img class="icon" src="images/profile.svg" alt="Profile"></a></li>
                 <button id="logoutBtnUser"><img class="icon" src="images/logout.svg" alt="Logout"></button>
-            </div>
+            </div> -->
             
             <!-- Admin -->
-            <div id="utility_logged_admin">
+            <!-- <div id="utility_logged_admin">
                 <li><a href="#" title="admin"><img class="icon" src="images/panel.svg" alt="Panel"></a></li>
                 <button id="logoutBtnAdmin"><img class="icon" src="images/logout.svg" alt="Logout"></button>
             </div>
         </ul>
+    </nav> -->
+
+    <nav class="main-nav">
+        <div class="nav-left">
+            <a href="index.html" class="logo">
+                <img class="logo" src="images/logo.svg" alt="eShelf logo">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="books.html" title="Books">Books</a></li>
+                <li><a href="authors.html" title="Authors">Authors</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-right">
+            <!-- Guest -->
+            <ul id="nav_guest">
+                <li>
+                <a href="login.html">
+                    <img class="icon" src="images/login.svg" alt="Login icon">
+                </a>
+                </li>
+
+                <li>
+                <a href="signup.html">
+                    <img class="icon" src="images/signup.svg" alt="Signup icon">
+                </a>
+                </li>
+            </ul>
+
+            <!-- User -->
+            <ul id="nav_user" class="hidden">
+                <li>
+                <a href="profile.html">
+                    <img class="icon" src="images/profile.svg" alt="Profile icon">
+                </a>
+                </li>
+
+                <li>
+                <a href="#" id="logout_user">
+                    <img class="icon" src="images/logout.svg" alt="Logout icon">
+                </a>
+                </li>
+            </ul>
+
+            <!-- Admin -->
+            <ul id="nav_admin" class="hidden">
+                <li>
+                <a href="admin.html">
+                    <img class="icon" src="images/panel.svg" alt="Admin panel icon">
+                </a>
+                </li>
+
+                <li>
+                <a href="#" id="logout_admin">
+                    <img class="icon" src="images/logout.svg" alt="Logout icon">
+                </a>
+                </li>
+            </ul>
+        </div>
     </nav>
 </header>
 
@@ -61,24 +122,27 @@
 
         <h1>Add new entry</h1>
 
-        <h3>Add new book</h3>
+        <h3 id="heading-book">Add new book</h3>
 
-        <form id="addBookForm">
-            <input type="text" name="title" placeholder="Title" required>
+        <form id="addBookForm" aria-labelledby="heading-book">
+            <label for="title" class="sr-only">The books title</label>
+            <input type="text" id="title" name="title" placeholder="Title" required>
             <button class="btn-save" type="submit"><strong>Save</strong></button>
         </form>
 
-        <h3>Add new author</h3>
+        <h3 id="heading-author">Add new author</h3>
 
-        <form id="addAuthorForm">
-            <input type="text" name="first_name" placeholder="Author" required>
+        <form id="addAuthorForm" aria-labelledby="heading-author">
+            <label for="first_name" class="sr-only">The authors first name</label>
+            <input type="text" id="first_name" name="first_name" placeholder="Author" required>
             <button class="btn-save" type="submit"><strong>Save</strong></button>
         </form>
 
-        <h3>Add new publisher</h3>
+        <h3 id="heading-publisher">Add new publisher</h3>
 
-        <form id="addPublisherForm">
-            <input type="text" name="name" placeholder="Publisher" required>
+        <form id="addPublisherForm" aria-labelledby="heading-publisher">
+            <label for="name" class="sr-only">The publishers name</label>
+            <input type="text" id="name" name="name" placeholder="Publisher" required>
             <button class="btn-save" type="submit"><strong>Save</strong></button>
         </form>
     </section>
