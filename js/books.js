@@ -51,7 +51,7 @@ const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
 
 // Hent og vis 12 tilfældige bøger
 async function loadRandom() {
-  await loadBooks({ n: 12 }, listEl);
+  await loadBooks({ n: 10 }, listEl);
 }
 
 // Hent bøger i en given container

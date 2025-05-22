@@ -1,6 +1,6 @@
 // search.js
 import { BASE_URL } from './info.js';
-import { handleAPIError, handleFetchCatchError } from './common.js';
+import { handleAPIError, handleFetchCatchError, tokenHeader } from './common.js';
 import { showPopup } from './books.js';  
 
 // Hent tekst-input-feltet til søgning
@@ -72,10 +72,22 @@ suggContainer.addEventListener('click', async e => {
   searchInput.value = '';            
 
   try {
-    const res  = await fetch(`${BASE_URL}/books/${bookId}`);
-    const book = await handleAPIError(res);
 
     // genbruger popup-funktion
+    const isAdmin = sessionStorage.getItem('book_app_user_is_admin') === 'true';
+    const userId  = sessionStorage.getItem('book_app_user_id');
+
+    let book;
+    if (isAdmin) {
+      const res = await fetch(`${baseBookApiUrl}/admin/${userId}/books/${bookId}`, {
+        headers: tokenHeader()
+      });
+      book = await handleAPIError(res);
+    } else {
+      const res = await fetch(`${baseBookApiUrl}/books/${bookId}`);
+      const basic = await handleAPIError(res);
+      book = { ...basic, book_id: bookId, loans: [] }; // dummy loans for regular users
+    } // genbruger popup-funktion
     showPopup(book);                 
   } catch (err) {
     handleFetchCatchError(err);

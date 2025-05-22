@@ -28,12 +28,15 @@ main {
 }
 
 
-@media (min-width: 768px) {
+@media (min-width: 48rem){
     #book-list {
-    grid-template-columns: repeat(6, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(11.25rem, 1fr));
     padding-inline: 4rem;
-    max-width: calc((180px * 6) + (var(--remDesktop) * 12)); /* 5 kort + 4 mellemrum */
+    max-width: calc((11.25rem * 6) + (var(--remDesktop) * 12));
+ /* 5 kort + 4 mellemrum */
     margin: auto;
+    
+
     }
 }
 
@@ -46,7 +49,8 @@ main {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 180px; /* matcher min-width fra grid’en */
+    max-width: 11.25rem;
+ /* matcher min-width fra grid’en */
     margin: auto;
     padding: var(--remDesktop);
     height: 100%;
@@ -108,8 +112,8 @@ main {
 .search-section {
     position: relative;
     width: 90%;
-    max-width: 360px;
-    margin: var(--heightNav) auto 0.5rem;
+    max-width: 22.5rem;
+    margin: 1rem auto 0.5rem;
 }
 
 .search-section input[type="search"] {
