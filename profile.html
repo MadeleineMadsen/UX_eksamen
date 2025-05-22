@@ -12,41 +12,7 @@
 
 <header>
     <!-- Navigation -->
-    <!-- <nav id="main">
-        <ul>
-            <div id="main_nav">
-                <li>
-                    <a href="/">
-                        <img class="logo" src="images/logo.svg" alt="Logo">
-                    </a>
-                </li>
-                <li><a href="books.html" title="Authors">Books</a></li>
-                <li><a href="authors.html" title="Authors">Authors</a></li>
-            </div>
-            
-            <div id="utility_nav"> 
-            
-            
-            <div id="utility_not_logged" class="hidden">
-                <li><a href="login.html" title="Log in"><img class="icon" src="images/login.svg" alt="Login"></a></li>
-                <li><a href="signup.html" title="Sign up"><img class="icon" src="images/signup.svg" alt="Signup"></a></li>
-            </div>
-
-            
-            <div id="utility_logged_user">
-                <li><a href="#" title="Profile"><img class="icon" src="images/profile.svg" alt="Profile"></a></li>
-                <button id="logoutBtnUser"><img class="icon" src="images/logout.svg" alt="Logout"></button>
-            </div>
-            
-            
-            <div id="utility_logged_admin" class="hidden">
-                <li><a href="admin.html" title="admin"><img class="icon" src="images/panel.svg" alt="Panel"></a></li>
-                <button id="logoutBtnAdmin"><img class="icon" src="images/logout.svg" alt="Logout"></button>
-            </div>
-        </ul>
-    </nav> -->
-
-    <nav class="main-nav">
+    <nav class="main-nav" role="navigation" aria-label="Main Navigation">
         <div class="nav-left">
             <a href="index.html" class="logo">
                 <img class="logo" src="images/logo.svg" alt="eShelf logo">
@@ -108,17 +74,13 @@
 </header>
 
 <main>
-    <nav id="user_nav">
+    <aside id="user_nav" role="complementary" aria-label="User navigation">
         <h3>Profile</h3>
 
         <ul id="dashboard">
             <li><a id="personal_info" href="#user_info">Personal information</a></li>
         </ul>
-    </nav>
-
-<script type="module" src="./js/profile.js"></script>  <!-- Den her skal vel ikke være her?? -->
-
-    </section> <!-- Den her skal vel heller ikke være her?? -->
+    </aside>
     
     <section id="user_info" class="user_info">
         <header>

@@ -11,44 +11,9 @@
 <body>
 
 <header>
-    <!-- Navigation -->
-    <!-- <nav id="main">
-        <ul>
-            <di id="main_nav">
-                <li>
-                    <a href="/">
-                        <img class="logo" src="images/logo.svg" alt="Logo">
-                    </a>
-                </li>
-                <li><a href="books.html" title="Authors">Books</a></li>
-                <li><a href="authors.html" title="Authors">Authors</a></li>
-            </di> -->
-            
-            <!-- <div id="utility_nav"> Hvad bruges denne til? Har ikke noget lukke tag -->
-            
-            <!-- Guest -->
-            <!-- <div id="utility_not_logged" class="hidden">
-                <li><a href="login.html" title="Log in"><img class="icon" src="images/login.svg" alt="Login"></a></li>
-                <li><a href="signup.html" title="Sign up"><img class="icon" src="images/signup.svg" alt="Signup"></a></li>
-            </div> -->
-
-            <!-- User -->
-            <!-- <div id="utility_logged_user" class="hidden">
-                <li><a href="profile.html" title="Profile"><img class="icon" src="images/profile.svg" alt="Profile"></a></li>
-                <button id="logoutBtnUser"><img class="icon" src="images/logout.svg" alt="Logout"></button>
-            </div> -->
-            
-            <!-- Admin -->
-            <!-- <div id="utility_logged_admin">
-                <li><a href="#" title="admin"><img class="icon" src="images/panel.svg" alt="Panel"></a></li>
-                <button id="logoutBtnAdmin"><img class="icon" src="images/logout.svg" alt="Logout"></button>
-            </div>
-        </ul>
-    </nav> -->
-
-    <nav class="main-nav">
+    <nav class="main-nav" role="navigation" aria-label="Main Navigation">
         <div class="nav-left">
-            <a href="index.html" class="logo">
+            <a href="index.html">
                 <img class="logo" src="images/logo.svg" alt="eShelf logo">
             </a>
 
@@ -108,7 +73,7 @@
 </header>
 
 <main>
-    <nav id="admin_nav">
+    <aside id="admin_nav" role="complementary" aria-label="Admin navigation">
         <h3>Profile</h3>
 
         <ul id="dashboard">
@@ -116,7 +81,7 @@
             <li><a id="added_books" href="#new_books">Created entries</a></li>
             <li><a id="personal_info" href="#admin">Personal information</a></li>
         </ul>
-    </nav>
+    </aside>
 
     <section id="book_form">
 
