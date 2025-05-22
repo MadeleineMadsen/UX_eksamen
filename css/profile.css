@@ -6,6 +6,7 @@
 #user_nav {
     font-family: var(--fontText);
     font-size: var(--fontSizeMobile);
+    color: var(--colorText);
     margin: var(--remMobile);
     border-bottom: solid thin var(--colorSecondary);
     
@@ -34,6 +35,7 @@
 /*-------------- Brugerens informationer --------------*/
 #user_info {
     font-family: var(--fontTitles);
+    color: var(--colorText);
     padding-top: 2rem;
     padding-bottom: 6rem;
     margin: auto;
@@ -68,16 +70,16 @@
 
         legend {
             font-family: var(--fontTitles);
-            font-size: 1rem;
+            font-size: var(--fontSizeMobile);
             font-weight: bold;
             margin: 1.5rem 0 1.5rem 1rem;
         }
 
         .sr-only {
             position: absolute;
-            left: -9999px;
-            width: 1px;
-            height: 1px;
+            left: -625rem;     /* -9999px ÷ 16 = -624.9375rem */
+            width: 0.0625rem;  /* 1px = 0.0625rem */
+            height: 0.0625rem; /* 1px = 0.0625rem */
             overflow: hidden;
         }
     }
@@ -129,6 +131,7 @@
     .btnSubmit,
     .btnDelete {
         font-family: var(--fontText);
+        color: var(--colorText);
         display: inline-block;
         min-width: 10%;
         padding: 1rem 1.5rem;
@@ -236,9 +239,9 @@
 
                 .sr-only {
                     position: absolute;
-                    left: -9999px;
-                    width: 1px;
-                    height: 1px;
+                    left: -625rem;     /* -9999px ÷ 16 = -624.9375rem */
+                    width: 0.0625rem;  /* 1px = 0.0625rem */
+                    height: 0.0625rem; /* 1px = 0.0625rem */
                     overflow: hidden;
                 }
             }
@@ -290,7 +293,7 @@
             .btnDelete {
                 display: inline-block;
                 min-width: 10%;
-                padding: 1rem 1.5rem;
+                padding: var(--remDesktop) 1.5rem;
                 margin-top: var(--remDesktop);
                 font-weight: bold;
                 border-radius: var(--buttonRadius);

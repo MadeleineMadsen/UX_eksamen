@@ -7,6 +7,7 @@
 #admin_nav {
     font-family: var(--fontText);
     font-size: var(--fontSizeMobile);
+    color: var(--colorText);
     margin: var(--remMobile);
     border-bottom: solid thin var(--colorSecondary);
 
@@ -48,6 +49,7 @@
     margin: 0;
     display: grid;
     justify-items: center;
+    color: var(--colorText);
     grid-template-columns: 1fr;
 
     h3 {

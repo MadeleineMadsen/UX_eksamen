@@ -12,7 +12,7 @@ main {
     position: relative;
     width: 90%;
     max-width: 22.5rem;
-    margin: 4.5rem auto 0.5rem;
+    margin: 4.5rem auto var(--remMobile);
 
     input[type="search"] {
         width: 100%;
@@ -20,7 +20,8 @@ main {
         border: none;
         border-radius: var(--buttonRadius);
         font-family: var(--fontText);
-        font-size: 1rem;
+        font-size: var(--fontSizeMobile);
+        background-color: var(--colorPrimary);
         box-shadow: var(--shadowOuter);
         transition: box-shadow 0.2s ease;
 
@@ -32,10 +33,14 @@ main {
 
     .suggestions-list {
         position: absolute;
-        top: 100%; left: 0; right: 0;
+        top: 65%; 
+        left: 0; 
+        right: 0;
         margin: 0; 
-        padding: 0;
+        padding: var(--remMobile) 0;
         list-style: none;
+        color: var(--colorText);
+        font-family: var(--fontText);
         background: var(--colorPrimary);
         border-radius: 0 0 var(--cardRadius) var(--cardRadius);
         box-shadow: var(--shadowOuter);
@@ -44,7 +49,7 @@ main {
         z-index: 10;
         
         li {
-            padding: 0.75rem 1rem;
+            padding: 0.75rem var(--remDesktop);
             cursor: pointer;
         }
 
@@ -60,7 +65,7 @@ main {
 /* Sørger for en centreret overskrift på index.html */
 .books-header {
     text-align: center;
-    margin: 5rem 0 1rem; 
+    margin: 5rem 0 var(--remDesktop); 
 
     .section-title {
         font-family: var(--fontTitles);
@@ -86,6 +91,7 @@ main {
     background: var(--colorPrimary);
     border-radius: var(--cardRadius);
     box-shadow: var(--shadowOuter);
+    color: var(--colorText);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -117,15 +123,6 @@ main {
         font-size: var(--fontSizeMobile);
         text-align: center;
         min-height: 3rem;
-    }
-
-    .book-author { /* Er slet ikke på kortet */
-        margin: 0 var(--remDesktop) var(--remMobile);
-        font-size: 0.9rem;
-        text-align: center;
-        color: var(--colorText);
-        flex-grow: 1; /* skubber knappen ned */
-        min-height: 1.2rem;
     }
 
     .btn--book-info {

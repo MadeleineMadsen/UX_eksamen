@@ -25,7 +25,7 @@
 #addBookForm input, 
 #addPublisherForm input {
     font-family: var(--fontText);
-    font-size: 1rem;
+    font-size: var(--fontSizeMobile);
     padding: var(--remDesktop);
     border: none;
     border-radius: var(--buttonRadius);
@@ -55,12 +55,16 @@
 
 /*-------------- Log in form --------------*/
 .login-form {
-    margin: 2rem auto 5rem auto;
+    color: var(--colorText);
+
+    @media (max-width: 768px) {
+        margin: 2rem auto 5rem auto;
+    }
 }
 
 .login-form header {
     text-align: center;
-    padding: 1rem 1rem 1rem;
+    padding: var(--remDesktop);
 
     .icon-wrapper {
         width: 6rem; height: 6rem;
@@ -132,6 +136,7 @@
 .signup-form {
     background: var(--colorPrimary);
     border-radius: var(--cardRadius);
+    color: var(--colorText);
     width: 90%;
     max-width: 600px;
     margin: 2rem auto 6rem auto;
@@ -142,7 +147,7 @@
 
 .signup-form header {
     text-align: center;
-    padding: 1rem 1rem 1rem;
+    padding: var(--remDesktop);
 
     .icon-wrapper {
         width: 6rem; height: 6rem;
@@ -182,7 +187,7 @@
     padding: 1rem 1.5rem 2rem;
 
     @media (max-width: 480px) {
-        padding: 0rem 0rem 0rem;
+        padding: 0;
     }
 
     .form-row {
@@ -258,8 +263,8 @@
     #addAuthorForm, 
     #addBookForm, 
     #addPublisherForm {
-        margin: 1rem 0;
-        padding: 1rem 1.5rem;
+        margin: var(--remDesktop) 0;
+        padding: var(--remDesktop) 1.5rem;
         max-width: 32.5rem;
         justify-content: center;
         display: flex;

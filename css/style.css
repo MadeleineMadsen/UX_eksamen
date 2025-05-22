@@ -20,6 +20,7 @@ html {
 .main-nav {
     font-family: var(--fontText);
     background: var(--colorBackground);
+    color: var(--colorText);
     background-attachment: fixed;
     border-bottom: solid thin var(--colorSecondary);
     padding: 0.6rem;
@@ -67,7 +68,7 @@ html {
 
     .nav-right {
         display: flex;
-        gap: 1rem;
+        gap: var(--remDesktop);
 
         ul {
             display: flex;
@@ -140,23 +141,32 @@ footer {
                 margin-right: var(--remDesktop);
             }
 
-            .nav-links {
-                padding: 0 1rem;
+            .logo:hover {
+                transform: scale(1.1);
+            }
 
+            .nav-links {
                 a {
                     font-size: var(--fontSizeDesktop);
+                    margin: 0 var(--remMobile);
+                }
+
+                a:hover {
+                    text-decoration: underline;
+                    transform: scale(1.1);
                 }
             }
         }
 
         .nav-right ul {
             li {
-                padding: 0 0.5rem;
+                padding: 0 var(--remMobile);
 
                 a:hover {
                     text-decoration: underline;
                     transform: scale(1.1);
                 }
+
                 img {
                     width: 3.4rem;
                     height: 3.4rem;

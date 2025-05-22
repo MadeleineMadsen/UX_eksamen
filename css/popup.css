@@ -55,7 +55,7 @@
         p {
             font-family: var(--fontText);
             font-size: var(--fontSizeMobile);
-            margin-bottom: 0.5rem ;
+            margin-bottom: var(--remMobile);
         }
 
         .btn--loan {
@@ -165,7 +165,7 @@
 /* Tablet+ (≥768px): 3 kort på række, 140px brede */
 @media (min-width: 768px) {
     .book-popup{
-        padding:3rem;
+        padding: 3rem;
     }
 
     .author-popup {
@@ -179,7 +179,7 @@
         padding: var(--remMobile);
     }
     .author-popup .book-title {
-        font-size: 1rem;            /* normal font-størrelse igen */
+        font-size: var(--fontSizeDesktop);            /* normal font-størrelse igen */
         min-height: 2.5rem;
     }
 }
