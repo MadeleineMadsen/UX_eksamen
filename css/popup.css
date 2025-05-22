@@ -7,8 +7,9 @@ dialog.book-popup, dialog.author-popup {
     width: 95%;
     padding:2rem ;
     
-    max-width: 600px;      /* større bredde */
-    min-height: 300px; 
+    max-width: 37.5rem;
+    min-height: 18.75rem;
+
     margin: auto;
     border: none;
     border-radius: var(--cardRadius);
@@ -19,7 +20,7 @@ dialog.book-popup, dialog.author-popup {
     overflow: hidden;
     
 }
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
     dialog.book-popup{
         padding:3rem;
     }
@@ -40,7 +41,7 @@ cursor: pointer;
 
 .popup-body {
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 12.5rem 1fr;
     gap: var(--remMobile);
     padding: var(--remMobile);
     align-items: start;
@@ -65,7 +66,7 @@ cursor: pointer;
 
 .loan-history {
     list-style: disc;
-    max-height: 200px;
+    max-height: 12.5rem;
     overflow-y: auto;        /* Scrollbar hvis nødvendigt */
     padding-left: 1.5rem;
     padding-right: var(--remMobile);   /* Plads til scrollbar */
