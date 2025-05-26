@@ -7,8 +7,12 @@ export const loggedUserID = () =>
     Number(sessionStorage.getItem('book_app_user_id') || 0);
 
 // Returnerer en Headers med X-Session-Token
-export const tokenHeader = () =>
-    new Headers({ 'X-Session-Token': sessionStorage.getItem('book_app_user_token') });
+//export const tokenHeader = () =>
+    //new Headers({ 'X-Session-Token': sessionStorage.getItem('book_app_user_token') });
+export const tokenHeader = () => ({
+    'X-Session-Token': sessionStorage.getItem('book_app_user_token')
+});
+
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Lån en bog via API
