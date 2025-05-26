@@ -1,6 +1,7 @@
 @import 'style.css';
 @import 'card.css';
 
+/* Bogstavs navigation */
 #letter-nav {
     display: flex;
     flex-wrap: wrap;
@@ -19,13 +20,13 @@
         color: var(--colorText);
         
         &.selected {
-            /* color: var(--colorPrimary); */
             transform: scale(1.2);
             border-bottom: thin solid var(--colorText);
         }
     }
 }
 
+/* Forfatter liste */
 #author-list {
     display: grid;
     grid-template-columns: 1fr;
@@ -42,7 +43,7 @@
         /* Overskrift */
         h2 {
             font-family: var(--fontTitles);
-            font-size: 1.2rem; /* rettes til samme variabel som h2 på andre sider */
+            font-size: 1.2rem;
             margin-bottom: var(--remMobile);
         }
         
@@ -71,6 +72,7 @@
     }
 }
 
+/* Desktop */
 @media (min-width: 768px) {
     #letter-nav {
         cursor: pointer;
@@ -88,7 +90,7 @@
             padding: 0;
             h2 {
                 padding-left: var(--remDesktop);
-                font-size: 1.4rem; /* rettes til samme variabel som h2 på andre sider */
+                font-size: 1.4rem;
             }
             ul {
                 column-count: 4;

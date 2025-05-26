@@ -61,14 +61,19 @@ searchInput.addEventListener('input', () => {
     });
 });
 
+// Klik på forslag i listen
 suggContainer.addEventListener('click', async e => {
   if (!e.target.matches('li')) return;
+
+  // Hent valgt bogs ID og nulstil UI
   const bookId = e.target.dataset.id;
 
   suggContainer.hidden = true;
   searchInput.value = '';
 
+
   try {
+    // Tjek rolle og hent bogdata
     const isAdmin = sessionStorage.getItem('book_app_user_is_admin') === 'true';
     const userId  = sessionStorage.getItem('book_app_user_id');
 
@@ -84,6 +89,7 @@ suggContainer.addEventListener('click', async e => {
       book = { ...basic, book_id: bookId, loans: [] };
     }
 
+    // Vis info-popup
     showPopup(book);
   } catch (err) {
     handleFetchCatchError(err);

@@ -3,8 +3,7 @@
 
 
 /*-------------- Overall alle forms --------------*/
-.login-form,
-.wide-form,                     /* ??? - wide-form - bruger vi den overhovedet? */
+.login-form,                    
 #addAuthorForm, 
 #addBookForm, 
 #addPublisherForm {
@@ -12,7 +11,7 @@
     background: var(--colorPrimary);
     border-radius: var(--cardRadius);
     width: 90%;
-    max-width: 400px;
+    max-width: var(--smallForm);
     margin: 5rem auto;
     padding: var(--remDesktop);
     box-shadow: var(--shadowOuter);
@@ -23,8 +22,7 @@
 .login-form input,
 #addAuthorForm input, 
 #addBookForm input, 
-#addPublisherForm input,
-.wide-form input {
+#addPublisherForm input {
     font-size: 1rem;
     padding: var(--remDesktop);
     border: none;
@@ -38,8 +36,7 @@
 .login-form input:focus,
 #addAuthorForm input:focus, 
 #addBookForm input:focus, 
-#addPublisherForm input:focus,
-.wide-form input:focus {
+#addPublisherForm input:focus {
     outline: none;
     box-shadow: var(--shadowInner);
 }
@@ -53,7 +50,7 @@
 }
 
 
-/*-------------- Log in form??????? --------------*/
+/*-------------- Log in form --------------*/
 .login-form > header {
     text-align: center;
     padding: 1rem 1rem 1rem;
@@ -81,8 +78,7 @@
     color: var(--colorSecondary);
 }
 
-.login-form form,
-.wide-form form {
+.login-form form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -101,11 +97,11 @@
     color: var(--colorSecondary);
 }
 
+/* Login og lidt tilføj content form - resten under Admin i bunden */
 .login-form input,
 #addAuthorForm input, 
 #addBookForm input, 
-#addPublisherForm input,
-.wide-form input {
+#addPublisherForm input {
     font-family: var(--fontText);
     font-size: 1rem;
     padding: var(--remDesktop);
@@ -119,8 +115,7 @@
 .login-form input:focus,
 #addAuthorForm input:focus, 
 #addBookForm input:focus, 
-#addPublisherForm input:focus,
-.wide-form input:focus {
+#addPublisherForm input:focus {
     outline: none;
     box-shadow: var(--shadowInner);
 }
@@ -152,7 +147,7 @@
     background: var(--colorPrimary);
     border-radius: var(--cardRadius);
     width: 90%;
-    max-width: 600px;
+    max-width: var(--bigForm);
     margin: 5rem auto 9rem auto;
     padding: 2rem;
     box-shadow: var(--shadowOuter);

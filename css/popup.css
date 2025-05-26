@@ -3,13 +3,12 @@
 @import 'style.css'; 
 @import 'card.css';
 
+/* Bog og forfatter popup */
 dialog.book-popup, dialog.author-popup {
     width: 95%;
     padding:2rem ;
-    
     max-width: 37.5rem;
     min-height: 18.75rem;
-
     margin: auto;
     border: none;
     border-radius: var(--cardRadius);
@@ -20,6 +19,7 @@ dialog.book-popup, dialog.author-popup {
     overflow: hidden;
     
 }
+/* Desktop */
 @media (min-width: 768px) {
     dialog.book-popup{
         padding:3rem;
@@ -27,6 +27,7 @@ dialog.book-popup, dialog.author-popup {
     
 }
 
+/* Close form */
 .popup-info-author .close,
 .popup-info .close {
 position: absolute;
@@ -39,6 +40,7 @@ color: var(--colorSecondary);
 cursor: pointer;
 }
 
+/* Popup indhold */
 .popup-body {
     display: grid;
     grid-template-columns: 12.5rem 1fr;
@@ -64,6 +66,7 @@ cursor: pointer;
     }
 }
 
+/* Lånehistorik */
 .loan-history {
     list-style: disc;
     max-height: 12.5rem;
@@ -71,15 +74,14 @@ cursor: pointer;
     padding-left: 1.5rem;
     padding-right: var(--remMobile);   /* Plads til scrollbar */
     margin: var(--remDesktop) 0;
+    li {
+        position: relative;
+        padding-left: var(--remMobile);
+        margin-bottom: var(--remMobile);
+    }
 }
 
-.loan-history li {
-    position: relative;
-    padding-left: var(--remMobile);
-    margin-bottom: var(--remMobile);
-}
-
-
+/* Låneknap */
 .popup-info .btn--loan {
     font-family: var(--fontText);
     min-width: 30%;
@@ -115,7 +117,6 @@ button.close {
 dialog.author-popup {
     padding: 2rem;
     max-width: 50rem;
-
     h3 {
         font-family: var(--fontTitles);
     }
@@ -151,19 +152,18 @@ dialog.author-popup {
     aspect-ratio: 2/3;
     overflow: hidden;
     border-radius: var(--cardRadius);
-}
-
-.author-popup .book-cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+    }
 }
 
 .author-popup .book-title {
     margin: var(--remMobile) 0 0;
     font-family: var(--fontTitles);
-    font-size: 0.9rem;            /* mindre font på mobil */
+    font-size: var(--fontSizeMobile);            /* mindre font på mobil */
     text-align: center;
     min-height: 2rem;             /* undgå forskellig højde */
 }
@@ -171,15 +171,16 @@ dialog.author-popup {
   /* ─────────────────────────────────────────────────────────── */
   /* Tablet+ (≥768px): 3 kort på række, 140px brede */
   /* ─────────────────────────────────────────────────────────── */
+/* Desktop */
 @media (min-width: 768px) {
     .author-popup {
         width: fit-content;
     }
     .author-popup .book-by-author {
-        grid-template-columns: repeat(5, 140px);
+        grid-template-columns: repeat(5, 8.75rem);
     }
     .author-popup .book-item {
-        width: 140px;               /* større kort på større skærme */
+        width: 8.75rem;               /* større kort på større skærme */
         padding: var(--remMobile);
     }
     .author-popup .book-title {

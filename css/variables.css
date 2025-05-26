@@ -31,10 +31,11 @@
     --headerSizeDesktop: 34px;
 
     /* Cards */
-    --cardWidth: 250px; /* bruger vi den her? */
+    --smallForm: 400px; /* max bredde til næsten alle forms */
+    --bigForm: 600px; /* max bredde signup form */
     --imgThumbnailDimension: 150px;
     --bookCardMin: 150px;   /* mindste kort-bredde */
-    --gap: 1rem;            /* afstand mellem kort - bruger vi den her?*/
+    /* --gap: 1rem;             */
     --cardRadius: 1rem;
 
     /* Buttons */

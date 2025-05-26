@@ -2,6 +2,7 @@
 
 @import 'style.css';
 
+/* Profil navigation */
 #user_nav {
     font-family: var(--fontText);
     font-size: var(--fontSizeMobile);
@@ -30,7 +31,11 @@
     }
 }
 
+/* Profil information */
 #user_info {
+    padding-top: 2rem;
+    padding-bottom: 6rem;
+    margin: auto;
     h1 {
         font-family: var(--fontTitles);
         text-align: center;
@@ -38,60 +43,45 @@
         margin: var(--remMobile);
         padding-top: var(--remMobile);
     }
-
     p {
         font-family: var(--fontText);
     }
-}
-
-#user_info {
-    padding-top: 2rem;
-    padding-bottom: 6rem;
-    margin: auto;
-
     header {
         text-align: left;
         margin-left: var(--remDesktop);
-
         h1 {
             margin: 0;
             padding: 0;
         }
     }
-
     h2 {
         margin: 0;
         font-family: var(--fontTitles);
         font-size: 1rem;
         color: var(--colorSecondary);
     }
-
     form {
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
         padding: var(--remDesktop);
     }
-
     fieldset {
         border: none;
-
         legend {
             font-family: var(--fontTitles);
             font-size: 1rem;
             font-weight: bold;
             margin: 1.5rem 0 1.5rem 1rem;
         }
-
         .sr-only {
             position: absolute;
-            left: -9999px;
-            width: 1px;
-            height: 1px;
+            left: -625rem;     /* -9999px ÷ 16 = -624.9375rem */
+            width: 0.0625rem;  /* 1px = 0.0625rem */
+            height: 0.0625rem; /* 1px = 0.0625rem */
             overflow: hidden;
         }
     }
-
     .form-row {
         display: flex;
         flex-wrap: wrap;
@@ -171,6 +161,7 @@
     }
 }
 
+/* Desktop */
 @media (min-width: 768px) {
     main {
         display: grid;
@@ -204,23 +195,19 @@
             grid-column: 2;
         }
     }
-    
-    #user_info {
-        h1 {
-            text-align: left;
-            margin: var(--remDesktop);
-            font-size: var(--headerSizeDesktop);
-        }
-    }
 
+/* Profil information */
     #user_info {
         padding-top:  var(--paddingSiteTop);
         padding-bottom: var(--paddingSiteBottom);
         margin: auto;
         width: 60%;
-
-        header {
+        h1 {
             text-align: left;
+            margin: var(--remDesktop);
+            font-size: var(--headerSizeDesktop);
+        }
+        header {
             margin-left: 1rem;
 
             h1 {
@@ -228,62 +215,7 @@
             }
         }
 
-        h2 {
-            margin: 0;
-            font-family: var(--fontTitles);
-            font-size: 1rem;
-            color: var(--colorSecondary);
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            padding: var(--remDesktop);
-        }
-
-        fieldset {
-            border: none;
-
-            legend {
-                font-family: var(--fontTitles);
-                font-size: 1rem;
-                font-weight: bold;
-                margin: 1.5rem 0 1.5rem 0;
-            }
-
-            .sr-only {
-                position: absolute;
-                left: -9999px;
-                width: 1px;
-                height: 1px;
-                overflow: hidden;
-            }
-        }
-
-        .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-
-        .form-row .form-group {
-                flex: 1;
-                min-width: 0;
-            }
-
         .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: var(--remMobile);
-
-            label {
-                font-size: 0.9rem;
-                font-family: var(--fontText);
-                color: var(--colorSecondary);
-                margin: 1rem 0 0.5rem 1rem;
-            }
-
             input {
                 padding: var(--remDesktop);
                 border: none;
@@ -301,40 +233,6 @@
 
         .SectionDelete {
             margin: 1.5rem 0 1.5rem 1rem;
-        }
-
-        .btnCancel,
-        .btnSubmit,
-        .btnDelete {
-            display: inline-block;
-            min-width: 10%;
-            padding: 1rem 1.5rem;
-            margin-top: var(--remDesktop);
-            font-weight: bold;
-            border-radius: var(--buttonRadius);
-            box-shadow: var(--shadowOuter);
-            cursor: pointer;
-            transition: transform 0.1s ease, box-shadow 0.2s ease;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        .btnCancel {
-            color: var(--colorSecondary);
-            background: var(--colorPrimary);
-            border: solid var(--colorAccent1);
-        }
-
-        .btnSubmit {
-            color: var(--colorSecondary);
-            background: var(--colorAccent1);
-            border: none;
-        }
-
-        .btnDelete {
-            color: var(--colorSecondary);
-            background: var(--colorAccent3);
-            border: none;
         }
     }
 }
