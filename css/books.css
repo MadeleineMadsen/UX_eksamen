@@ -7,6 +7,75 @@ main {
     padding-bottom: var(--heightFooter);
 }
 /* Liste over bøger */
+
+/*-------------- Søgefeltet --------------*/
+.search-section {
+    position: relative;
+    width: 90%;
+    max-width: 22.5rem;
+    margin: 4.5rem auto var(--remMobile);
+
+    input[type="search"] {
+        width: 100%;
+        padding: var(--remDesktop);
+        border: none;
+        border-radius: var(--buttonRadius);
+        font-family: var(--fontText);
+        font-size: var(--fontSizeMobile);
+        background-color: var(--colorPrimary);
+        box-shadow: var(--shadowOuter);
+        transition: box-shadow 0.2s ease;
+
+        input[type="search"]:focus {
+            outline: none;
+            box-shadow: var(--shadowOuter);
+        }
+    }
+
+    .suggestions-list {
+        position: absolute;
+        top: 65%; 
+        left: 0; 
+        right: 0;
+        margin: 0; 
+        padding: var(--remMobile) 0;
+        list-style: none;
+        color: var(--colorText);
+        font-family: var(--fontText);
+        background: var(--colorPrimary);
+        border-radius: 0 0 var(--cardRadius) var(--cardRadius);
+        box-shadow: var(--shadowOuter);
+        max-height: 15rem;
+        overflow-y: auto;
+        z-index: 10;
+        
+        li {
+            padding: 0.75rem var(--remDesktop);
+            cursor: pointer;
+        }
+
+        li:hover {
+            background: var(--colorAccent1);
+            color: var(--colorSecondary);
+        }
+    }
+}
+
+/*-------------- Alle bøger --------------*/
+
+/* Sørger for en centreret overskrift på index.html */
+.books-header {
+    text-align: center;
+    margin: 5rem 0 var(--remDesktop); 
+
+    .section-title {
+        font-family: var(--fontTitles);
+        font-size: 2rem;
+        color: var(--colorSecondary);
+    }
+}
+
+/* Bøgerne på både index og books.html*/
 #book-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -14,11 +83,6 @@ main {
     padding-inline: 2rem;
     margin: var(--remDesktop) auto;
     padding-top: 5rem;
-}
-  /* Sørger for centreret overskrift med god afstand */
-.books-header {
-    text-align: center;
-    margin: 5rem 0 1rem; 
 }
 
 .section-title {
@@ -39,23 +103,22 @@ main {
 
     }
 }
+/*-------------- Alle cards --------------*/
 
-  /* Selve kortene render sig til cellestørrelsen */
+/* Selve kortene render sig til cellestørrelsen */
 .book-card {
     background: var(--colorPrimary);
     border-radius: var(--cardRadius);
     box-shadow: var(--shadowOuter);
+    color: var(--colorText);
     overflow: hidden;
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 11.25rem;
- /* matcher min-width fra grid’en */
+    max-width: 11.25rem; /* matcher min-width fra grid’en */
     margin: auto;
     padding: var(--remDesktop);
     height: 100%;
-}
-
 
 .book-card {
     .book-image {
@@ -64,6 +127,7 @@ main {
         overflow: hidden;
         border-radius: var(--cardRadius);
         margin-top: var(--remMobile);
+
         img {
             width: 100%;
             height: 100%;
@@ -127,10 +191,13 @@ main {
     transition: box-shadow 0.2s ease;
 }
 
-.search-section input[type="search"]:focus {
-    outline: none;
-    box-shadow: var(--shadowOuter);
-}
+    .book-title {
+        margin: var(--remMobile) var(--remDesktop) 0;
+        font-family: var(--fontTitles);
+        font-size: var(--fontSizeMobile);
+        text-align: center;
+        min-height: 3rem;
+    }
 
 /* Drop down søgnings liste */
 .suggestions-list {
@@ -154,4 +221,34 @@ main {
 .suggestions-list li.selected {
     background: var(--colorAccent1);
     color: var(--colorSecondary);
+}
+    .btn--book-info {
+        font-family: var(--fontText);
+        min-width: 10%;
+        padding: var(--remDesktop);
+        margin: 0 var(--remDesktop) var(--remDesktop);
+        padding: var(--remMobile);
+        background: var(--colorAccent1);
+        color: var(--colorSecondary);
+        border: none;
+        border-radius: var(--buttonRadius);
+        box-shadow: var(--shadowOuter);
+        cursor: pointer;
+        transition: transform 0.1s ease;
+        margin-top: auto;
+    }
+
+    .btn--book-info:hover {
+        transform: scale(1.1);
+    }
+}
+
+/*-------------- Desktop --------------*/
+@media (min-width:  768px){
+    #book-list {
+        grid-template-columns: repeat(auto-fit, minmax(11.25rem, 1fr));
+        padding-inline: 4rem;
+        max-width: calc((11.25rem * 6) + (var(--remDesktop) * 12)); /* 5 kort + 4 mellemrum */
+        margin: auto;
+    }
 }

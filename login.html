@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/form.css">
+    <script type="module" src="js/nav.js"></script>
     <script type="module" src="js/login.js"></script>
     <title>Login | eShelf</title>
 </head>
@@ -11,42 +12,68 @@
 
 <header>
     <!-- Navigation -->
-    <nav id="main">
-        <ul>
-            <div id="main_nav">
-            <li>
-                <a href="/">
-                    <img class="logo" src="images/logo.svg" alt="Logo">
-                </a>
-            </li>
-            <li><a href="books.html" title="Authors">Books</a></li>
-            <li><a href="authors.html" title="Authors">Authors</a></li>
-            </div>
-            
-            <div id="utility_nav">
-            
+    <nav class="main-nav" role="navigation" aria-label="Main Navigation">
+        <div class="nav-left">
+            <a href="index.html">
+                <img class="logo" src="images/logo.svg" alt="eShelf logo">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="books.html" title="Books">Books</a></li>
+                <li><a href="authors.html" title="Authors">Authors</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-right">
             <!-- Guest -->
-            <div id="utility_not_logged">
-            <li><a href="#" title="Log in"><img class="icon" src="images/login.svg" alt="Login"></a></li>
-            <li><a href="signup.html" title="Sign up"><img class="icon" src="images/signup.svg" alt="Signup"></a></li>
-            </div>
+            <ul id="nav_guest">
+                <li>
+                <a href="login.html">
+                    <img class="icon" src="images/login.svg" alt="Login icon">
+                </a>
+                </li>
+
+                <li>
+                <a href="signup.html">
+                    <img class="icon" src="images/signup.svg" alt="Signup icon">
+                </a>
+                </li>
+            </ul>
 
             <!-- User -->
-            <div id="utility_logged_user" class="hidden">
-            <li><a href="profile.html" title="Profile"><img class="icon" src="images/profile.svg" alt="Profile"></a></li>
-            <button id="logoutBtnUser"><img class="icon" src="images/logout.svg" alt="Logout"></button>
-            
+            <ul id="nav_user" class="hidden">
+                <li>
+                <a href="profile.html">
+                    <img class="icon" src="images/profile.svg" alt="Profile icon">
+                </a>
+                </li>
+
+                <li>
+                <a href="#" id="logout_user">
+                    <img class="icon" src="images/logout.svg" alt="Logout icon">
+                </a>
+                </li>
+            </ul>
+
             <!-- Admin -->
-            <div id="utility_logged_admin" class="hidden">
-            <li><a href="admin.html" title="admin"><img class="icon" src="images/panel.svg" alt="Panel"></a></li>
-            <button id="logoutBtnAdmin"><img class="icon" src="images/logout.svg" alt="Logout"></button>
-            </div>
-        </ul>
+            <ul id="nav_admin" class="hidden">
+                <li>
+                <a href="admin.html">
+                    <img class="icon" src="images/panel.svg" alt="Admin panel icon">
+                </a>
+                </li>
+
+                <li>
+                <a href="#" id="logout_admin">
+                    <img class="icon" src="images/logout.svg" alt="Logout icon">
+                </a>
+                </li>
+            </ul>
+        </div>
     </nav>
 </header>
 
 <main>
-
     <div id="error" class="hidden" role="alert" aria-live="assertive">
         <p id="errorText"></p>
     </div>
@@ -54,9 +81,10 @@
     <section class="login-form">
         <header>
             <div class="icon-wrapper">
-            <img src="images/LoginLogo.svg" alt="User icon" class="icon-login">
+                <img src="images/LoginLogo.svg" alt="User icon" class="icon-login">
             </div>
-            <h2>Log in</h2>
+            
+            <h2 id="login-title">Log in</h2>
         </header>
     
         <form id="frmLogin" aria-labelledby="login-title" aria-describedby="login-desc">

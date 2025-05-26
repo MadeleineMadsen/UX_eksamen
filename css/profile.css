@@ -2,10 +2,11 @@
 
 @import 'style.css';
 
-/* Profil navigation */
+/*-------------- Navigation i venstre side --------------*/
 #user_nav {
     font-family: var(--fontText);
     font-size: var(--fontSizeMobile);
+    color: var(--colorText);
     margin: var(--remMobile);
     border-bottom: solid thin var(--colorSecondary);
     
@@ -50,6 +51,8 @@
         text-align: left;
         margin-left: var(--remDesktop);
         h1 {
+            text-align: center;
+            font-size: var(--headerSizeMobile);
             margin: 0;
             padding: 0;
         }
@@ -58,7 +61,6 @@
         margin: 0;
         font-family: var(--fontTitles);
         font-size: 1rem;
-        color: var(--colorSecondary);
     }
     form {
         display: flex;
@@ -70,7 +72,7 @@
         border: none;
         legend {
             font-family: var(--fontTitles);
-            font-size: 1rem;
+            font-size: var(--fontSizeMobile);
             font-weight: bold;
             margin: 1.5rem 0 1.5rem 1rem;
         }
@@ -129,6 +131,7 @@
     .btnSubmit,
     .btnDelete {
         font-family: var(--fontText);
+        color: var(--colorText);
         display: inline-block;
         min-width: 10%;
         padding: 1rem 1.5rem;
@@ -143,30 +146,28 @@
     }
 
     .btnCancel {
-        color: var(--colorSecondary);
         background: var(--colorPrimary);
         border: solid var(--colorAccent1);
     }
 
     .btnSubmit {
-        color: var(--colorSecondary);
         background: var(--colorAccent1);
         border: none;
     }
 
     .btnDelete {
-        color: var(--colorSecondary);
         background: var(--colorAccent3);
         border: none;
     }
 }
 
-/* Desktop */
+/*-------------- Desktop --------------*/
 @media (min-width: 768px) {
     main {
         display: grid;
         grid-template-columns: 2fr 12fr;
         
+        /*-------------- Navigation i venstre side  --------------*/
         #user_nav {
             position: fixed;
             font-size: var(--fontSizeDesktop);
@@ -198,41 +199,146 @@
 
 /* Profil information */
     #user_info {
+
+        /*-------------- Brugerens inforationer --------------*/
+        #user_info {
         padding-top:  var(--paddingSiteTop);
         padding-bottom: var(--paddingSiteBottom);
         margin: auto;
         width: 60%;
+        
         h1 {
             text-align: left;
             margin: var(--remDesktop);
             font-size: var(--headerSizeDesktop);
         }
+        
         header {
             margin-left: 1rem;
 
-            h1 {
-                padding: var(--paddingDesktop);
+            header {
+                margin-left: 1rem;
+
+                h1 {
+                    text-align: left;
+                    font-size: var(--headerSizeDesktop);
+                    padding: var(--paddingDesktop);
+                }
             }
-        }
 
         .form-group {
             input {
                 padding: var(--remDesktop);
                 border: none;
-                border-radius: var(--buttonRadius);
-                background: var(--colorPrimary);
-                box-shadow: var(--shadowInner);
-                transition: box-shadow 0.2s ease;
+            h2 {
+                margin: 0;
+                font-family: var(--fontTitles);
+                font-size: 1rem;
+                color: var(--colorSecondary);
             }
 
-            input:focus {
-                outline: none;
-                box-shadow: var(--shadowInner);
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: var(--remDesktop);
+            }
+
+            fieldset {
+                border: none;
+
+                legend {
+                    font-family: var(--fontTitles);
+                    font-size: 1rem;
+                    font-weight: bold;
+                    margin: 1.5rem 0 1.5rem 0;
+                }
+
+                .sr-only {
+                    position: absolute;
+                    left: -625rem;     /* -9999px ÷ 16 = -624.9375rem */
+                    width: 0.0625rem;  /* 1px = 0.0625rem */
+                    height: 0.0625rem; /* 1px = 0.0625rem */
+                    overflow: hidden;
+                }
+            }
+
+            .form-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+
+            .form-row .form-group {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                gap: var(--remMobile);
+
+                label {
+                    font-size: 0.9rem;
+                    font-family: var(--fontText);
+                    color: var(--colorSecondary);
+                    margin: 1rem 0 0.5rem 1rem;
+                }
+
+                input {
+                    padding: var(--remDesktop);
+                    border: none;
+                    border-radius: var(--buttonRadius);
+                    background: var(--colorPrimary);
+                    box-shadow: var(--shadowInner);
+                    transition: box-shadow 0.2s ease;
+                }
+
+                input:focus {
+                    outline: none;
+                    box-shadow: var(--shadowInner);
+                }
+            }
+
+            .SectionDelete {
+                margin: 1.5rem 0 1.5rem 1rem;
+            }
+
+            .btnCancel,
+            .btnSubmit,
+            .btnDelete {
+                display: inline-block;
+                min-width: 10%;
+                padding: var(--remDesktop) 1.5rem;
+                margin-top: var(--remDesktop);
+                font-weight: bold;
+                border-radius: var(--buttonRadius);
+                box-shadow: var(--shadowOuter);
+                cursor: pointer;
+                transition: transform 0.1s ease, box-shadow 0.2s ease;
+                text-align: center;
+                box-sizing: border-box;
+            }
+
+            .btnCancel {
+                background: var(--colorPrimary);
+                border: solid var(--colorAccent1);
             }
         }
 
         .SectionDelete {
             margin: 1.5rem 0 1.5rem 1rem;
+
+            .btnSubmit {
+                background: var(--colorAccent1);
+                border: none;
+            }
+
+            .btnDelete {
+                background: var(--colorAccent3);
+                border: none;
+            }
         }
     }
 }

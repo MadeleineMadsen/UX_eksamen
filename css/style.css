@@ -1,7 +1,7 @@
 /* Kun ting der er på alle sider - main, header, footer, nav osv */
 @import 'variables.css';
 
-/* Remove default */
+/*-------------- Remove default --------------*/
 * {
     margin: 0;
     padding: 0;
@@ -16,81 +16,97 @@ html {
     margin-top: 5rem;
 }
 
-/* Navigation mobile */
-nav#main {
+/*-------------- Navigation --------------*/
+.main-nav {
+    font-family: var(--fontText);
+    background: var(--colorBackground);
+    color: var(--colorText);
+    background-attachment: fixed;
     border-bottom: solid thin var(--colorSecondary);
     padding: 0.6rem;
-    z-index: 10;
     position: fixed;
     top: 0;
     width: 100%;
-    font-family: var(--fontText);
-    background: var(--colorBackground);
-    background-attachment: fixed;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
     z-index: 5;
 
-    ul {
+    .nav-left {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
         align-items: center;
-        font-size: var(--fontSizeMobile);
-        
-        li {
-            list-style-type: none;
-            padding: 0 var(--remMobile);
+        gap: var(--remMobile);
+
+        .logo {
+            width: 2.8rem;
+            height: 2.8rem;
+            margin-right: 0.6rem;
+        }
+
+        .nav-links {
             display: flex;
-            align-items: center;
-            cursor: pointer;
-            
-            a {
+            gap: var(--remMobile);
+            list-style: none;
+
+            li {
+                list-style-type: none;
                 display: flex;
                 align-items: center;
-                text-decoration: none;
-                color: var(--colorText);
+                cursor: pointer;
+
+                a {
+                    color: var(--colorText);
+                    text-decoration: none;
+                    font-size: var(--fontSizeMobile);
+                    padding: 0 0.3rem;
+                }
             }
         }
-
-        button {
-            padding: 0 var(--remMobile);
-        }
-
-        #main_nav {
-            align-items: center;
-        }
-
-        div {
-            display: flex;
-        }
-
-        .hidden {
-            display: none;
-        }
     }
-    
-    .logo {
-        width: 2.8rem;
-        height: 2.8rem;
-        margin-right: 0.6rem;
-        }
 
-    .icon {
-        width: 3.1rem;
-        height: 3.1rem;
-        }
+    .nav-right {
+        display: flex;
+        gap: var(--remDesktop);
 
-    button {
-        background: transparent;
-        border: none;
+        ul {
+            display: flex;
+            gap: var(--remMobile);
+            list-style: none;
+
+            li {
+                padding: 0 0.2rem;
+
+                a {
+                    display: flex;
+                    align-items: center;
+
+                    img {
+                        width: 3.1rem;
+                        height: 3.1rem;
+
+                        .icon {
+                            width: 3.1rem;
+                            height: 3.1rem;
+                        }
+                    }
+                }
+            } 
+        }
     }
 }
 
-/* Main mobile */
+.hidden {
+    display: none !important;
+}
+
+/*-------------- Main --------------*/
 main {
     margin: 0 var(--remMobile);
 }
 
-/* Footer mobile */
+/*-------------- Footer --------------*/
 footer {
     bottom: 0;
     width: 100%;
@@ -106,53 +122,67 @@ footer {
     z-index: 5;
 }
 
-/* Desktop */
+/*-------------- Desktop --------------*/
 @media (min-width: 768px) {
 
-    /* Navigation og footer desktop */
-    nav#main {
+    /*-------------- Navigation (Desktop --------------*/
+    .main-nav {
         padding: 0.5rem 1rem;
-        
-        ul {
-            font-size: var(--fontSizeDesktop);
-            
-            li {
-                padding: 0 var(--remDesktop);
-                
+
+        .nav-left {
+            a {
+                font-size: var(--fontSizeDesktop);
+                padding: 0 var(--remDesktop)
+            }
+
+            .logo {
+                width: 3.1rem;
+                height: 3.1rem;
+                margin-right: var(--remDesktop);
+            }
+
+            .logo:hover {
+                transform: scale(1.1);
+            }
+
+            .nav-links {
+                a {
+                    font-size: var(--fontSizeDesktop);
+                    margin: 0 var(--remMobile);
+                }
+
                 a:hover {
                     text-decoration: underline;
                     transform: scale(1.1);
-                }     
-            }
-
-            button {
-                padding: 0 var(--remDesktop);
+                }
             }
         }
 
-        .logo {
-            width: 3.1rem;
-            height: 3.1rem;
-            margin-right: var(--remDesktop);
-            }
+        .nav-right ul {
+            li {
+                padding: 0 var(--remMobile);
 
-        .icon {
-            width: 3.4rem;
-            height: 3.4rem;            
-            }
-        
-            .icon:hover {
-            transform: scale(1.1);
+                a:hover {
+                    text-decoration: underline;
+                    transform: scale(1.1);
+                }
+
+                img {
+                    width: 3.4rem;
+                    height: 3.4rem;
+                }
+            }  
         }
+    }
 
+    /*-------------- Main --------------*/
+    main {
+        margin: 0 var(--remDesktop);
+    }
+
+    /*-------------- Footer --------------*/
     footer {
         font-size: var(--fontSizeDesktop);
         padding: 1.2rem 0;
     }
-}
-
-    /* Main desktop */
-main {
-    margin: 0 var(--remDesktop);
-}
 }

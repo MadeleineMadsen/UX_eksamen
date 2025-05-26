@@ -1,7 +1,6 @@
 @import 'style.css';
-@import 'card.css';
 
-/* Bogstavs navigation */
+/*-------------- Navigation med bokstaver --------------*/
 #letter-nav {
     display: flex;
     flex-wrap: wrap;
@@ -9,6 +8,7 @@
     gap: var(--remMobile);
     padding: var(--remMobile);
     font-family: var(--fontText);
+    color: var(--colorText);
     
     & > button {
         background: none;
@@ -26,11 +26,12 @@
     }
 }
 
-/* Forfatter liste */
+/*-------------- Listen af forfattere --------------*/
 #author-list {
     display: grid;
     grid-template-columns: 1fr;
     font-family: var(--fontText);
+    color: var(--colorText);
     padding: 0 var(--remMobile) 4rem var(--remMobile);
     margin: 0 auto;
     gap: var(--remMobile);
@@ -72,29 +73,36 @@
     }
 }
 
-/* Desktop */
+/*-------------- Desktop --------------*/
 @media (min-width: 768px) {
+    /*-------------- Navigation med bokstaver --------------*/
     #letter-nav {
         cursor: pointer;
         button:hover {
             border-bottom: thin solid var(--colorText);
         }
     }
+
+    /*-------------- Listen af forfattere --------------*/
     #author-list {
         margin-top: 2rem;
         padding: 0 var(--remDesktop);
         gap: var(--remDesktop);
         justify-items: space-around;
         width: 64%;
+        
         .author-group {
             padding: 0;
+            
             h2 {
                 padding-left: var(--remDesktop);
                 font-size: 1.4rem;
             }
+            
             ul {
                 column-count: 4;
                 column-gap: var(--remDesktop);
+                
                 li {
                     padding: 0 var(--remDesktop);
                 }
