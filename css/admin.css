@@ -51,6 +51,8 @@
     justify-items: center;
     color: var(--colorText);
     grid-template-columns: 1fr;
+    margin-bottom: var(--heightFooter);
+
 
     h3 {
         font-family: var(--fontText);
@@ -232,8 +234,9 @@
 /*-------------- Section 1 - Add new books --------------*/
     #book_form {
         margin: auto;
-        display: inline-block;
-        
+        display: inline-block; 
+        margin-bottom: var(--heightFooter);
+
         h3 {
             font-size: var(--fontSizeDesktop);
             margin: var(--remDesktop) 0;
