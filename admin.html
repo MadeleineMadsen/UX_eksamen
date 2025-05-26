@@ -11,6 +11,7 @@
 <body>
 
 <header>
+    <!-- Navigation -->
     <nav class="main-nav" role="navigation" aria-label="Main Navigation">
         <div class="nav-left">
             <a href="index.html">
@@ -76,9 +77,8 @@
     <aside id="admin_nav" role="complementary" aria-label="Admin navigation">
         <h3>Profile</h3>
 
-        <ul id="dashboard">
+        <ul class="dashboard">
             <li><a id="add_books" href="#book_form">Add new entries</a></li>
-            <li><a id="added_books" href="#new_books">Created entries</a></li>
             <li><a id="personal_info" href="#admin">Personal information</a></li>
         </ul>
     </aside>
@@ -116,24 +116,7 @@
             </form>
 
     </section>
-        
-    <section id="new_books" class="hidden">
 
-        <h1>Created entries</h1>
-        
-        <!-- Efter addAuthorForm -->
-        <h3>Saved authors</h3>
-        <ul id="authorsList"></ul>
-        
-        <!-- Efter addBookForm -->
-        <h3>Saved books</h3>
-        <ul id="booksList"></ul>
-        
-        <!-- Efter addPublisherForm -->
-        <h3>Saved publishers</h3>
-        <ul id="publishersList"></ul>
-    </section>
-    
     <section id="admin" class="hidden">
         <h1>Personal Information</h1>
         

@@ -139,21 +139,19 @@ footer {
                 width: 3.1rem;
                 height: 3.1rem;
                 margin-right: var(--remDesktop);
-            }
-
-            .logo:hover {
-                transform: scale(1.1);
+                &:hover {
+                    transform: scale(1.1);
+                }
             }
 
             .nav-links {
                 a {
                     font-size: var(--fontSizeDesktop);
                     margin: 0 var(--remMobile);
-                }
-
-                a:hover {
-                    text-decoration: underline;
-                    transform: scale(1.1);
+                    &:hover {
+                        text-decoration: underline;
+                        transform: scale(1.1);
+                    }
                 }
             }
         }

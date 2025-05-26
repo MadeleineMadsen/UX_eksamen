@@ -1,12 +1,9 @@
-/* Login, sign up og add books form */
+/* Login og sign up form*/
 @import 'style.css';
 
 
-/*-------------- Overall alle forms --------------*/
-.login-form,
-#addAuthorForm, 
-#addBookForm, 
-#addPublisherForm {
+/*-------------- Begge forms --------------*/
+.login-form, .signup-form {
     font-family: var(--fontText);
     background: var(--colorPrimary);
     border-radius: var(--cardRadius);
@@ -16,32 +13,22 @@
     padding: var(--remDesktop);
     box-shadow: var(--shadowOuter);
     overflow: hidden;
-}
-
-/* Inputfield til forms */
-.login-form input,
-.signup-form input,
-#addAuthorForm input, 
-#addBookForm input, 
-#addPublisherForm input {
-    font-family: var(--fontText);
-    font-size: var(--fontSizeMobile);
-    padding: var(--remDesktop);
-    border: none;
-    border-radius: var(--buttonRadius);
-    background: var(--colorPrimary);
-    box-shadow: var(--shadowInner);
-    transition: box-shadow 0.2s ease;
-}
-
-/* Focus på inputfields */
-.login-form input:focus,
-.signup-form input:focus,
-#addAuthorForm input:focus, 
-#addBookForm input:focus, 
-#addPublisherForm input:focus {
-    outline: none;
-    box-shadow: var(--shadowInner);
+    /* Inputfield til forms */
+    input {
+        font-family: var(--fontText);
+        font-size: var(--fontSizeMobile);
+        padding: var(--remDesktop);
+        border: none;
+        border-radius: var(--buttonRadius);
+        background: var(--colorPrimary);
+        box-shadow: var(--shadowInner);
+        transition: box-shadow 0.2s ease;
+        /* Focus på inputfields */
+        &:focus {
+            outline: none;
+            box-shadow: var(--shadowInner);
+        }
+    }
 }
 
 /* Error-besked på både login og signup */
@@ -61,87 +48,77 @@
     @media (max-width: 768px) {
         margin: 2rem auto 5rem auto;
     }
-}
-
-.login-form header {
-    text-align: center;
-    padding: var(--remDesktop);
-
-    .icon-wrapper {
-        width: 6rem; height: 6rem;
-        margin: 0 auto var(--remMobile);
-        background: var(--colorPrimary);
-        border-radius: 50%;
-        box-shadow: var(--shadowOuter);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        .icon-login { 
-            width: 2.5rem; 
+    header {
+        text-align: center;
+        padding: var(--remDesktop);
+    
+        .icon-wrapper {
+            width: 6rem; height: 6rem;
+            margin: 0 auto var(--remMobile);
+            background: var(--colorPrimary);
+            border-radius: 50%;
+            box-shadow: var(--shadowOuter);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+    
+            .icon-login { 
+                width: 2.5rem; 
+            }
+        }
+    
+        h2 {
+            margin: 0;
+            font-family: var(--fontTitles);
+            font-size: 1.75rem;
+            color: var(--colorSecondary);
         }
     }
-
-    h2 {
-        margin: 0;
-        font-family: var(--fontTitles);
-        font-size: 1.75rem;
-        color: var(--colorSecondary);
-    }
-}
-
-.login-form form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 0 1.5rem 2rem;
-
-    .form-group {
+    form {
         display: flex;
         flex-direction: column;
-        gap: var(--remMobile);
-    }
-
-    .form-group label {
-        font-family: var(--fontText);
-        font-size: 0.9rem;
-        color: var(--colorSecondary);
-    }
-}
-
-/* Login og lidt tilføj content form - resten under Admin i bunden */
-.login-form input,
-#addAuthorForm input, 
-#addBookForm input, 
-#addPublisherForm input {
-    font-family: var(--fontText);
-    font-size: 1rem;
-    padding: var(--remDesktop);
-    border: none;
-    border-radius: var(--buttonRadius);
-    background: var(--colorPrimary);
-    box-shadow: var(--shadowInner);
-    transition: box-shadow 0.2s ease;
-}
-
-.login-form input:focus,
-#addAuthorForm input:focus, 
-#addBookForm input:focus, 
-#addPublisherForm input:focus {
-    outline: none;
-    box-shadow: var(--shadowInner);
-    .form-group {
-        display: flex;
-        flex-direction: column;
-        gap: var(--remMobile);
-
-        label {
+        gap: 1.5rem;
+        padding: 0 1.5rem 2rem;
+    
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--remMobile);
+        }
+    
+        .form-group label {
             font-family: var(--fontText);
             font-size: 0.9rem;
             color: var(--colorSecondary);
         }
     }
+    input {
+        font-family: var(--fontText);
+        font-size: 1rem;
+        padding: var(--remDesktop);
+        border: none;
+        border-radius: var(--buttonRadius);
+        background: var(--colorPrimary);
+        box-shadow: var(--shadowInner);
+        transition: box-shadow 0.2s ease;
+        &:focus {
+            outline: none;
+            box-shadow: var(--shadowInner);
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                gap: var(--remMobile);
+        
+                label {
+                    font-family: var(--fontText);
+                    font-size: 0.9rem;
+                    color: var(--colorSecondary);
+                }
+            }
+        }
+    }
 }
+
 
 /* Login/signup - submit button */
 .btnSubmit {
@@ -158,12 +135,9 @@
     transition: transform 0.1s ease, box-shadow 0.2s ease;
     
     &:hover {
-        transform: scale(1.05);
+        transform: scale(1.1);
     }
     
-    &:active {
-        transform: scale(1);
-    }
 }
 
 /*-------------- Sign up --------------*/
@@ -178,140 +152,76 @@
     padding: 2rem;
     box-shadow: var(--shadowOuter);
     overflow: hidden;
-}
-
-.signup-form header {
-    text-align: center;
-    padding: var(--remDesktop);
-
-    .icon-wrapper {
-        width: 6rem; height: 6rem;
-        margin: 0 auto var(--remMobile);
-        background: var(--colorPrimary);
-        border-radius: 50%;
-        box-shadow: var(--shadowOuter);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        .icon-signup {
-            width: 3.2rem;
+    header {
+        text-align: center;
+        padding: var(--remDesktop);
+    
+        .icon-wrapper {
+            width: 6rem; height: 6rem;
+            margin: 0 auto var(--remMobile);
+            background: var(--colorPrimary);
+            border-radius: 50%;
+            box-shadow: var(--shadowOuter);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+    
+            .icon-signup {
+                width: 3.2rem;
+            }
         }
-    }
-
-    h2 {
-        margin: 0;
-        font-family: var(--fontTitles);
-        font-size: 1.75rem;
-        color: var(--colorSecondary);
-    }
-
-    .sr-only {
-        position: absolute;
-        left: -625rem;     /* -9999px ÷ 16 = -624.9375rem */
-        width: 0.0625rem;  /* 1px = 0.0625rem */
-        height: 0.0625rem; /* 1px = 0.0625rem */
-        overflow: hidden;
-    }
-}
-
-.signup-form form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 1rem 1.5rem 2rem;
-
-    @media (max-width: 480px) {
-        padding: 0;
-    }
-
-    .form-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-
-        .form-group {
-            flex: 1;
-            min-width: 0;
-        }
-    }
-
-    .form-group {
-        display: flex;
-        flex-direction: column;
-        gap: var(--remMobile);
-
-        label {
-            font-family: var(--fontText);
-            font-size: 0.9rem;
+    
+        h2 {
+            margin: 0;
+            font-family: var(--fontTitles);
+            font-size: 1.75rem;
             color: var(--colorSecondary);
         }
-    }
-
-    .login-link {
-        font-family: var(--fontText);
-        text-align: center;
-    }
-}
-
-/*-------------- Admin - tilføj content --------------*/
-
-#addAuthorForm, 
-#addBookForm, 
-#addPublisherForm {
-    margin: 0 var(--remMobile);
-    padding: var(--remDesktop);
-    width: 95%;
-
-    .sr-only {
-        position: absolute;
-        left: -625rem;     /* -9999px ÷ 16 = -624.9375rem */
-        width: 0.0625rem;  /* 1px = 0.0625rem */
-        height: 0.0625rem; /* 1px = 0.0625rem */
-        overflow: hidden;
-    }
-
-    input {
-        padding: var(--remDesktop);
-        justify-content: center;
-        align-items: center;
-        width: 13.25rem;
-    }
-
-    .btn-save {
-        margin: 1rem 0 1rem 1rem;
-        padding: 0.4rem 1rem;
-        background: var(--colorPrimary);
-        color: var(--colorSecondary);
-        border: thin solid var(--colorAccent1);
-        border-radius: var(--buttonRadius);
-        cursor: pointer;
-        
-        &:hover {
-            background-color: var(--colorAccent1);
+    
+        .sr-only {
+            position: absolute;
+            left: -625rem;     /* -9999px ÷ 16 = -624.9375rem */
+            width: 0.0625rem;  /* 1px = 0.0625rem */
+            height: 0.0625rem; /* 1px = 0.0625rem */
+            overflow: hidden;
         }
     }
-}
-
-/*-------------- Desktop --------------*/
-@media (min-width: 768px) { 
-    #addAuthorForm, 
-    #addBookForm, 
-    #addPublisherForm {
-        margin: var(--remDesktop) 0;
-        padding: var(--remDesktop) 1.5rem;
-        max-width: 32.5rem;
-        justify-content: center;
+    form {
         display: flex;
-        align-items: center;
-
-        input {
-            padding: var(--remDesktop);
-            justify-content: center;
-            align-items: center;
-            width: 20rem;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1rem 1.5rem 2rem;
+    
+        @media (max-width: 480px) {
+            padding: 0;
+        }
+    
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+    
+            .form-group {
+                flex: 1;
+                min-width: 0;
+            }
+        }
+    
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--remMobile);
+    
+            label {
+                font-family: var(--fontText);
+                font-size: 0.9rem;
+                color: var(--colorSecondary);
+            }
+        }
+    
+        .login-link {
+            font-family: var(--fontText);
+            text-align: center;
         }
     }
 }
-
-

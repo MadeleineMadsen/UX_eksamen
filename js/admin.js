@@ -107,12 +107,6 @@ document.getElementById('addBookForm')?.addEventListener('submit', async e => {
 });
 
 
-
-
-
-
-
-
 // ───── Tilføj forfatter ─────
 document.getElementById('addAuthorForm')?.addEventListener('submit', async e => {
     e.preventDefault();
@@ -184,19 +178,6 @@ document.getElementById('addPublisherForm')?.addEventListener('submit', async e 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Log ud
 const logoutBtnUser = document.querySelector('#logoutBtnUser');
 const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
@@ -234,18 +215,10 @@ fetch(`${BASE_URL}/users/${userId}`, {
 // Navigationsklik
 document.getElementById('add_books').onclick = () => {
     document.getElementById('book_form').classList.remove('hidden');
-    document.getElementById('new_books').classList.add('hidden');
-    document.getElementById('admin').classList.add('hidden');
-};
-
-document.getElementById('added_books').onclick = () => {
-    document.getElementById('book_form').classList.add('hidden');
-    document.getElementById('new_books').classList.remove('hidden');
     document.getElementById('admin').classList.add('hidden');
 };
 
 document.getElementById('personal_info').onclick = () => {
     document.getElementById('book_form').classList.add('hidden');
-    document.getElementById('new_books').classList.add('hidden');
     document.getElementById('admin').classList.remove('hidden');
 };

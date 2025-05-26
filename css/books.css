@@ -190,13 +190,13 @@ main {
     transition: box-shadow 0.2s ease;
 }
 
-    .book-title {
+.book-title {
         margin: var(--remMobile) var(--remDesktop) 0;
         font-family: var(--fontTitles);
         font-size: var(--fontSizeMobile);
         text-align: center;
         min-height: 3rem;
-    }
+}
 
 /* Drop down søgnings liste */
 .suggestions-list {
@@ -235,12 +235,12 @@ main {
         cursor: pointer;
         transition: transform 0.1s ease;
         margin-top: auto;
-    }
-
-    .btn--book-info:hover {
-        transform: scale(1.1);
-    }
 }
+
+.btn--book-info:hover {
+        transform: scale(1.1);
+}
+
 
 /*-------------- Desktop --------------*/
 @media (min-width:  768px){
