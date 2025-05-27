@@ -128,7 +128,7 @@
 
     .btnCancel,
     .btnSubmit,
-    .btnDelete {
+    #btnDelete {
         font-family: var(--fontText);
         color: var(--colorText);
         display: inline-block;
@@ -157,7 +157,7 @@
         border: none;
     }
 
-    .btnDelete {
+    #btnDelete {
         background: var(--colorAccent3);
         border: none;
     }
