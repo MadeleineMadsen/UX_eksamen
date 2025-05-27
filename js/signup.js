@@ -1,14 +1,19 @@
 
 import { BASE_URL } from './info.js';
-import { handleError } from './api.js';
+import { handleError } from './common.js';
 
-// Hjælpefunktioner
+// ─────────────── Sign up ───────────────
+
+// Hjælpefunktioner (Validering)
 function validateEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
+
 function validatePhone(phone) {
   return /^\+?\d{7,15}$/.test(phone);
 }
+
+// ─────────────── Formularen ───────────────
 
 document.querySelector('#frmSignup').addEventListener('submit', async e => {
   e.preventDefault();
@@ -66,6 +71,7 @@ document.querySelector('#frmSignup').addEventListener('submit', async e => {
     birth_date:   birthDate
   });
 
+  // ─────────────── Bruger oprettet ───────────────
   try {
     const res  = await fetch(`${BASE_URL}/users`, {
       method: 'POST',

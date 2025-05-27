@@ -1,6 +1,7 @@
 import { BASE_URL } from './info.js';
-import { handleError } from './api.js';
+import { handleError } from './common.js';
 
+// ─────────────── Login ───────────────
 
 // Hjælpefunktion til at tjekke e-mail-format
 function validateEmail(email) {
@@ -41,7 +42,7 @@ document.querySelector('#frmLogin').addEventListener('submit', async e => {
         method: 'POST',
         body: params
     });
-  
+
     const data = await response.json();
     if (!response.ok) throw new Error(data.error || 'Login failed');
 

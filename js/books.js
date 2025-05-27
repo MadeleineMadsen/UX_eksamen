@@ -1,20 +1,12 @@
 import { BASE_URL }            from './info.js';
-import {
-  handleAPIError,
-  handleFetchCatchError,
-  handleCloseDialogButton,
-  loanBook
-} from './common.js';
+import { handleAPIError, handleFetchCatchError, handleCloseDialogButton, loanBook} from './common.js';
 import { loggedUserID, tokenHeader } from './common.js';
 
+const listEl = document.getElementById('book-list');
 
-const listEl        = document.getElementById('book-list');
-// const searchInput   = document.getElementById('txtSearch');
-// const suggContainer = document.getElementById('suggestions');
+// ─────────────── Navigation ───────────────
 
-// let abortController = null;
-
-// Navigation
+// Tjek om der er admin-adgang
 const userId = sessionStorage.getItem('book_app_user_id');
 const isAdmin = sessionStorage.getItem('book_app_user_is_admin') === 'true';
 
@@ -48,8 +40,9 @@ const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
     });
 });
 
+// ─────────────── Rendering af bøger ───────────────
 
-// Hent og vis 12 tilfældige bøger
+// Hent og vis 10 tilfældige bøger
 async function loadRandom() {
   await loadBooks({ n: 10 }, listEl);
 }
@@ -75,6 +68,7 @@ async function loadBooks(params, container) {
   renderBooks(booksWithCover, container);
 }
 
+// ─────────────── Rendering af cards ───────────────
 
 // Render book-cards i container
 function renderBooks(books, container) {
@@ -106,6 +100,7 @@ function renderBooks(books, container) {
       <button class="btn--book-info" aria-label="See more information about ${title}">See more</button>
     `;
 
+    // Render indhold på book-cards ud fra hvilken bruger der er logget ind
     const infoBtn = card.querySelector('.btn--book-info');
     infoBtn.addEventListener('click', async () => {
       try {
@@ -133,33 +128,8 @@ function renderBooks(books, container) {
   });
 }
 
+// ─────────────── Popup ───────────────
 
-// Pop-op ved klik på CTA-button
-
-// document.body.addEventListener('click', async  => {
-
-//   // Find book_id og vis popup
-//   const id = card.dataset.bookId;
-//   try {
-//     const userId = loggedUserID();
-//     const res = await fetch(
-//       `${BASE_URL}/admin/${userId}/books/${id}`,
-//       { headers: tokenHeader() }
-//     );
-//     const book = await handleAPIError(res);
-//     //showPopup(book);
-    
-    
-//   } catch (err) {
-//     handleFetchCatchError(err);
-//   }
-// });
-
-
-
-/** ────────────────────────────────────────
- *  5) Byg og vis dialog
- *  ──────────────────────────────────────── */
 function showPopup(book) {
   // Underscore er brugt, da det er fra databasen
   const {
@@ -197,11 +167,11 @@ function showPopup(book) {
         <p><strong>Year:</strong> ${publishing_year}</p>
         <p><strong>Publisher:</strong> ${publishing_company}</p>
 
+        <!-- Hvis admin er logget ind -->
         ${isAdmin ? `
           <p><strong>Loan history:</strong></p>
           <ul class="loan-history"></ul>
         ` : ''}
-
 
         <!-- Knappen vises for alle ikke-admin, men opfører sig forskelligt -->
         ${!isAdmin ? `<button type="button" class="btn--loan" aria-label="Loan ${title} by ${author}">Loan</button>` : ''}
@@ -212,6 +182,9 @@ function showPopup(book) {
   // Luk-knap
   dialog.querySelector('.close')
         .addEventListener('click', handleCloseDialogButton);
+
+
+  // ─────────────── Rendering af lånehistorik for admin ───────────────
 
   // Fyld historik hvis admin
   const historyEl = dialog.querySelector('.loan-history');
@@ -229,6 +202,8 @@ function showPopup(book) {
       historyEl.append(li);
     }
   }
+
+  // ─────────────── Låne knap redirecter alt efter om man er logget ind eller ikke ───────────────
 
   // Loan-knap: hvis ikke-logget -> til login, ellers kald loanBook
   const loanBtn = dialog.querySelector('.btn--loan');
@@ -257,7 +232,6 @@ function showPopup(book) {
 }
 
 export { showPopup };
-
 
 loadRandom();
 

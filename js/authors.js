@@ -1,17 +1,14 @@
 import { BASE_URL } from './info.js';
-import {
-handleAPIError,
-handleFetchCatchError,
-handleCloseDialogButton
-} from './common.js';
+import {handleAPIError, handleFetchCatchError, handleCloseDialogButton} from './common.js';
 
 const listEl    = document.getElementById('author-list');
 const navEl     = document.getElementById('letter-nav');
 
 let groups = {};
 let current = 'A';
+// ─────────────── Navigation ───────────────
 
-// Navigation
+// Tjek om der er admin-adgang
 const userId = sessionStorage.getItem('book_app_user_id');
 const isAdmin = sessionStorage.getItem('book_app_user_is_admin') === 'true';
 
@@ -45,6 +42,8 @@ const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
     });
 });
 
+// ─────────────── Rendering af forfattere ───────────────
+
 // Load forfattere fra API´en
 async function loadRandom() {
     try {
@@ -68,6 +67,8 @@ async function loadRandom() {
     handleFetchCatchError(err);
     }
 }
+
+// ─────────────── Forfatter liste ───────────────
 
 // Lav en knap for hvert bogstav A-Z
 function buildNav() {
@@ -107,6 +108,8 @@ function showGroup(letter) {
 `;
 listEl.append(section);
 
+// ─────────────── Brugervenlighed ───────────────
+
 // Tilføj tastaturhåndtering til hvert <li>
 section.querySelectorAll('li[data-author-id]').forEach(li => {
     li.addEventListener('keydown', async e => {
@@ -141,6 +144,8 @@ section.querySelectorAll('li[data-author-id]').forEach(li => {
         });
     });
 }
+
+// ─────────────── Popup ───────────────
 
 // Pop op ved klik på forfatter
 document.body.addEventListener('click', async e => {

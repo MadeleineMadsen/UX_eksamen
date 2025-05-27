@@ -1,3 +1,24 @@
+import { BASE_URL } from './info.js';
+
+// ─────────────── Profile ───────────────
+
+// ─────────────── Navigation ───────────────
+
+// Log ud
+const logoutBtnUser = document.querySelector('#logoutBtnUser');
+const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
+
+[logoutBtnUser, logoutBtnAdmin].forEach(btn => {
+    btn?.addEventListener('click', () => {
+    sessionStorage.removeItem('book_app_user_id');
+    sessionStorage.removeItem('book_app_user_token');
+    sessionStorage.removeItem('book_app_user_is_admin');
+    window.location.href = 'login.html';
+    });
+});
+
+// ─────────────── Rendering af indhold ───────────────
+
 // Hent brugerdata
 const userId = sessionStorage.getItem('book_app_user_id');
 const token = sessionStorage.getItem('book_app_user_token');
@@ -8,12 +29,13 @@ if (!userId || !token) {
 
 let originalUserData = null;
 
-// Hjælpere
+// Hjælpefunktion til at opdatere tekstindhold
 function setText(selector, value) {
     const el = document.querySelector(selector);
     if (el) el.textContent = value;
 }
 
+// Viser statusbeskeder til brugeren
 function showStatus(message, type = 'info') {
     const existing = document.getElementById('statusMessage');
     if (existing) existing.remove();
@@ -36,16 +58,18 @@ function showStatus(message, type = 'info') {
     setTimeout(() => msg.remove(), 4000);
 }
 
-// Hent data
-fetch(`http://127.0.0.1:5555/users/${userId}`, {
+// Henter brugerens data og udfylder formularfelter og visningsfelter
+fetch(`${BASE_URL}/users/${userId}`, {
     headers: {
     'X-Session-Token': token
     }
 })
+
 .then(res => {
     if (!res.ok) throw new Error('User data could not be retrieved');
     return res.json();
 })
+
 .then(data => {
     originalUserData = structuredClone(data);
 
@@ -63,12 +87,15 @@ fetch(`http://127.0.0.1:5555/users/${userId}`, {
     setText('#phone', data.phone_number);
     setText('#member', data.membership_date);
 })
+
 .catch(err => {
     console.error('Error loading user data:', err);
     alert('An error occurred while retrieving your profile information.');
 });
 
-// Gem oplysninger
+// ─────────────── Opdatering af oplysninger ───────────────
+
+// Gemmer oplysninger
 document.getElementById('editUserForm').addEventListener('submit', async e => {
     e.preventDefault();
 
@@ -81,7 +108,7 @@ document.getElementById('editUserForm').addEventListener('submit', async e => {
     formData.append('birth_date', document.getElementById('txtBirthdate').value);
 
     try {
-    const res = await fetch(`http://127.0.0.1:5555/users/${userId}`, {
+    const res = await fetch(`${BASE_URL}/users/${userId}`, {
         // Backend tillader kun PUT
         method: 'PUT',
         headers: {
@@ -115,6 +142,8 @@ document.getElementById('editUserForm').addEventListener('submit', async e => {
     }
 });
 
+// ─────────────── Annullering af nye oplysninger ───────────────
+
 // Annuller ændringer
 document.getElementById('btnCancel').addEventListener('click', () => {
     if (!originalUserData) return;
@@ -129,6 +158,8 @@ document.getElementById('btnCancel').addEventListener('click', () => {
     showStatus('Changes canceled.');
 });
 
+// ─────────────── Sletning af brugere ───────────────
+
 // Slet bruger / Fjern bruger
 document.getElementById('btnDelete').addEventListener('click', async () => {
     const confirmed = confirm('Are you sure you want to delete your profile? This action cannot be undone.');
@@ -136,7 +167,7 @@ document.getElementById('btnDelete').addEventListener('click', async () => {
     if (!confirmed) return;
 
     try {
-    const res = await fetch(`http://127.0.0.1:5555/users/${userId}`, {
+    const res = await fetch(`${BASE_URL}/users/${userId}`, {
         method: 'DELETE',
         headers: {
         'X-Session-Token': token
@@ -160,17 +191,4 @@ document.getElementById('btnDelete').addEventListener('click', async () => {
     console.error('Network error while deleting profile:', err);
     alert('A network error occurred while deleting your profile. Please try again.');
     }
-});
-
-// Log ud
-const logoutBtnUser = document.querySelector('#logoutBtnUser');
-const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
-
-[logoutBtnUser, logoutBtnAdmin].forEach(btn => {
-    btn?.addEventListener('click', () => {
-    sessionStorage.removeItem('book_app_user_id');
-    sessionStorage.removeItem('book_app_user_token');
-    sessionStorage.removeItem('book_app_user_is_admin');
-    window.location.href = 'login.html';
-    });
 });

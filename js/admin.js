@@ -1,7 +1,9 @@
-// Tjek om der er admin-adgang
 import { BASE_URL } from './info.js';
 import { loggedUserID, tokenHeader } from './common.js';
 
+// ─────────────── Admin ───────────────
+
+// Tjek om der er admin-adgang
 const userId = loggedUserID();
 const token = sessionStorage.getItem('book_app_user_token');
 const isAdmin = sessionStorage.getItem('book_app_user_is_admin') === 'true';
@@ -10,6 +12,10 @@ if (!userId || !token || !isAdmin) {
     alert('You don’t have access to the adminpanel.');
     window.location.href = 'index.html';
 }
+
+// ─────────────── Admin - Add new entries ───────────────
+
+// ───── Add new book (Tkekker eksisterende data) ─────
 
 // Tilføj bogtitel (med automatisk oprettelse af forfatter og udgiver hvis de ikke findes)
 document.getElementById('addBookForm')?.addEventListener('submit', async e => {
@@ -81,7 +87,7 @@ document.getElementById('addBookForm')?.addEventListener('submit', async e => {
         publisher = { publisher_id: createdPublisher.publisher_id };
     }
 
-    // Tilføj bog
+    // ───── Add new book ─────
     const year = new Date().getFullYear();
     const bookFormData = new FormData();
     bookFormData.append('title', title);
@@ -107,8 +113,7 @@ document.getElementById('addBookForm')?.addEventListener('submit', async e => {
     form.reset();
 });
 
-
-// ───── Tilføj forfatter ─────
+// ───── Add new author ─────
 document.getElementById('addAuthorForm')?.addEventListener('submit', async e => {
     e.preventDefault();
     const form = e.target;
@@ -126,7 +131,7 @@ document.getElementById('addAuthorForm')?.addEventListener('submit', async e => 
     try {
         const res = await fetch(`${BASE_URL}/admin/${userId}/authors`, {
             method: 'POST',
-            headers: tokenHeader(), // ingen Content-Type!
+            headers: tokenHeader(), 
             body: formData
         });
 
@@ -145,7 +150,7 @@ document.getElementById('addAuthorForm')?.addEventListener('submit', async e => 
 });
 
 
-// ───── Tilføj forlag ─────
+// ───── Add new publisher ─────
 document.getElementById('addPublisherForm')?.addEventListener('submit', async e => {
     e.preventDefault();
     const form = e.target;
@@ -177,22 +182,9 @@ document.getElementById('addPublisherForm')?.addEventListener('submit', async e 
     }
 });
 
+// ─────────────── Admin - Personal information ───────────────
 
-
-// Log ud
-const logoutBtnUser = document.querySelector('#logoutBtnUser');
-const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
-
-[logoutBtnUser, logoutBtnAdmin].forEach(btn => {
-    btn?.addEventListener('click', () => {
-        sessionStorage.removeItem('book_app_user_id');
-        sessionStorage.removeItem('book_app_user_token');
-        sessionStorage.removeItem('book_app_user_is_admin');
-        window.location.href = 'login.html';
-    });
-});
-
-// Hent brugerdata og vis i profil
+// Hent brugerdata og vis i profil (Admin's personlige informationer)
 fetch(`${BASE_URL}/users/${userId}`, {
     headers: tokenHeader()
 })
@@ -213,7 +205,9 @@ fetch(`${BASE_URL}/users/${userId}`, {
         alert('An error occurred while retrieving your profile information.');
     });
 
-// Navigationsklik
+// ─────────────── Admin - Navigation ───────────────
+
+// ───── Profile sidebar (Admin) ─────
 document.getElementById('add_books').onclick = () => {
     document.getElementById('book_form').classList.remove('hidden');
     document.getElementById('admin').classList.add('hidden');
@@ -223,3 +217,16 @@ document.getElementById('personal_info').onclick = () => {
     document.getElementById('book_form').classList.add('hidden');
     document.getElementById('admin').classList.remove('hidden');
 };
+
+// ───── Log ud ─────
+const logoutBtnUser = document.querySelector('#logoutBtnUser');
+const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
+
+[logoutBtnUser, logoutBtnAdmin].forEach(btn => {
+    btn?.addEventListener('click', () => {
+        sessionStorage.removeItem('book_app_user_id');
+        sessionStorage.removeItem('book_app_user_token');
+        sessionStorage.removeItem('book_app_user_is_admin');
+        window.location.href = 'login.html';
+    });
+});

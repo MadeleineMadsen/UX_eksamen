@@ -1,7 +1,9 @@
-// search.js
+
 import { BASE_URL } from './info.js';
 import { handleAPIError, handleFetchCatchError, tokenHeader } from './common.js';
 import { showPopup } from './books.js';  
+
+// ─────────────── Søgefeltet ───────────────
 
 // Hent tekst-input-feltet til søgning
 const searchInput   = document.getElementById('txtSearch');
@@ -22,6 +24,8 @@ searchInput.addEventListener('input', () => {
     suggContainer.hidden = true;
     return;
   }
+
+  // ─────────────── Forespørgseler ───────────────
 
 // Opret en ny AbortController til den kommende forespørgsel
   abortController = new AbortController();
@@ -61,6 +65,8 @@ searchInput.addEventListener('input', () => {
     });
 });
 
+// ─────────────── Foreslag ───────────────
+
 // Klik på forslag i listen
 suggContainer.addEventListener('click', async e => {
   if (!e.target.matches('li')) return;
@@ -71,7 +77,7 @@ suggContainer.addEventListener('click', async e => {
   suggContainer.hidden = true;
   searchInput.value = '';
 
-
+// ─────────────── Tjekning af bruger ───────────────
   try {
     // Tjek rolle og hent bogdata
     const isAdmin = sessionStorage.getItem('book_app_user_is_admin') === 'true';
