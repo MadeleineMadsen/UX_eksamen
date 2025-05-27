@@ -1,12 +1,12 @@
-/* Css til index-siden + søgningfunktion */
-
 @import 'style.css';
 @import 'card.css';
+
+
+/*-------------- Index side --------------*/
 
 main {
     padding-bottom: var(--heightFooter);
 }
-/* Liste over bøger */
 
 /*-------------- Søgefeltet --------------*/
 .search-section {
@@ -91,18 +91,6 @@ main {
     color: var(--colorSecondary);
 }
 
-/* Desktop */
-@media (min-width:  768px){
-    #book-list {
-    grid-template-columns: repeat(auto-fit, minmax(11.25rem, 1fr));
-    padding-inline: 4rem;
-    max-width: calc((11.25rem * 6) + (var(--remDesktop) * 12));
- /* 5 kort + 4 mellemrum */
-    margin: auto;
-    
-
-    }
-}
 /*-------------- Alle cards --------------*/
 
 /* Selve kortene render sig til cellestørrelsen */
@@ -135,6 +123,7 @@ main {
             cursor: pointer;
         }
     }
+    
     .book-title {
         margin: var(--remMobile) var(--remDesktop) 0;
         font-family: var(--fontTitles);
@@ -142,6 +131,7 @@ main {
         text-align: center;
         min-height: 3rem;
     }
+
     .book-author {
         margin: 0 var(--remDesktop) var(--remMobile);
         font-size: 0.9rem;
@@ -150,6 +140,7 @@ main {
         flex-grow: 1; /* skubber knappen ned */
         min-height: 1.2rem;
     }
+
     .btn--book-info {
         font-family: var(--fontText);
         min-width: 10%;
@@ -164,83 +155,12 @@ main {
         cursor: pointer;
         transition: transform 0.1s ease;
         margin-top: auto;
+        
         &:hover {
             transform: scale(1.1);
         }
     }
 }
-
-
-/* søgnings style*/
-.search-section {
-    position: relative;
-    width: 90%;
-    max-width: 22.5rem;
-    margin: 1rem auto 0.5rem;
-}
-
-.search-section input[type="search"] {
-    width: 100%;
-    padding: var(--remDesktop);
-    border: none;
-    border-radius: var(--buttonRadius);
-    font-family: var(--fontText);
-    font-size: 1rem;
-    box-shadow: var(--shadowOuter);
-    transition: box-shadow 0.2s ease;
-}
-
-.book-title {
-        margin: var(--remMobile) var(--remDesktop) 0;
-        font-family: var(--fontTitles);
-        font-size: var(--fontSizeMobile);
-        text-align: center;
-        min-height: 3rem;
-}
-
-/* Drop down søgnings liste */
-.suggestions-list {
-    position: absolute;
-    top: 100%; left: 0; right: 0;
-    margin: 0; 
-    padding: 0;
-    list-style: none;
-    background: var(--colorPrimary);
-    border-radius: 0 0 var(--cardRadius) var(--cardRadius);
-    box-shadow: var(--shadowOuter);
-    max-height: 15rem;
-    overflow-y: auto;
-    z-index: 10;
-    li {
-        padding: 0.75rem 1rem;
-        cursor: pointer;
-    }
-}
-.suggestions-list li:hover,
-.suggestions-list li.selected {
-    background: var(--colorAccent1);
-    color: var(--colorSecondary);
-}
-    .btn--book-info {
-        font-family: var(--fontText);
-        min-width: 10%;
-        padding: var(--remDesktop);
-        margin: 0 var(--remDesktop) var(--remDesktop);
-        padding: var(--remMobile);
-        background: var(--colorAccent1);
-        color: var(--colorSecondary);
-        border: none;
-        border-radius: var(--buttonRadius);
-        box-shadow: var(--shadowOuter);
-        cursor: pointer;
-        transition: transform 0.1s ease;
-        margin-top: auto;
-}
-
-.btn--book-info:hover {
-        transform: scale(1.1);
-}
-
 
 /*-------------- Desktop --------------*/
 @media (min-width:  768px){

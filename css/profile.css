@@ -1,6 +1,6 @@
-/* Css til profil siden hos user */
-
 @import 'style.css';
+
+/*-------------- Profile --------------*/
 
 /*-------------- Navigation i venstre side --------------*/
 #user_nav {
@@ -37,45 +37,43 @@
     padding-top: 2rem;
     padding-bottom: 6rem;
     margin: auto;
-    h1 {
-        font-family: var(--fontTitles);
-        text-align: center;
-        font-size: var(--headerSizeMobile);
-        margin: var(--remMobile);
-        padding-top: var(--remMobile);
-    }
-    p {
-        font-family: var(--fontText);
-    }
+    
     header {
         text-align: left;
         margin-left: var(--remDesktop);
+        
         h1 {
+            font-family: var(--fontTitles);
             text-align: center;
             font-size: var(--headerSizeMobile);
             margin: 0;
             padding: 0;
         }
     }
+    
     h2 {
         margin: 0;
         font-family: var(--fontTitles);
         font-size: 1rem;
     }
+    
     form {
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
         padding: var(--remDesktop);
     }
+    
     fieldset {
         border: none;
+
         legend {
             font-family: var(--fontTitles);
             font-size: var(--fontSizeMobile);
             font-weight: bold;
             margin: 1.5rem 0 1.5rem 1rem;
         }
+        
         .sr-only {
             position: absolute;
             left: -625rem;     /* -9999px ÷ 16 = -624.9375rem */
@@ -84,6 +82,7 @@
             overflow: hidden;
         }
     }
+    
     .form-row {
         display: flex;
         flex-wrap: wrap;
@@ -91,9 +90,9 @@
     }
 
     .form-row .form-group {
-            flex: 1;
-            min-width: 0;
-        }
+        flex: 1;
+        min-width: 0;
+    }
 
     .form-group {
         display: flex;
@@ -200,7 +199,7 @@
         }
     }
 
-/* Profil information */
+    /* Profil information */
     #user_info {
         padding-top:  var(--paddingSiteTop);
         padding-bottom: var(--paddingSiteBottom);
@@ -222,37 +221,34 @@
                     padding: var(--paddingDesktop);
                 }
         }
+
         .form-group {
+            
             input {
                 padding: var(--remDesktop);
                 border: none;
-            h2 {
-                margin: 0;
-                font-family: var(--fontTitles);
-                font-size: 1rem;
-                color: var(--colorSecondary);
+            
+                h2 {
+                    margin: 0;
+                    font-family: var(--fontTitles);
+                    font-size: 1rem;
+                    color: var(--colorSecondary);
+                }
+
+                .SectionDelete {
+                    margin: 1.5rem 0 1.5rem 1rem;
+                }
+
+                .btnCancel,
+                .btnSubmit,
+                .btnDelete {
+                    display: inline-block;
+                    min-width: 10%;
+                    padding: var(--remDesktop) 1.5rem;
+                }
             }
-
-
-            .SectionDelete {
-                margin: 1.5rem 0 1.5rem 1rem;
-            }
-
-            .btnCancel,
-            .btnSubmit,
-            .btnDelete {
-                display: inline-block;
-                min-width: 10%;
-                padding: var(--remDesktop) 1.5rem;
-            }
-        }
-
-        .SectionDelete {
-            margin: 1.5rem 0 1.5rem 1rem;
-
         }
     }
-}
 }
 
 .hidden {

@@ -1,5 +1,6 @@
-/* Kun ting der er på alle sider - main, header, footer, nav osv */
 @import 'variables.css';
+
+/*-------------- Main, header, footer, nav osv --------------*/
 
 /*-------------- Remove default --------------*/
 * {
