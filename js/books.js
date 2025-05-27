@@ -161,6 +161,7 @@ function renderBooks(books, container) {
  *  5) Byg og vis dialog
  *  ──────────────────────────────────────── */
 function showPopup(book) {
+  // Underscore er brugt, da det er fra databasen
   const {
     book_id,
     title,

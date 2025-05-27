@@ -24,6 +24,7 @@ document.getElementById('addBookForm')?.addEventListener('submit', async e => {
         return alert('Please fill in all fields.');
     }
 
+    // Underscore er brugt, da det er fra databasen
     const [first_name, ...rest] = authorFullName.split(' ');
     const last_name = rest.join(' ') || '-';
 
