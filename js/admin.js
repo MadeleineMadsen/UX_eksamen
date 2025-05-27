@@ -21,11 +21,11 @@ document.getElementById('addBookForm')?.addEventListener('submit', async e => {
     const publisherName = form.querySelector('input[name="publisher_name"]')?.value.trim();
 
     if (!title || !authorFullName || !publisherName) {
-        return alert("Please fill in all fields.");
+        return alert('Please fill in all fields.');
     }
 
-    const [first_name, ...rest] = authorFullName.split(" ");
-    const last_name = rest.join(" ") || "-";
+    const [first_name, ...rest] = authorFullName.split(' ');
+    const last_name = rest.join(' ') || '-';
 
     // Hent eksisterende forfattere
     const authorRes = await fetch(`${BASE_URL}/authors`);
@@ -35,8 +35,8 @@ document.getElementById('addBookForm')?.addEventListener('submit', async e => {
     //  Hvis forfatter ikke findes, opret ny
     if (!author) {
         const formData = new FormData();
-        formData.append("first_name", first_name);
-        formData.append("last_name", last_name);
+        formData.append('first_name', first_name);
+        formData.append('last_name', last_name);
 
         const createAuthorRes = await fetch(`${BASE_URL}/admin/${userId}/authors`, {
             method: 'POST',
@@ -46,8 +46,8 @@ document.getElementById('addBookForm')?.addEventListener('submit', async e => {
 
         const text = await createAuthorRes.text();
         if (!createAuthorRes.ok) {
-            console.error("Author error:", text);
-            return alert("Error creating author.");
+            console.error('Author error:', text);
+            return alert('Error creating author.');
         }
 
         const createdAuthor = JSON.parse(text);
@@ -62,7 +62,7 @@ document.getElementById('addBookForm')?.addEventListener('submit', async e => {
     // Hvis forlag ikke findes, opret ny
     if (!publisher) {
         const formData = new FormData();
-        formData.append("name", publisherName);
+        formData.append('name', publisherName);
 
         const createPublisherRes = await fetch(`${BASE_URL}/admin/${userId}/publishers`, {
             method: 'POST',
@@ -72,8 +72,8 @@ document.getElementById('addBookForm')?.addEventListener('submit', async e => {
 
         const text = await createPublisherRes.text();
         if (!createPublisherRes.ok) {
-            console.error("Publisher error:", text);
-            return alert("Error creating publisher.");
+            console.error('Publisher error:', text);
+            return alert('Error creating publisher.');
         }
 
         const createdPublisher = JSON.parse(text);
@@ -83,10 +83,10 @@ document.getElementById('addBookForm')?.addEventListener('submit', async e => {
     // Tilføj bog
     const year = new Date().getFullYear();
     const bookFormData = new FormData();
-    bookFormData.append("title", title);
-    bookFormData.append("author_id", author.author_id);
-    bookFormData.append("publisher_id", publisher.publisher_id);
-    bookFormData.append("publishing_year", year);
+    bookFormData.append('title', title);
+    bookFormData.append('author_id', author.author_id);
+    bookFormData.append('publisher_id', publisher.publisher_id);
+    bookFormData.append('publishing_year', year);
 
     const res = await fetch(`${BASE_URL}/admin/${userId}/books`, {
         method: 'POST',
@@ -98,11 +98,11 @@ document.getElementById('addBookForm')?.addEventListener('submit', async e => {
 
     const text = await res.text();
     if (!res.ok) {
-        console.error("Book create error:", text);
-        return alert("Error adding book.");
+        console.error('Book create error:', text);
+        return alert('Error adding book.');
     }
 
-    alert("Book added: " + title);
+    alert('Book added: ' + title);
     form.reset();
 });
 
@@ -113,10 +113,10 @@ document.getElementById('addAuthorForm')?.addEventListener('submit', async e => 
     const form = e.target;
     const fullName = form.querySelector('input[name="first_name"]').value.trim();
 
-    if (!fullName) return alert("Please enter a name.");
+    if (!fullName) return alert('Please enter a name.');
 
-    const [firstName, ...rest] = fullName.split(" ");
-    const lastName = rest.join(" ") || "-";
+    const [firstName, ...rest] = fullName.split(' ');
+    const lastName = rest.join(' ') || '-';
 
     const formData = new FormData();
     formData.append('first_name', firstName);
@@ -131,15 +131,15 @@ document.getElementById('addAuthorForm')?.addEventListener('submit', async e => 
 
         const text = await res.text();
         if (!res.ok) {
-            console.error("Author response:", text);
-            return alert("Error creating author.");
+            console.error('Author response:', text);
+            return alert('Error creating author.');
         }
 
-        alert("Author added: " + fullName);
+        alert('Author added: ' + fullName);
         form.reset();
     } catch (err) {
-        console.error("Author create error:", err);
-        alert("Something went wrong.");
+        console.error('Author create error:', err);
+        alert('Something went wrong.');
     }
 });
 
@@ -150,7 +150,7 @@ document.getElementById('addPublisherForm')?.addEventListener('submit', async e 
     const form = e.target;
     const name = form.querySelector('input[name="publisher_name"]').value.trim();
 
-    if (!name) return alert("Please enter a publisher name.");
+    if (!name) return alert('Please enter a publisher name.');
 
     const formData = new FormData();
     formData.append('name', name);
@@ -164,15 +164,15 @@ document.getElementById('addPublisherForm')?.addEventListener('submit', async e 
 
         const text = await res.text();
         if (!res.ok) {
-            console.error("Publisher response:", text);
-            return alert("Error creating publisher.");
+            console.error('Publisher response:', text);
+            return alert('Error creating publisher.');
         }
 
-        alert("Publisher added: " + name);
+        alert('Publisher added: ' + name);
         form.reset();
     } catch (err) {
-        console.error("Publisher create error:", err);
-        alert("Something went wrong.");
+        console.error('Publisher create error:', err);
+        alert('Something went wrong.');
     }
 });
 

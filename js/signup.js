@@ -54,6 +54,8 @@ document.querySelector('#frmSignup').addEventListener('submit', async e => {
   }
 
   // --- Alt valideret: build URLSearchParams og send request ---
+
+  // Underscore er brugt, da det er fra databasen
   const params = new URLSearchParams({
     first_name:   firstName,
     last_name:    lastName,

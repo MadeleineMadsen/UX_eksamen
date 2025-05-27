@@ -100,6 +100,7 @@ document.getElementById('editUserForm').addEventListener('submit', async e => {
     showStatus('Your information was saved!', 'success');
 
     originalUserData = {
+        // Underscore er brugt, da det er fra databasen
         first_name: formData.get('first_name'),
         last_name: formData.get('last_name'),
         email: formData.get('email'),
@@ -173,6 +174,3 @@ const logoutBtnAdmin = document.querySelector('#logoutBtnAdmin');
     window.location.href = 'login.html';
     });
 });
-
-// call it when the profile page loads
-renderLoanedBooks();

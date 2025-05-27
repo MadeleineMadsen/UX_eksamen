@@ -84,37 +84,40 @@
     </aside>
 
     <section id="book_form">
-
         <h1>Add new entry</h1>
 
-
         <h3>Add new book</h3>
+
         <form id="addBookForm" aria-labelledby="heading-book">
-        <label for="title" class="sr-only">The books title</label>
-        <input type="text" name="title" placeholder="Title" required>
+            <label for="title" class="sr-only">The books title</label>
+            <input type="text" name="title" placeholder="Title" required>
 
-        <label for="author_name" class="sr-only">The author name</label>
-        <input type="text" name="author_name" placeholder="Author full name" required>
+            <label for="author_name" class="sr-only">The author name</label>
+            <input type="text" name="author_name" placeholder="Author full name" required>
 
-        <label for="publisher_name" class="sr-only">The publisher name</label>
-        <input type="text" name="publisher_name" placeholder="Publisher name" required>
+            <label for="publisher_name" class="sr-only">The publisher name</label>
+            <input type="text" name="publisher_name" placeholder="Publisher name" required>
 
-        <button class="btn-save" type="submit"><strong>Save</strong></button>
-
+            <button class="btn-save" type="submit"><strong>Save</strong></button>
         </form>
-            <h3>Add new author</h3>
+
+        <h3>Add new author</h3>
+
         <form id="addAuthorForm" aria-labelledby="heading-author">
             <label for="first_name" class="sr-only">The authors first name</label>
             <input type="text" name="first_name" placeholder="Author name" required>
+
             <button class="btn-save" type="submit"><strong>Save</strong></button>
-            </form>
-            <h3>Add new publisher</h3>
+        </form>
+
+        <h3>Add new publisher</h3>
+
         <form id="addPublisherForm" aria-labelledby="heading-publisher">
             <label for="name" class="sr-only">The publishers name</label>
             <input type="text" name="publisher_name" placeholder="Publisher name" required>
+            
             <button class="btn-save" type="submit"><strong>Save</strong></button>
-            </form>
-
+        </form>
     </section>
 
     <section id="admin" class="hidden">
@@ -129,8 +132,6 @@
                 <li><strong>Member since:</strong> <span id="member"></span></li>
             </ul>
     </section>
-    
-
 </main>
 
 <!-- Footer -->

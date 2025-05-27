@@ -9,10 +9,10 @@ import { loggedUserID, tokenHeader } from './common.js';
 
 
 const listEl        = document.getElementById('book-list');
-const searchInput   = document.getElementById('txtSearch');
-const suggContainer = document.getElementById('suggestions');
+// const searchInput   = document.getElementById('txtSearch');
+// const suggContainer = document.getElementById('suggestions');
 
-let abortController = null;
+// let abortController = null;
 
 // Navigation
 const userId = sessionStorage.getItem('book_app_user_id');
@@ -82,6 +82,7 @@ function renderBooks(books, container) {
   container.innerHTML = '';
 
   books.forEach(book => {
+    // Underscore er brugt, da det er fra databasen
     const { book_id, title, author, cover } = book;
     const card = document.createElement('article');
     card.className      = 'book-card';
@@ -135,24 +136,24 @@ function renderBooks(books, container) {
 
 // Pop-op ved klik på CTA-button
 
-document.body.addEventListener('click', async e => {
+// document.body.addEventListener('click', async  => {
 
-  // Find book_id og vis popup
-  const id = card.dataset.bookId;
-  try {
-    const userId = loggedUserID();
-    const res = await fetch(
-      `${BASE_URL}/admin/${userId}/books/${id}`,
-      { headers: tokenHeader() }
-    );
-    const book = await handleAPIError(res);
-    //showPopup(book);
+//   // Find book_id og vis popup
+//   const id = card.dataset.bookId;
+//   try {
+//     const userId = loggedUserID();
+//     const res = await fetch(
+//       `${BASE_URL}/admin/${userId}/books/${id}`,
+//       { headers: tokenHeader() }
+//     );
+//     const book = await handleAPIError(res);
+//     //showPopup(book);
     
     
-  } catch (err) {
-    handleFetchCatchError(err);
-  }
-});
+//   } catch (err) {
+//     handleFetchCatchError(err);
+//   }
+// });
 
 
 
@@ -215,14 +216,14 @@ function showPopup(book) {
   const historyEl = dialog.querySelector('.loan-history');
   if (historyEl) {
     if (loans.length) {
-      loans.sort((a,b)=>new Date(b.loan_date)-new Date(a.loan_date))
+      loans.sort((a,b)=>new Date(b.loan_date) - new Date(a.loan_date))
           .forEach(({user_id,loan_date})=>{
-            const li=document.createElement('li');
+            const li = document.createElement('li');
             li.textContent = `User ${user_id} – ${new Intl.DateTimeFormat('da-DK').format(new Date(loan_date))}`;
             historyEl.append(li);
           });
     } else {
-      const li=document.createElement('li');
+      const li = document.createElement('li');
       li.textContent = 'No previous loans';
       historyEl.append(li);
     }
@@ -253,10 +254,6 @@ function showPopup(book) {
   document.body.append(dialog);
   dialog.showModal();
 }
-
-
-
-
 
 export { showPopup };
 
