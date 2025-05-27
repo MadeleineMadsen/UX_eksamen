@@ -55,7 +55,7 @@
     margin-bottom: var(--heightFooter);
 
 
-    h3 {
+    h2 {
         font-family: var(--fontText);
         font-size: var(--fontSizeMobile);
         margin: var(--remMobile);
@@ -211,7 +211,7 @@
         display: inline-block; 
         margin-bottom: var(--heightFooter);
 
-        h3 {
+        h2 {
             font-size: var(--fontSizeDesktop);
             margin: var(--remDesktop) 0;
             padding-top: var(--remDesktop);

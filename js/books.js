@@ -96,7 +96,7 @@ function renderBooks(books, container) {
           onerror="this.src='${DEFAULT_COVER}'"
         />
       </div>
-      <h3 class="book-title">${title}</h3>
+      <h2 class="book-title">${title}</h2>
       <button class="btn--book-info" aria-label="See more information about ${title}">See more</button>
     `;
 
